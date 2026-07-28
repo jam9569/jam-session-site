@@ -1,0 +1,178 @@
+---
+const MENU = [
+  { label: "Corsi", href: "/corsi" },
+  { label: "Docenti", href: "/docenti" },
+  { label: "Progetti", href: "/progetti" },
+  { label: "Eventi", href: "/eventi" },
+  { label: "European", href: "/european-partners" },
+  { label: "Contatti", href: "/contatti" },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+
+    <a class="brand" href="/">
+      <div class="logo">
+        <img src="/assets/logo-js.svg" alt="Jam Session APS" />
+      </div>
+      <div class="brand-name">
+        Jam Session APS
+        <small>Scuola di Canto e Musica</small>
+      </div>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Menu principale">
+      {MENU.map(item => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="header-right">
+      <a class="top-cta" href="/contatti">Richiedi info</a>
+      <button class="hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <nav class="nav-mobile" aria-label="Menu mobile">
+    {MENU.map(item => <a href={item.href}>{item.label}</a>)}
+    <a class="nav-mobile-cta" href="/contatti">Richiedi info</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(11,11,11,.08);
+  }
+  .header-inner {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: #0f5f53;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .logo img { width: 100%; height: 100%; object-fit: cover; }
+  .brand-name {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 1.1;
+  }
+  .brand-name small {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    opacity: .7;
+    margin-top: 2px;
+  }
+  .nav-desktop {
+    display: none;
+    gap: 20px;
+  }
+  .nav-desktop a {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+    opacity: .85;
+  }
+  .nav-desktop a:hover { opacity: 1; text-decoration: underline; }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .top-cta {
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #f2a844;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    text-decoration: none;
+    color: #1b1b1b;
+    white-space: nowrap;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #0b0b0b;
+    border-radius: 2px;
+    transition: all .2s ease;
+  }
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 16px;
+    border-top: 1px solid rgba(11,11,11,.08);
+    background: #fff;
+  }
+  .nav-mobile a {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 12px 0;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(11,11,11,.06);
+  }
+  .nav-mobile-cta {
+    margin-top: 14px;
+    text-align: center;
+    background: #f2a844;
+    border-radius: 999px;
+    padding: 14px !important;
+    border-bottom: none !important;
+  }
+  .nav-mobile.open { display: flex; }
+
+  @media (min-width: 768px) {
+    .nav-desktop { display: flex; }
+    .hamburger { display: none; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector('.hamburger');
+  const nav = document.querySelector('.nav-mobile');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>

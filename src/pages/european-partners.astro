@@ -1,0 +1,850 @@
+---
+const SITE_EN = {
+  name: "Jam Session Association APS",
+  tagline: "Bologna, Emilia-Romagna (Italy)",
+  addressLine1: "Via del Perugino 6B e 6C",
+  addressLine2: "40139 Bologna — Italy",
+  cf: "91388650375",
+  vat: "IT04024071203",
+  email: "info@assjamsession.it",
+  pec: "ass.jamsession@pec.it",
+  secretary: "segreteria@assjamsession.it",
+  partnershipContact: "Marco Badini",
+  partnershipEmail: "marcobadini@assjamsession.it",
+  oid: "E10402104",
+};
+
+const PIF_HREF = "/downloads/pif-jam-session-2026.pdf";
+const YEAR = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{SITE_EN.name} • For European Partners</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --green:#0f5f53;
+      --greenDark:#0b4b42;
+      --heroGreen:#0e4f46;
+      --accent:#f2a844;
+      --ink:#0b0b0b;
+      --paper:#ffffff;
+      --surface:#f2f4f3;
+      --beige:#f6ead6;
+
+      --radius:18px;
+      --radiusLg:28px;
+      --shadow: 0 12px 28px rgba(0,0,0,.08);
+      --border: 1px solid rgba(11,11,11,.18);
+      --borderW: 1px solid rgba(255,255,255,.18);
+    }
+
+    *{ box-sizing:border-box }
+    body{
+      margin:0;
+      font-family:"Lexend",system-ui,sans-serif;
+      color:var(--ink);
+      background:
+        linear-gradient(0deg,rgba(255,255,255,.965),rgba(255,255,255,.965)),
+        url("/assets/texture/paper-grain.jpg");
+      background-size:cover;
+      background-attachment: fixed;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; }
+
+    .container{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+      padding:14px 0 90px;
+    }
+
+    /* STICKY HEADER (complete, not only PIF) */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(11,11,11,.08);
+    }
+    .header-inner{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+      padding: 12px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:999px;
+      background:var(--green);
+      border: var(--border);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .brand-name{
+      min-width:0;
+      font-family:"Inter";
+      font-weight:900;
+      font-size:18px;
+      line-height:1.1;
+      letter-spacing:-.2px;
+    }
+    .brand-name small{
+      display:block;
+      font-size:12px;
+      font-weight:600;
+      opacity:.72;
+      margin-top:3px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex:0 0 auto;
+    }
+    .pif-cta{
+      padding:10px 16px;
+      border-radius:999px;
+      background:var(--accent);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      font-family:"Inter";
+      font-weight:900;
+      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .pif-cta span{
+      display:inline-block;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero{
+      margin-top: 10px; /* tight like home */
+      border-radius:var(--radiusLg);
+      background:var(--heroGreen);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      padding: 38px;
+    }
+    .hero-grid{
+      display:grid;
+      gap:24px;
+      align-items:center;
+    }
+    .hero-kicker{
+      margin:0 0 10px;
+      font-family:"Inter";
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+      opacity:.88;
+      color: rgba(255,255,255,.92);
+    }
+    .hero-title{
+      margin:0 0 14px;
+      font-family:"Inter";
+      font-weight:900;
+      line-height:1.02;
+      letter-spacing:-.8px;
+      color:#fff;
+      font-size: clamp(34px, 5.4vw, 58px);
+    }
+    .hero-lead{
+      margin:0 0 18px;
+      color: rgba(255,255,255,.88);
+      line-height:1.55;
+      font-size:14px;
+      max-width: 62ch;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:999px;
+      font-family:"Inter";
+      font-weight:900;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn-white{
+      background:#fff;
+      color:#111;
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      border: 2px solid rgba(255,255,255,.34);
+      box-shadow:none;
+    }
+    .hero-media{
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 18px 46px rgba(0,0,0,.20);
+      background: rgba(255,255,255,.06);
+    }
+    .hero-media img{
+      width:100%;
+      height: 320px;
+      object-fit:cover;
+      display:block;
+      filter: saturate(.92) contrast(1.02);
+    }
+
+    /* CHITARRE BANNER (text in front of filter) */
+    .banner{
+      margin: 22px 0 0;
+      border-radius:var(--radiusLg);
+      overflow:hidden;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      position:relative;
+      height: 360px;
+      background:#ddd;
+    }
+    .banner img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      filter: saturate(.98) contrast(1.02);
+    }
+    .banner::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(15,95,83,.70) 0%, rgba(15,95,83,.22) 55%, rgba(255,255,255,.0) 100%);
+    }
+    .banner-text{
+      position:absolute;
+      left:22px;
+      right:22px;
+      bottom:18px;
+      z-index:1;
+      color:#fff;
+      font-family:"Inter";
+      font-weight:900;
+      letter-spacing:-.2px;
+      line-height:1.05;
+      font-size: clamp(22px, 3.2vw, 40px);
+      text-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+
+    /* SECTIONS */
+    .section{
+      margin-top: 54px;
+    }
+    .section-head{
+      margin-bottom: 18px;
+    }
+    h2{
+      margin:0;
+      font-family:"Inter";
+      font-weight:900;
+      font-size: clamp(28px, 4.2vw, 48px);
+      letter-spacing:-.7px;
+    }
+    .subtitle{
+      margin:12px 0 0;
+      opacity:.78;
+      font-size:16px;
+      line-height:1.5;
+      max-width: 75ch;
+    }
+
+    /* Contact strip (no Marco-big, no duplicates) */
+    .contact-strip{
+      margin-top:18px;
+      background: var(--surface);
+      border-radius: 26px;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .contact-strip .left{
+      min-width: 240px;
+    }
+    .contact-strip .left strong{
+      font-family:"Inter";
+      font-weight:900;
+      letter-spacing:-.2px;
+      display:block;
+      margin-bottom:4px;
+    }
+    .email-pill{
+      margin-left:auto;
+      margin-right:auto;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,11,11,.20);
+      background:#fff;
+      box-shadow: 0 18px 40px rgba(0,0,0,.10);
+      font-family:"Inter";
+      font-weight:900;
+      letter-spacing:-.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      max-width: 100%;
+      overflow:auto;
+    }
+    .email-pill small{
+      font-family:"Lexend";
+      font-weight:600;
+      opacity:.65;
+      white-space:nowrap;
+    }
+    .contact-strip .cta{
+      margin-left:auto;
+    }
+
+    /* Cards grid (1–6) */
+    .grid{
+      display:grid;
+      gap:28px; /* more “breathing” */
+      margin-top: 22px;
+    }
+    .card{
+      background: var(--surface);
+      border-radius: 22px;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+    .card.white{ background:#fff; }
+    .card.green{
+      background: var(--green);
+      color:#fff;
+      border: var(--borderW);
+    }
+    .card.beige{
+      background: var(--beige);
+    }
+    .card h3{
+      margin:0 0 12px;
+      font-family:"Inter";
+      font-weight:900;
+      letter-spacing:-.5px;
+      font-size: 30px;
+      line-height:1.05;
+    }
+    .card.green h3{ color:#fff; }
+    .card p{
+      margin:0 0 12px;
+      opacity:.9;
+      line-height:1.65;
+      font-size:15px;
+    }
+    .card.green p{ color: rgba(255,255,255,.90); opacity:1; }
+    .card ul{
+      margin: 12px 0 0 18px;
+      padding:0;
+    }
+    .card li{
+      margin: 9px 0;
+      line-height:1.55;
+      font-size:15px;
+      font-weight:600;
+    }
+    .card.green li{ color: rgba(255,255,255,.92); font-weight:700; }
+
+    /* 6. Snapshot table */
+    .snapshot{
+      margin-top: 14px;
+      display:grid;
+      gap:12px;
+    }
+    .row{
+      border-radius: 16px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 14px 16px;
+      display:grid;
+      grid-template-columns: 190px 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .row strong{
+      font-family:"Inter";
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .row span{
+      color: rgba(255,255,255,.92);
+      font-weight:700;
+      line-height:1.45;
+    }
+
+    /* Footer (same structure as home: 3 cards + bottom row with 🇮🇹 on right) */
+    footer{
+      margin-top: 110px;
+      background:var(--green);
+      border-radius:var(--radiusLg);
+      padding: 46px;
+      border: var(--borderW);
+      box-shadow: var(--shadow);
+      color:#fff;
+    }
+    .footer-top{
+      display:grid;
+      gap:26px;
+    }
+    .fcard{
+      background:#fff;
+      color:var(--ink);
+      border: var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .f-title{
+      font-family:"Inter";
+      font-weight:900;
+      font-size:16px;
+      margin:0 0 10px;
+    }
+    .f-text{
+      margin:0 0 10px;
+      opacity:.85;
+      font-size:14px;
+      line-height:1.45;
+    }
+    .f-meta{
+      font-size:13px;
+      line-height:1.6;
+      opacity:.9;
+    }
+    .f-meta a{
+      color:inherit;
+      text-decoration:none;
+      position:relative;
+      font-weight:800;
+    }
+    /* “white line” style (no underline) */
+    .f-meta a.line::after{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      bottom:-3px;
+      height:2px;
+      background: rgba(11,11,11,.22);
+      border-radius: 999px;
+    }
+
+    .footer-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:22px;
+    }
+    .fbtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      font-family:"Inter";
+      font-weight:900;
+      background:#fff;
+      color: var(--greenDark);
+      border: 1px solid rgba(255,255,255,.30);
+      box-shadow: var(--shadow);
+    }
+    .fbtn-accent{
+      background: var(--accent);
+      color:#1b1b1b;
+      border: var(--border);
+    }
+
+    .footer-bottom{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      font-family:"Inter";
+      font-weight:900;
+      font-size:13px;
+      color: rgba(255,255,255,.96);
+    }
+    .footer-links a:hover{ opacity:.9; }
+
+    .footer-it{
+      margin-left:auto;
+      white-space:nowrap;
+    }
+    .pill-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.28);
+      font-family:"Inter";
+      font-weight:900;
+      color:#fff;
+      position:relative;
+    }
+    .pill-link::after{
+      content:"";
+      width:38px;
+      height:2px;
+      background: rgba(255,255,255,.86);
+      border-radius: 999px;
+      opacity:.9;
+      margin-left:10px;
+    }
+
+    .copyright{
+      margin-top:14px;
+      font-size:12px;
+      opacity:.9;
+    }
+
+    /* Responsive */
+    @media (min-width: 900px){
+      .hero-grid{ grid-template-columns: 1.15fr .85fr; }
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .footer-top{ grid-template-columns: 1fr 1fr 1.1fr; }
+    }
+    @media (max-width: 520px){
+      .banner{ height: 290px; }
+      .hero{ padding: 26px; }
+      .hero-media img{ height: 240px; }
+      .row{ grid-template-columns: 1fr; }
+      .email-pill{
+        justify-content:center;
+        margin-left:0;
+        margin-right:0;
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- STICKY HEADER -->
+  <div class="site-header" role="banner" aria-label="Header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Back to Italian homepage">
+        <div class="logo">
+          <img src="/assets/logo-js.svg" alt="Jam Session" />
+        </div>
+        <div class="brand-name">
+          {SITE_EN.name}
+          <small>{SITE_EN.tagline}</small>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a class="pif-cta" href={PIF_HREF} aria-label="Download Partner Identification Form (PDF)">
+          Download PIF (PDF) <span aria-hidden="true">↘</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero" aria-label="For European partners hero">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-kicker">For European partners & organisations</p>
+            <h1 class="hero-title">Who we are & what we can deliver.</h1>
+            <p class="hero-lead">
+              We are a non-profit cultural and educational organisation based in Bologna (Italy),
+              active in non-formal music education, cultural promotion and social inclusion through artistic practices.
+              We collaborate with schools, local institutions and communities, and we are open to European cooperation.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-white" href={`mailto:${SITE_EN.secretary}`} aria-label="Contact the secretary">
+                Contact us <span aria-hidden="true">→</span>
+              </a>
+              <a class="btn btn-ghost" href="#snapshot" aria-label="Jump to organisational snapshot">
+                Organisational snapshot
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-media" aria-label="Photo">
+            <img
+              src="/assets/home/lezione-musica-insieme-jam-session.avif"
+              alt="Community music activity at Jam Session"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- BANNER CHITARRE (must be before Let's build partnerships) -->
+      <div class="banner" aria-label="Music as a tool banner">
+        <img
+          src="/assets/home/chitarre-scuola-musica-jam-session.avif"
+          alt="Instruments at Jam Session"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="banner-text">
+          Music as a tool for education, inclusion and European cooperation.
+        </div>
+      </div>
+
+      <!-- LET'S BUILD PARTNERSHIPS (no Marco-big, no duplicates) -->
+      <section class="section" aria-label="Contact section">
+        <div class="section-head">
+          <h2>Let’s build partnerships</h2>
+          <p class="subtitle">
+            For collaboration proposals and European partnership development, get in touch.
+          </p>
+        </div>
+
+        <div class="contact-strip" aria-label="Contact strip">
+          <div class="left">
+            <strong>Partnership enquiries</strong>
+            <div style="opacity:.78;font-size:14px;line-height:1.4;">
+              Write to our secretary — we reply quickly.
+            </div>
+          </div>
+
+          <div class="email-pill" aria-label="Email (center)">
+            <small>Email</small>
+            <span>{SITE_EN.secretary}</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn btn-white" href={`mailto:${SITE_EN.secretary}`} aria-label="Email the secretary">
+              Contact us <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1–6 CONTENT -->
+      <section class="section" aria-label="Organisation info">
+        <div class="grid">
+
+          <div class="card white" aria-label="1 Who we are">
+            <h3>1. Who we are</h3>
+            <p>
+              Jam Session APS is a cultural and educational non-profit organisation established in Bologna.
+              Our work combines music education, community engagement and inclusive practices.
+            </p>
+            <p>
+              We deliver small-group learning pathways for children, young people and adults, with a strong focus on
+              access, motivation and continuity. We also collaborate with local stakeholders to run cultural activities
+              that strengthen participation and social cohesion.
+            </p>
+          </div>
+
+          <div class="card green" aria-label="2 What we do">
+            <h3>2. What we do (established expertise)</h3>
+            <ul>
+              <li>Non-formal music education in small groups</li>
+              <li>Design and management of continuous learning pathways</li>
+              <li>Music therapy and the use of music in educational and social contexts</li>
+              <li>Work with people with disabilities and inclusive group facilitation</li>
+              <li>Music activities in multicultural settings</li>
+              <li>Educational initiatives focused on preventing early school leaving</li>
+              <li>Territorial cultural activities and community-based initiatives</li>
+            </ul>
+          </div>
+
+          <div class="card beige" aria-label="3 Areas we are developing">
+            <h3>3. Areas we are developing (as project partner)</h3>
+            <ul>
+              <li>Structured support for emerging young artists (mentoring, guidance, skills-building)</li>
+              <li>European artistic mobility and international exchange formats</li>
+              <li>International cultural network-building and partnership development</li>
+              <li>Audience development at international level</li>
+              <li>Transnational cultural cooperation and co-creation processes</li>
+            </ul>
+            <p style="margin-top:14px;">
+              We are keen to develop these competences through partnerships with experienced organisations,
+              learning by doing and contributing with our local capacity for piloting and community engagement.
+            </p>
+          </div>
+
+          <div class="card white" aria-label="4 Our role in European projects">
+            <h3>4. Our role in European projects</h3>
+            <p>
+              At this stage, Jam Session APS is mainly available as a project partner, contributing operationally to
+              educational and inclusive activities, local piloting of actions, community engagement and small-scale dissemination.
+            </p>
+            <p>
+              We can support partners with participant outreach and recruitment, facilitation of learning activities,
+              hosting visiting staff or artists, and the organisation of public moments such as showcases, workshops and community events.
+            </p>
+            <p>
+              We are not currently positioning ourselves as lead applicant for large-scale European projects, but we are open to
+              structured collaborations and progressive growth pathways at European level.
+            </p>
+          </div>
+
+          <div class="card white" aria-label="5 Programmes of interest">
+            <h3>5. Programmes of interest</h3>
+            <ul>
+              <li>Erasmus+ (Cooperation Partnerships and Small-scale Partnerships)</li>
+              <li>Creative Europe (small/medium-scale cultural cooperation projects)</li>
+              <li>European Solidarity Corps (community-focused projects with young people)</li>
+              <li>Citizens, Equality, Rights and Values – CERV (community and inclusion actions)</li>
+              <li>Local/regional schemes supporting social inclusion and cultural participation</li>
+            </ul>
+          </div>
+
+          <div class="card green" id="snapshot" aria-label="6 Organisational snapshot">
+            <h3>6. Organisational snapshot</h3>
+
+            <div class="snapshot" role="list">
+              <div class="row" role="listitem">
+                <strong>Legal name</strong>
+                <span>Jam Session APS (non-profit association)</span>
+              </div>
+              <div class="row" role="listitem">
+                <strong>Country / City</strong>
+                <span>Italy — Bologna (Emilia-Romagna)</span>
+              </div>
+              <div class="row" role="listitem">
+                <strong>Main fields</strong>
+                <span>Music education, music therapy, social inclusion</span>
+              </div>
+              <div class="row" role="listitem">
+                <strong>Event experience</strong>
+                <span>Small music events (average attendance: 300–400 participants)</span>
+              </div>
+              <div class="row" role="listitem">
+                <strong>Working languages</strong>
+                <span>Italian, English</span>
+              </div>
+              <div class="row" role="listitem">
+                <strong>OID (Erasmus+/EU)</strong>
+                <span>{SITE_EN.oid}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER (coherent with home, 3 cards, no PIF) -->
+    <footer aria-label="Footer">
+      <div class="footer-top">
+
+        <div class="fcard">
+          <div class="f-title">{SITE_EN.name}</div>
+          <p class="f-text">{SITE_EN.addressLine1}<br/>{SITE_EN.addressLine2}</p>
+          <div class="f-meta"><strong>CF:</strong> {SITE_EN.cf} &nbsp;·&nbsp; <strong>VAT:</strong> {SITE_EN.vat}</div>
+          <div class="f-meta" style="margin-top:8px;">
+            <strong>Email:</strong> <a class="line" href={`mailto:${SITE_EN.email}`}>{SITE_EN.email}</a><br/>
+            <strong>PEC:</strong> <a class="line" href={`mailto:${SITE_EN.pec}`}>{SITE_EN.pec}</a>
+          </div>
+        </div>
+
+        <div class="fcard">
+          <div class="f-title">European partnerships</div>
+          <p class="f-text">
+            For cooperation proposals and partnership development, please contact our secretary.
+          </p>
+          <div class="f-meta">
+            <strong>Secretary:</strong> <a class="line" href={`mailto:${SITE_EN.secretary}`}>{SITE_EN.secretary}</a>
+          </div>
+          <div class="f-meta" style="margin-top:10px;">
+            <strong>Partnership contact:</strong> {SITE_EN.partnershipContact}<br/>
+            <strong>Email:</strong> <a class="line" href={`mailto:${SITE_EN.partnershipEmail}`}>{SITE_EN.partnershipEmail}</a>
+          </div>
+        </div>
+
+        <div class="fcard">
+          <div class="f-title">Documents</div>
+          <p class="f-text">
+            The Partner Identification Form (PIF) is always available via the orange button in the top-right corner.
+          </p>
+          <div class="f-meta">
+            <strong>OID (Erasmus+/EU):</strong> {SITE_EN.oid}
+          </div>
+
+          <div class="footer-cta" style="margin-top:16px;">
+            <a class="fbtn fbtn-accent" href={`mailto:${SITE_EN.secretary}`} aria-label="Contact">
+              Contact us
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom" aria-label="Bottom links">
+        <div class="footer-links">
+          <a href="/privacy">Privacy</a>
+          <a href="/cookie">Cookie</a>
+        </div>
+
+        <div class="footer-it">
+          <a class="pill-link" href="/" aria-label="Italian website">
+            🇮🇹 Italian website
+          </a>
+        </div>
+      </div>
+
+      <div class="copyright">© {YEAR} Jam Session Association APS</div>
+    </footer>
+
+  </div>
+</body>
+</html>
