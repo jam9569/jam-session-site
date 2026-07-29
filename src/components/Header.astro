@@ -1,5 +1,14 @@
 ---
 const MENU = [
+  {
+    label: "Associazione",
+    children: [
+      { label: "Chi Siamo", href: "/associazione/chi-siamo" },
+      { label: "Organigramma", href: "/associazione/organigramma" },
+      { label: "Agevolazioni & Sostienici", href: "/associazione/agevolazioni-sostienici" },
+      { label: "Documenti Utili", href: "/associazione/documenti-utili" },
+    ],
+  },
   { label: "Corsi", href: "/corsi" },
   { label: "Docenti", href: "/docenti" },
   { label: "Progetti", href: "/progetti" },
@@ -23,7 +32,21 @@ const MENU = [
     </a>
 
     <nav class="nav-desktop" aria-label="Menu principale">
-      {MENU.map(item => <a href={item.href}>{item.label}</a>)}
+      {MENU.map(item => (
+        item.children ? (
+          <div class="nav-item has-dropdown">
+            <button class="nav-link dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              {item.label}
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="dropdown">
+              {item.children.map(child => <a href={child.href}>{child.label}</a>)}
+            </div>
+          </div>
+        ) : (
+          <a class="nav-link" href={item.href}>{item.label}</a>
+        )
+      ))}
     </nav>
 
     <div class="header-right">
@@ -38,7 +61,21 @@ const MENU = [
   </div>
 
   <nav class="nav-mobile" aria-label="Menu mobile">
-    {MENU.map(item => <a href={item.href}>{item.label}</a>)}
+    {MENU.map(item => (
+      item.children ? (
+        <div class="mobile-item has-children">
+          <button class="mobile-link accordion-trigger" aria-expanded="false">
+            {item.label}
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-submenu">
+            {item.children.map(child => <a class="mobile-sublink" href={child.href}>{child.label}</a>)}
+          </div>
+        </div>
+      ) : (
+        <a class="mobile-link" href={item.href}>{item.label}</a>
+      )
+    ))}
     <a class="nav-mobile-cta" href="/contatti">Richiedi info</a>
   </nav>
 </header>
@@ -92,17 +129,82 @@ const MENU = [
   }
   .nav-desktop {
     display: none;
+    align-items: center;
     gap: 20px;
   }
-  .nav-desktop a {
+  .nav-link {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 14px;
     text-decoration: none;
     color: inherit;
     opacity: .85;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
-  .nav-desktop a:hover { opacity: 1; text-decoration: underline; }
+  .nav-link:hover { opacity: 1; text-decoration: underline; }
+  .dropdown-trigger:hover { text-decoration: none; }
+
+  .nav-item { position: relative; }
+  .chevron {
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    transition: transform .18s ease;
+  }
+  .nav-item.open .chevron,
+  .nav-item:hover .chevron {
+    transform: rotate(225deg);
+    margin-top: 3px;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 0;
+    min-width: 230px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid rgba(11,11,11,.1);
+    box-shadow: 0 12px 28px rgba(11,11,11,.12);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    pointer-events: none;
+    z-index: 30;
+  }
+  .nav-item:hover .dropdown,
+  .nav-item.open .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .dropdown a {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    color: #0b0b0b;
+    padding: 10px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .dropdown a:hover { background: #f2f3f1; }
+
   .header-right {
     display: flex;
     align-items: center;
@@ -143,7 +245,7 @@ const MENU = [
     border-top: 1px solid rgba(11,11,11,.08);
     background: #fff;
   }
-  .nav-mobile a {
+  .mobile-link {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 18px;
@@ -151,6 +253,31 @@ const MENU = [
     text-decoration: none;
     color: inherit;
     border-bottom: 1px solid rgba(11,11,11,.06);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .mobile-submenu {
+    display: none;
+    flex-direction: column;
+    padding: 4px 0 10px 14px;
+  }
+  .mobile-item.open .mobile-submenu { display: flex; }
+  .mobile-sublink {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 0;
+    text-decoration: none;
+    color: inherit;
+    opacity: .8;
   }
   .nav-mobile-cta {
     margin-top: 14px;
@@ -174,5 +301,34 @@ const MENU = [
   btn?.addEventListener('click', () => {
     const open = nav?.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('.nav-item.has-dropdown').forEach((item) => {
+    const trigger = item.querySelector('.dropdown-trigger');
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.querySelectorAll('.nav-item.has-dropdown').forEach((other) => {
+        if (other !== item) {
+          other.classList.remove('open');
+          other.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item.has-dropdown.open').forEach((item) => {
+      item.classList.remove('open');
+      item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.querySelectorAll('.mobile-item.has-children').forEach((item) => {
+    const trigger = item.querySelector('.accordion-trigger');
+    trigger?.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
   });
 </script>
