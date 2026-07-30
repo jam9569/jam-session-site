@@ -6,26 +6,32 @@ import Footer from '../../components/Footer.astro';
 
 <BaseLayout title="Agevolazioni Fiscali & Sostienici — Jam Session APS">
   <Header />
-  <main class="page-placeholder">
-    <h1>Agevolazioni Fiscali & Sostienici</h1>
-    <p>Contenuto in arrivo.</p>
-  </main>
-  <Footer />
+  <div class="container">
+    <main class="page-content">
+      <h1>Agevolazioni Fiscali & Sostienici</h1>
+      <p>Contenuto in arrivo.</p>
+    </main>
+    <Footer />
+  </div>
 </BaseLayout>
 
 <style>
-  .page-placeholder {
-    width: min(900px, calc(100% - 32px));
-    margin: 60px auto;
-    min-height: 40vh;
+  .container {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0 90px;
   }
-  .page-placeholder h1 {
+  .page-content {
+    margin: 46px 0 60px;
+    max-width: 900px;
+  }
+  .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 40px;
     margin-bottom: 12px;
   }
-  .page-placeholder p {
+  .page-content p {
     font-family: "Lexend", sans-serif;
     opacity: .7;
   }
