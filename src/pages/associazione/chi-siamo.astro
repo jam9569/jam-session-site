@@ -6,27 +6,73 @@ import Footer from '../../components/Footer.astro';
 
 <BaseLayout title="Chi Siamo — Jam Session APS">
   <Header />
-  <main class="page-placeholder">
-    <h1>Chi Siamo</h1>
-    <p>Contenuto in arrivo.</p>
-  </main>
-  <Footer />
+  <div class="container">
+    <main class="page-content">
+      <h1>Chi Siamo</h1>
+
+      <div class="video-frame">
+        <div class="video-wrapper">
+          <iframe
+            src="https://player.vimeo.com/video/1214240426?title=0&byline=0&portrait=0"
+            title="Video di presentazione Jam Session APS"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="testo-storia">
+        <p>Contenuto in arrivo.</p>
+      </div>
+    </main>
+    <Footer />
+  </div>
 </BaseLayout>
 
 <style>
-  .page-placeholder {
-    width: min(900px, calc(100% - 32px));
-    margin: 60px auto;
-    min-height: 40vh;
+  .container {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0 90px;
   }
-  .page-placeholder h1 {
+  .page-content {
+    margin: 46px 0 60px;
+  }
+  .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 40px;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
-  .page-placeholder p {
+
+  .video-frame {
+    background: #fff;
+    padding: 14px;
+    border-radius: 26px;
+    border: 1px solid rgba(11,11,11,.10);
+    box-shadow: 0 16px 34px rgba(0,0,0,.10);
+    margin-bottom: 32px;
+  }
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .testo-storia { max-width: 900px; }
+  .testo-storia p {
     font-family: "Lexend", sans-serif;
     opacity: .7;
+    line-height: 1.6;
   }
 </style>

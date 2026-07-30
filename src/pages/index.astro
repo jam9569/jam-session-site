@@ -13,13 +13,13 @@ const CORSI_HOME = [
 const DOCENTI = [
   {
     corso: "Canto moderno",
-    nome: "Mara Demartis",
+    nome: "Alice Sacchi",
     img: "/assets/docenti/docente-canto-mara-demartis.jpg",
     href: "/docenti/mara-demartis",
   },
   {
     corso: "Pianoforte",
-    nome: "Mariagrazia Vincitorio",
+    nome: "Maria Grazia Vincitorio",
     img: "/assets/docenti/docente-pianoforte-mariagrazia-vincitorio.jpg",
     href: "/docenti/mariagrazia-vincitorio",
   },
@@ -105,8 +105,8 @@ const PARTNER = [
 
       <section aria-label="Corsi principali">
         <div class="section-head">
-          <h2>I percorsi principali</h2>
-          <p class="subtitle">Inizia da qui: scegli uno strumento e prenota una prova.</p>
+          <h2>Alcuni nostri corsi</h2>
+          <p class="subtitle">Scegli uno strumento tra i nostri corsi e prenota una prova.</p>
         </div>
         <div class="grid">
           {CORSI_HOME.map(c => (
@@ -121,14 +121,14 @@ const PARTNER = [
         </div>
       </section>
 
-      <div class="micro-photo">
-        <img src="/assets/home/lezione-pianoforte-jam-session.avif" alt="Lezione di pianoforte alla Jam Session APS" loading="lazy" decoding="async" />
-      </div>
+    <div class="micro-photo">
+  <img src="/assets/home/musica-insieme-band-jam-session.avif" alt="Prova di gruppo con chitarra e batteria alla Jam Session APS" loading="lazy" decoding="async" />
+</div>
 
       <section aria-label="Docenti principali">
         <div class="section-head">
-          <h2>I docenti dei corsi principali</h2>
-          <p class="subtitle">Quattro volti, quattro percorsi. Poi scegliamo insieme quello giusto per te.</p>
+          <h2>I responsabili di dipartimento</h2>
+          <p class="subtitle">Un volto per ogni dipartimento. Poi troviamo insieme il percorso giusto per te.</p>
         </div>
         <div class="docenti-grid">
           {DOCENTI.map(d => (
@@ -358,4 +358,6 @@ const PARTNER = [
     .docenti-grid { grid-template-columns: repeat(4, 1fr); }
     .reviews { grid-template-columns: repeat(2, 1fr); }
     .news { grid-template-columns: repeat(2, 1fr); }
-    .partners { grid-template-columns: repeat(2, 1fr);
+    .partners { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
