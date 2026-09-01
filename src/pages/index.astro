@@ -2,41 +2,14 @@
 import BaseLayout from '../layouts/layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
+ 
 const CORSI_HOME = [
   { title: "Canto moderno", href: "/corsi/canto" },
   { title: "Pianoforte", href: "/corsi/pianoforte" },
   { title: "Chitarra", href: "/corsi/chitarra" },
   { title: "Deejay", href: "/corsi/deejay" },
 ];
-
-const DOCENTI = [
-  {
-    corso: "Canto moderno",
-    nome: "Alice Sacchi",
-    img: "/assets/docenti/docente-canto-mara-demartis.jpg",
-    href: "/docenti/mara-demartis",
-  },
-  {
-    corso: "Pianoforte",
-    nome: "Maria Grazia Vincitorio",
-    img: "/assets/docenti/docente-pianoforte-mariagrazia-vincitorio.jpg",
-    href: "/docenti/mariagrazia-vincitorio",
-  },
-  {
-    corso: "Chitarra",
-    nome: "Marco Giudice",
-    img: "/assets/docenti/docente-chitarra-marco-giudice.jpg",
-    href: "/docenti/marco-giudice",
-  },
-  {
-    corso: "Deejay",
-    nome: "Thomas Blasi",
-    img: "/assets/docenti/docente-deejay-thomas-blasi.jpg",
-    href: "/docenti/thomas-blasi",
-  },
-];
-
+ 
 const RECENSIONI = [
   {
     author: "Giulia R.",
@@ -59,14 +32,14 @@ const RECENSIONI = [
     text: "Organizzazione ottima e clima di comunità. È il posto giusto per crescere, a qualsiasi età.",
   },
 ];
-
+ 
 const NEWS_HOME = [
   { title: "Open day: prova gratuita e orientamento", date: "10 Feb 2026", href: "/news/open-day" },
   { title: "Saggio di fine trimestre: info e scaletta", date: "3 Feb 2026", href: "/news/saggio-trimestre" },
   { title: "Laboratorio band: nuove formazioni", date: "28 Gen 2026", href: "/news/lab-band" },
   { title: "Coro di Periferia: iscrizioni aperte", date: "20 Gen 2026", href: "/news/coro-periferia" },
 ];
-
+ 
 const PARTNER = [
   { name: "Trinity College London", logo: "/assets/partner/partner-trinity-college-london.svg", href: "/partner/trinity" },
   { name: "Liceo Ginnasio Galvani", logo: "/assets/partner/partner-liceo-galvani.png", href: "/partner/galvani" },
@@ -78,22 +51,21 @@ const PARTNER = [
   { name: "Intesa Sanpaolo", logo: "/assets/partner/partner-intesa-sanpaolo.png", href: "/partner/intesa-sanpaolo" },
 ];
 ---
-
+ 
 <BaseLayout title="Jam Session APS" description="Scuola di canto e musica a Bologna. Corsi di canto, pianoforte, chitarra, DJ e molto altro. Sede d'esame Trinity College London.">
-
+ 
   <Header />
-
+ 
   <div class="container">
     <main>
-
+ 
       <section class="hero" aria-label="Hero">
         <video src="/assets/hero/hero-jam-session.mp4" autoplay muted loop playsinline></video>
-
+ 
         <div class="hero-inner">
-          <p class="kicker">Sede d'esame Trinity College London</p>
           <h1 class="hero-title">
-            <span class="line1">Scopri la tua musica.</span>
-            <span class="line2">In un luogo vivo, serio e aperto.</span>
+            <span class="line1">Scopri la tua musica:</span>
+            <span class="line2">il tuo percorso comincia da qui.</span>
           </h1>
           <p class="hero-lead">Una scuola-laboratorio musicale inclusiva davvero, affidabile nei fatti e innovativa per natura.</p>
           <div class="hero-actions">
@@ -102,7 +74,7 @@ const PARTNER = [
           </div>
         </div>
       </section>
-
+ 
       <section aria-label="Corsi principali">
         <div class="section-head">
           <h2>Alcuni nostri corsi</h2>
@@ -120,36 +92,11 @@ const PARTNER = [
           <a class="btn btn-green" href="/corsi">Vedi tutti i corsi</a>
         </div>
       </section>
-
+ 
     <div class="micro-photo">
   <img src="/assets/home/musica-insieme-band-jam-session.avif" alt="Prova di gruppo con chitarra e batteria alla Jam Session APS" loading="lazy" decoding="async" />
 </div>
-
-      <section aria-label="Docenti principali">
-        <div class="section-head">
-          <h2>I responsabili di dipartimento</h2>
-          <p class="subtitle">Un volto per ogni dipartimento. Poi troviamo insieme il percorso giusto per te.</p>
-        </div>
-        <div class="docenti-grid">
-          {DOCENTI.map(d => (
-            <a class="docente" href={d.href} aria-label={`Apri profilo docente ${d.nome}`}>
-              <img src={d.img} alt={`${d.nome} — ${d.corso}`} loading="lazy" decoding="async" />
-              <div class="docente-info">
-                <div class="pill">{d.corso}</div>
-                <div class="namebar">{d.nome}</div>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div style="margin-top:22px;">
-          <a class="btn btn-green" href="/docenti">Vedi tutti i docenti</a>
-        </div>
-      </section>
-
-      <div class="micro-photo">
-        <img src="/assets/home/chitarre-scuola-musica-jam-session.avif" alt="Chitarre alla Jam Session APS" loading="lazy" decoding="async" />
-      </div>
-
+ 
       <section aria-label="Recensioni">
         <div class="section-head">
           <h2>Recensioni</h2>
@@ -167,7 +114,11 @@ const PARTNER = [
           ))}
         </div>
       </section>
-
+ 
+      <div class="micro-photo">
+        <img src="/assets/home/chitarre-scuola-musica-jam-session.avif" alt="Chitarre alla Jam Session APS" loading="lazy" decoding="async" />
+      </div>
+ 
       <section class="news-section" aria-label="News">
         <div class="section-head" style="margin-bottom:22px;">
           <h2>News e novità</h2>
@@ -186,7 +137,7 @@ const PARTNER = [
           <a class="btn btn-accent" href="/news">Tutte le news</a>
         </div>
       </section>
-
+ 
       <section aria-label="Partner">
         <div class="section-head">
           <h2>Camminano con noi</h2>
@@ -203,14 +154,14 @@ const PARTNER = [
           ))}
         </div>
       </section>
-
+ 
     </main>
-
+ 
     <Footer />
   </div>
-
+ 
 </BaseLayout>
-
+ 
 <style>
   :root {
     --green: #0f5f53;
@@ -225,7 +176,7 @@ const PARTNER = [
     --border: 1px solid rgba(11,11,11,.18);
     --borderW: 1px solid rgba(255,255,255,.18);
   }
-
+ 
   * { box-sizing: border-box; }
   body {
     margin: 0;
@@ -235,15 +186,15 @@ const PARTNER = [
   }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
-
+ 
   .container {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
     padding: 14px 0 90px;
   }
-
+ 
   main > section:not(.hero) { margin-top: 96px; }
-
+ 
   .section-head { margin-bottom: 26px; }
   h2 {
     margin: 0;
@@ -253,7 +204,7 @@ const PARTNER = [
     letter-spacing: -.25px;
   }
   .subtitle { margin: 10px 0 0; opacity: .74; font-size: 14px; max-width: 72ch; }
-
+ 
   .btn {
     display: inline-flex;
     align-items: center;
@@ -269,7 +220,7 @@ const PARTNER = [
   .btn-green { background: var(--green); color: #fff; }
   .btn-accent { background: var(--accent); color: #1b1b1b; }
   .btn-outline { background: rgba(255,255,255,.10); color: #fff; border: 2px solid rgba(255,255,255,.38); box-shadow: none; }
-
+ 
   .hero {
     margin-top: 6px;
     border-radius: var(--radiusLg);
@@ -303,14 +254,13 @@ const PARTNER = [
     width: min(980px, calc(100% - 36px));
     padding: 42px 0;
   }
-  .kicker { margin: 0 0 18px; font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; opacity: .92; }
   .hero-title { margin: 0 0 18px; font-family: "Inter", sans-serif; font-weight: 900; line-height: 1.03; letter-spacing: -.6px; }
   .hero-title span { display: block; }
   .hero-title .line1 { font-size: clamp(36px, 7.2vw, 66px); }
-  .hero-title .line2 { font-size: clamp(22px, 4.6vw, 44px); }
+  .hero-title .line2 { font-size: clamp(18px, 3vw, 32px); font-weight: 700; opacity: .88; margin-top: 10px; }
   .hero-lead { margin: 0 0 24px; opacity: .92; font-size: 14px; line-height: 1.5; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-
+ 
   .grid { display: grid; gap: 22px; }
   .card {
     background: var(--surface);
@@ -321,23 +271,16 @@ const PARTNER = [
   }
   .course { display: flex; align-items: center; justify-content: space-between; font-family: "Inter", sans-serif; font-weight: 900; }
   .badge { background: var(--accent); border: var(--border); border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 900; }
-
-  .micro-photo { margin: 44px 0; border-radius: var(--radius); overflow: hidden; border: var(--border); box-shadow: var(--shadow); }
+ 
+  .micro-photo { margin: 96px 0; border-radius: var(--radius); overflow: hidden; border: var(--border); box-shadow: var(--shadow); }
   .micro-photo img { width: 100%; height: auto; display: block; }
-
-  .docenti-grid { display: grid; gap: 22px; }
-  .docente { position: relative; border-radius: var(--radius); overflow: hidden; border: var(--border); box-shadow: var(--shadow); background: var(--surface); }
-  .docente img { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: grayscale(100%); }
-  .docente-info { position: absolute; left: 12px; right: 12px; bottom: 12px; }
-  .pill { display: inline-block; background: var(--accent); border: var(--border); border-radius: 999px; padding: 6px 10px; font-family: "Inter", sans-serif; font-weight: 900; font-size: 12px; margin-bottom: 8px; }
-  .namebar { background: rgba(15,95,83,.92); color: #fff; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 10px 12px; font-family: "Inter", sans-serif; font-weight: 900; }
-
+ 
   .reviews { display: grid; gap: 26px; }
   .review { background: #fff; }
   .review p { margin: 0 0 14px; opacity: .85; line-height: 1.55; font-size: 14px; font-weight: 500; }
   .review-footer { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; font-family: "Inter", sans-serif; font-weight: 900; }
   .review-footer small { font-family: "Lexend", sans-serif; font-weight: 500; opacity: .62; }
-
+ 
   .news-section { background: var(--green); border-radius: var(--radiusLg); padding: 38px; border: var(--borderW); box-shadow: var(--shadow); color: #fff; }
   .news-section h2 { color: #fff; }
   .news-section .subtitle { color: rgba(255,255,255,.82); opacity: 1; }
@@ -346,16 +289,15 @@ const PARTNER = [
   .news-date { font-size: 12px; opacity: .62; font-weight: 700; }
   .news-title { margin: 10px 0 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 16px; line-height: 1.25; }
   .news-more { margin-top: 10px; font-size: 13px; opacity: .75; font-weight: 800; font-family: "Inter", sans-serif; }
-
+ 
   .partners { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .partner { background: #fff; border: var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 14px; min-height: 72px; }
   .partner-logo { width: 86px; height: 38px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; }
   .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
   .partner-name { font-family: "Inter", sans-serif; font-weight: 900; font-size: 14px; }
-
+ 
   @media (min-width: 768px) {
     .grid { grid-template-columns: 1fr 1fr; }
-    .docenti-grid { grid-template-columns: repeat(4, 1fr); }
     .reviews { grid-template-columns: repeat(2, 1fr); }
     .news { grid-template-columns: repeat(2, 1fr); }
     .partners { grid-template-columns: repeat(2, 1fr); }

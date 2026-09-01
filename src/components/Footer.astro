@@ -8,20 +8,20 @@ const SITE = {
   email: "info@assjamsession.it",
   pec: "ass.jamsession@pec.it",
 };
-
+ 
 const SOCIAL = [
   { label: "LinkedIn", href: "#", key: "linkedin" },
   { label: "Facebook", href: "#", key: "facebook" },
   { label: "Instagram", href: "#", key: "instagram" },
   { label: "YouTube", href: "#", key: "youtube" },
 ];
-
+ 
 const YEAR = new Date().getFullYear();
 ---
-
+ 
 <footer aria-label="Footer">
   <div class="footer-top">
-
+ 
     <div class="fcard">
       <div class="f-title">{SITE.name}</div>
       <p class="f-text">{SITE.addressLine1}<br/>{SITE.addressLine2}</p>
@@ -33,7 +33,7 @@ const YEAR = new Date().getFullYear();
         <strong>PEC:</strong> <a href={`mailto:${SITE.pec}`}>{SITE.pec}</a>
       </div>
     </div>
-
+ 
     <div class="fcard">
       <div class="f-title">Contatti & social</div>
       <p class="f-text">Seguici: eventi, saggi, novità e vita della scuola.</p>
@@ -48,7 +48,7 @@ const YEAR = new Date().getFullYear();
         ))}
       </div>
     </div>
-
+ 
     <div class="fcard">
       <div class="f-title">Newsletter della scuola</div>
       <p class="f-text">Una mail ogni tanto: eventi, saggi, novità.</p>
@@ -60,21 +60,22 @@ const YEAR = new Date().getFullYear();
         Niente spam. <a href="/privacy">Privacy</a>.
       </div>
     </div>
-
+ 
   </div>
-
+ 
   <div class="footer-cta">
-    <a class="fbtn" href="/contatti">Richiedi info</a>
-    <a class="fbtn fbtn-ghost" href="/contatti#whatsapp">Preferisci WhatsApp?</a>
+    <a class="fbtn" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+    <a class="fbtn fbtn-ghost" href="https://wa.me/393202244932" target="_blank" rel="noopener">Preferisci WhatsApp?</a>
   </div>
-
+ 
   <div class="footer-bottom">
     <div class="footer-links">
       <a href="/corsi">Corsi</a>
-      <a href="/docenti">Docenti</a>
+      <a href="/certificazioni">Certificazioni</a>
       <a href="/progetti">Progetti</a>
       <a href="/eventi">Eventi</a>
       <a href="/contatti">Contatti</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqFsYHirxIoDhGQ7lTun6VTldNbl2UWu2-L5YP7euaIGO3-A/viewform" target="_blank" rel="noopener">Lavora con noi</a>
       <a href="/privacy">Privacy</a>
       <a href="/cookie">Cookie</a>
     </div>
@@ -82,10 +83,10 @@ const YEAR = new Date().getFullYear();
       <a href="/european-partners">🇬🇧 For European Partners</a>
     </div>
   </div>
-
+ 
   <div class="copyright">© {YEAR} Jam Session APS</div>
 </footer>
-
+ 
 <style>
   footer {
     margin-top: 130px;
@@ -196,7 +197,7 @@ const YEAR = new Date().getFullYear();
   }
   .footer-eu a { color: rgba(255,255,255,.96); text-decoration: none; }
   .copyright { margin-top: 14px; font-size: 12px; opacity: .9; }
-
+ 
   @media (min-width: 768px) {
     .footer-top { grid-template-columns: 1fr 1fr 1.2fr; }
   }

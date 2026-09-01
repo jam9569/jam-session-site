@@ -2,20 +2,147 @@
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+ 
+function iniziali(nome) {
+  const parole = nome.trim().split(/\s+/);
+  const prima = parole[0]?.[0] ?? '';
+  const ultima = parole[parole.length - 1]?.[0] ?? '';
+  return (prima + ultima).toUpperCase();
+}
+ 
+const DIRETTIVO = [
+  {
+    ruolo: "Presidente e Tesoriere",
+    nome: "Marco Badini",
+    email: "marcobadini@assjamsession.it",
+    descrizione: "Rappresentanza legale, bandi, co-progettazione e progettazione europea, comunicazione, relazioni istituzionali e percorsi scuola-lavoro.",
+    foto: "/assets/organigramma/marco-badini.jpg",
+  },
+  {
+    ruolo: "Vicepresidente",
+    nome: "Mariagrazia Vincitorio",
+    email: "mariagraziavincitorio@assjamsession.it",
+    descrizione: "Direzione didattica, tirocini e rapporti con i Conservatori. Dirige anche il Coro di Periferia.",
+    foto: "/assets/organigramma/mariagrazia-vincitorio.jpg",
+  },
+  {
+    ruolo: "Consigliere",
+    nome: "Andrea Belvederi Mosti",
+    email: "andreabelvederimosti@assjamsession.it",
+    descrizione: "Responsabile musica d'insieme, masterclass, workshop ed eventi live, rapporti con le fondazioni.",
+    foto: "/assets/organigramma/andrea-belvederi-mosti.jpg",
+  },
+  {
+    ruolo: "Consigliere",
+    nome: "Giancarlo Biasini",
+    email: "giancarlobiasini@assjamsession.it",
+    descrizione: "Responsabile lavori di manutenzione ordinaria e straordinaria, e sicurezza.",
+    foto: "/assets/organigramma/giancarlo-biasini.jpg",
+  },
+  {
+    ruolo: "Consigliere",
+    nome: "Roberto Rondelli",
+    email: "robertorondelli@assjamsession.it",
+    descrizione: "Responsabile associativo e logistica, referente dei volontari.",
+    foto: "/assets/organigramma/roberto-rondelli.jpg",
+  },
+];
+ 
+const SEGRETERIA = [
+  {
+    ruolo: "Segreteria",
+    nome: "Ylenia Fracasso",
+    email: "segreteria@assjamsession.it",
+    descrizione: "Gestione iscrizioni, orari e comunicazioni con allievi, famiglie e docenti.",
+    foto: "/assets/organigramma/ylenia-fracasso.jpg",
+  },
+];
 ---
-
-<BaseLayout title="Agevolazioni Fiscali & Sostienici — Jam Session APS">
+ 
+<BaseLayout title="Organigramma — Jam Session APS" description="Il Consiglio Direttivo e la Segreteria di Jam Session APS: ruoli, responsabilità e contatti.">
   <Header />
   <div class="container">
     <main class="page-content">
-      <h1>Agevolazioni Fiscali & Sostienici</h1>
-      <p>Contenuto in arrivo.</p>
+      <h1>Organigramma</h1>
+      <p class="intro">
+        Jam Session è guidata da un Consiglio Direttivo eletto dai soci, affiancato dalla Segreteria
+        per la gestione amministrativa quotidiana.
+      </p>
+ 
+      <section aria-label="Consiglio Direttivo">
+        <div class="section-head">
+          <h2>Consiglio Direttivo</h2>
+          <p class="subtitle">Eletto dai soci, guida l'associazione e ne definisce gli indirizzi.</p>
+        </div>
+        <div class="persone-grid">
+          {DIRETTIVO.map(p => (
+            <div class="persona-card">
+              <div class="persona-photo-wrap">
+                <span class="persona-iniziali">{iniziali(p.nome)}</span>
+                <img
+                  class="persona-photo"
+                  src={p.foto}
+                  alt={`Foto di ${p.nome}`}
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+              <span class="persona-ruolo">{p.ruolo}</span>
+              <h3 class="persona-nome">{p.nome}</h3>
+              <p class="persona-desc">{p.descrizione}</p>
+              <a class="persona-email" href={`mailto:${p.email}`}>{p.email}</a>
+            </div>
+          ))}
+        </div>
+      </section>
+ 
+      <section aria-label="Segreteria" class="segreteria-section">
+        <div class="section-head">
+          <h2>Segreteria</h2>
+          <p class="subtitle">Il punto di riferimento per allievi, famiglie e docenti nella gestione quotidiana.</p>
+        </div>
+        <div class="persone-grid persone-grid-segreteria">
+          {SEGRETERIA.map(p => (
+            <div class="persona-card persona-card-segreteria">
+              <div class="persona-photo-wrap">
+                <span class="persona-iniziali">{iniziali(p.nome)}</span>
+                <img
+                  class="persona-photo"
+                  src={p.foto}
+                  alt={`Foto di ${p.nome}`}
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+              <span class="persona-ruolo">{p.ruolo}</span>
+              <h3 class="persona-nome">{p.nome}</h3>
+              <p class="persona-desc">{p.descrizione}</p>
+              <a class="persona-email" href={`mailto:${p.email}`}>{p.email}</a>
+            </div>
+          ))}
+        </div>
+      </section>
+ 
     </main>
     <Footer />
   </div>
 </BaseLayout>
-
+ 
 <style>
+  :root {
+    --green: #0f5f53;
+    --heroGreen: #0e4f46;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+ 
+  * { box-sizing: border-box; }
+ 
   .container {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
@@ -23,16 +150,122 @@ import Footer from '../../components/Footer.astro';
   }
   .page-content {
     margin: 46px 0 60px;
-    max-width: 900px;
   }
   .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 40px;
-    margin-bottom: 12px;
+    margin: 0 0 16px;
   }
-  .page-content p {
+  .intro {
     font-family: "Lexend", sans-serif;
-    opacity: .7;
+    font-size: 17px;
+    line-height: 1.65;
+    opacity: .82;
+    max-width: 70ch;
+    margin: 0 0 56px;
   }
+ 
+  main > section { margin-top: 56px; }
+  .section-head { margin-bottom: 22px; }
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: -.25px;
+  }
+  .subtitle { margin: 8px 0 0; font-family: "Lexend", sans-serif; opacity: .68; font-size: 15px; max-width: 60ch; line-height: 1.5; }
+ 
+  .persone-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .persone-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .persone-grid:not(.persone-grid-segreteria) { grid-template-columns: repeat(3, 1fr); }
+  }
+ 
+  .persona-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+ 
+  .persona-photo-wrap {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    background: color-mix(in srgb, var(--green) 12%, white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+  .persona-iniziali {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--green);
+    letter-spacing: .5px;
+  }
+  .persona-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+ 
+  .persona-ruolo {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .persona-nome {
+    margin: 6px 0 10px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+  }
+  .persona-desc {
+    margin: 0 0 14px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14.5px;
+    line-height: 1.55;
+    opacity: .78;
+    flex-grow: 1;
+  }
+  .persona-email {
+    font-family: "Lexend", sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--green);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .persona-email:hover { text-decoration: underline; }
+ 
+  .segreteria-section {
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 32px;
+  }
+  .persone-grid-segreteria { grid-template-columns: 1fr; max-width: 420px; }
+  .persona-card-segreteria { box-shadow: none; border: 1px solid rgba(11,11,11,.10); }
 </style>

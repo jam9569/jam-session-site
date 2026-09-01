@@ -1,0 +1,12 @@
+Metti qui le foto delle persone dell'organigramma con questi nomi esatti (jpg):
+
+marco-badini.jpg
+mariagrazia-vincitorio.jpg
+andrea-belvederi-mosti.jpg
+giancarlo-biasini.jpg
+roberto-rondelli.jpg
+ylenia-fracasso.jpg
+
+Consiglio: foto quadrate (es. 400x400px), verranno mostrate ritagliate a cerchio.
+Finche' un file non e' presente, la card mostra automaticamente le iniziali al suo posto.
+Questo file puo' essere cancellato quando le foto sono a posto.

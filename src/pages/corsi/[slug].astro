@@ -1,0 +1,177 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const corsi = await getCollection('corsi');
+  return corsi.map(corso => ({
+    params: { slug: corso.slug },
+    props: { corso },
+  }));
+}
+
+const { corso } = Astro.props;
+const { title, strumento, intro, livelli, metodo, team } = corso.data;
+---
+
+<BaseLayout title={`${title} — Jam Session APS`} description={intro}>
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Corso di {strumento}</p>
+      <h1>{title}</h1>
+      <p class="intro">{intro}</p>
+
+      <section class="block">
+        <h2>I livelli</h2>
+        <div class="livelli-grid">
+          {livelli.map(l => (
+            <div class="livello-card">
+              <h3>{l.nome}</h3>
+              <p>{l.descrizione}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Come funzionano le lezioni</h2>
+        <p>{metodo}</p>
+      </section>
+
+      <section class="block">
+        <h2>Il team docenti</h2>
+        {team && team.length > 0 ? (
+          <div class="team-list">
+            {team.map(t => (
+              <div class="team-item">
+                <div class="team-name">{t.nome}</div>
+                <div class="team-role">{t.ruolo}</div>
+                {t.tratto && <p class="team-tratto">{t.tratto}</p>}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="team-placeholder">Il team docenti di questo dipartimento sarà presto pubblicato.</p>
+        )}
+      </section>
+
+      <div class="cta-block">
+        <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info su questo corso</a>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0 90px;
+  }
+  .page-content {
+    margin: 46px 0 60px;
+    max-width: 780px;
+  }
+  .kicker {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #0f5f53;
+    margin: 0 0 10px;
+  }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin: 0 0 18px;
+  }
+  .intro {
+    font-family: "Lexend", sans-serif;
+    opacity: .78;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .block { margin-top: 56px; }
+  .block h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+  .block p {
+    font-family: "Lexend", sans-serif;
+    opacity: .78;
+    line-height: 1.6;
+  }
+  .livelli-grid { display: grid; gap: 18px; }
+  .livello-card {
+    background: #f2f4f3;
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: 18px;
+    padding: 20px;
+  }
+  .livello-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin: 0 0 8px;
+  }
+  .livello-card p {
+    font-family: "Lexend", sans-serif;
+    opacity: .74;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .team-list { display: grid; gap: 14px; }
+  .team-item {
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid rgba(11,11,11,.1);
+  }
+  .team-name {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+  }
+  .team-role {
+    font-family: "Lexend", sans-serif;
+    opacity: .65;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .team-tratto {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-style: italic;
+    opacity: .8;
+  }
+  .team-placeholder {
+    font-family: "Lexend", sans-serif;
+    opacity: .6;
+    font-style: italic;
+  }
+  .cta-block { margin-top: 56px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: 1px solid rgba(11,11,11,.18);
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .btn-accent { background: #f2a844; color: #1b1b1b; text-decoration: none; }
+
+  @media (min-width: 768px) {
+    .livelli-grid { grid-template-columns: repeat(3, 1fr); }
+    .team-list { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

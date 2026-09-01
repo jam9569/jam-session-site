@@ -2,20 +2,179 @@
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const BONUS_STATS = [
+  { value: "19%", label: "di detrazione" },
+  { value: "1.000€", label: "spesa max per figlio/a" },
+  { value: "5–18", label: "anni d'età" },
+  { value: "36.000€", label: "reddito massimo annuo" },
+];
+
+const SOSTIENICI = [
+  {
+    titolo: "Donazione diretta",
+    testo: "Puoi sostenerci con una donazione tramite PayPal o bonifico bancario.",
+    extra: "IBAN: IT47 B030 6909 6061 0000 0155 446 (Intesa San Paolo)",
+    link: { href: "https://www.paypal.com/donate?hosted_button_id=XRRRVJU7UHCTL", label: "Dona con PayPal" },
+  },
+  {
+    titolo: "5×1000",
+    testo: "Dal 2021 il 5×1000 contribuisce a sostenere il Progetto Nausica, i nostri laboratori musicali per persone con disabilità, realizzati in convenzione con l'ASP Laura Rodriguez.",
+    extra: "Codice fiscale: 91388650375",
+  },
+  {
+    titolo: "Donazioni in natura",
+    testo: "Doni strumenti musicali? Anche questo dà diritto a un beneficio fiscale: i privati possono detrarre il 30% del valore donato (fino a 30.000 €), gli enti possono dedurre fino al 10% del reddito imponibile.",
+  },
+  {
+    titolo: "Sponsorizzazioni aziendali",
+    testo: "Per collaborazioni su misura, contattaci.",
+    link: { href: "mailto:marcobadini@assjamsession.it", label: "marcobadini@assjamsession.it" },
+  },
+];
 ---
 
-<BaseLayout title="Agevolazioni Fiscali & Sostienici — Jam Session APS">
+<BaseLayout title="Agevolazioni Fiscali & Sostienici — Jam Session APS" description="Come detrarre le spese dei corsi con il Bonus Musica e come sostenere Jam Session APS: 5×1000, donazioni e sponsorizzazioni.">
   <Header />
   <div class="container">
     <main class="page-content">
       <h1>Agevolazioni Fiscali & Sostienici</h1>
-      <p>Contenuto in arrivo.</p>
+
+      <section aria-label="Agevolazioni Fiscali">
+        <div class="split-section">
+          <div class="split-text">
+            <div class="section-head">
+              <h2>Agevolazioni Fiscali</h2>
+              <p class="subtitle">Sapevi che puoi detrarre parte delle spese per i corsi di musica dei tuoi figli?</p>
+            </div>
+            <p class="body-text">
+              Le spese di iscrizione e frequenza ai nostri corsi possono essere portate in detrazione nella
+              dichiarazione dei redditi. Possiamo garantirtelo perché Jam Session APS è una scuola di musica
+              riconosciuta dalla Regione Emilia-Romagna — requisito necessario per accedere a questa
+              agevolazione, che non tutte le scuole di musica sono in grado di offrire.
+            </p>
+            <p class="body-text">
+              Non è un bonus "a scadenza": è una detrazione stabile prevista dalla legge (art. 15 del TUIR),
+              che si applica anno dopo anno alle spese sostenute — comprese quelle del 2026, da dichiarare
+              nel 730 o Redditi del 2027.
+            </p>
+            <p class="body-text">Il beneficio spetta se il nucleo familiare rispetta questi requisiti:</p>
+          </div>
+          <div class="split-media">
+            <figure class="split-figure">
+              <img
+                class="split-img"
+                src="/assets/agevolazioni-sostienici/bonus-musica.webp"
+                alt="Una lezione di chitarra alla Jam Session, mani sullo strumento in primo piano"
+                width="1800"
+                height="1350"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Le spese per i nostri corsi rientrano nel Bonus Musica.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="numeri">
+          {BONUS_STATS.map(s => (
+            <div class="numero">
+              <div class="numero-value">{s.value}</div>
+              <div class="numero-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <p class="body-text" style="margin-top:22px;">
+          Il pagamento deve essere tracciabile (bonifico, carta o assegno — non in contanti). Non serve
+          presentare alcuna domanda in anticipo: basta conservare la ricevuta o fattura dei corsi insieme
+          alla prova del pagamento, e indicarle nella dichiarazione dei redditi.
+        </p>
+
+        <div class="info-box">
+          Le informazioni sopra sono indicative: per la tua situazione specifica ti consigliamo di
+          rivolgerti al tuo commercialista o CAF.
+        </div>
+      </section>
+
+      <section aria-label="Sostienici">
+        <div class="split-section reverse">
+          <div class="split-text">
+            <div class="section-head">
+              <h2>Sostienici</h2>
+              <p class="subtitle">
+                Ogni anno riceviamo il sostegno di decine di persone attraverso il 5×1000, che dal 2021
+                contribuisce a sostenere il Progetto Nausica, i nostri laboratori musicali per persone con
+                disabilità — un aiuto che si somma alle altre forme di sostegno che ci permettono di continuare
+                il nostro lavoro.
+              </p>
+            </div>
+            <p class="body-text">
+              Il Progetto Nausica porta laboratori musicali gratuiti a persone con disabilità, in convenzione
+              con l'ASP Laura Rodriguez di Bologna.
+            </p>
+            <p class="body-text">
+              Dal 2021 due gruppi si incontrano ogni settimana nella nostra sede per un percorso di attività
+              musicali condotte dai nostri operatori — e vorremmo poterlo estendere a più persone.
+            </p>
+          </div>
+          <div class="split-media">
+            <figure class="split-figure">
+              <img
+                class="split-img"
+                src="/assets/agevolazioni-sostienici/progetto-nausica.webp"
+                alt="Un laboratorio musicale del Progetto Nausica, con operatore, musicisti e un partecipante"
+                width="1800"
+                height="1350"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Uno dei laboratori del Progetto Nausica.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="dona-grid">
+          {SOSTIENICI.map(s => (
+            <div class="dona-card">
+              <h3 class="dona-titolo">{s.titolo}</h3>
+              <p class="dona-testo">{s.testo}</p>
+              {s.extra && <p class="dona-extra">{s.extra}</p>}
+              {s.link && <a class="dona-link" href={s.link.href}>{s.link.label}</a>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="cta-section" aria-label="Contattaci">
+        <h2>Hai domande?</h2>
+        <p class="subtitle">Scrivici per qualsiasi informazione su donazioni, 5×1000 o agevolazioni fiscali.</p>
+        <div class="hero-actions">
+          <a class="btn btn-green" href="mailto:info@assjamsession.it">Contattaci</a>
+        </div>
+      </section>
+
     </main>
     <Footer />
   </div>
 </BaseLayout>
 
 <style>
+  :root {
+    --green: #0f5f53;
+    --heroGreen: #0e4f46;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+    --borderW: 1px solid rgba(255,255,255,.18);
+  }
+
+  * { box-sizing: border-box; }
+
   .container {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
@@ -23,16 +182,188 @@ import Footer from '../../components/Footer.astro';
   }
   .page-content {
     margin: 46px 0 60px;
-    max-width: 900px;
   }
   .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 40px;
-    margin-bottom: 12px;
+    margin: 0 0 8px;
   }
-  .page-content p {
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 22px; }
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 25px;
+    letter-spacing: -.2px;
+  }
+  .subtitle { margin: 10px 0 0; font-family: "Lexend", sans-serif; opacity: .74; font-size: 16px; max-width: 68ch; line-height: 1.55; }
+  .body-text {
+    margin: 0 0 16px;
     font-family: "Lexend", sans-serif;
-    opacity: .7;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: .85;
+  }
+  .body-text:last-of-type { margin-bottom: 0; }
+
+  /* Sezioni testo + immagine affiancate (stesso metodo di chi-siamo.astro) */
+  .split-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 769px) {
+    .split-section {
+      grid-template-columns: 1.05fr 1fr;
+      align-items: stretch;
+    }
+    .split-section.reverse .split-media { order: -1; }
+  }
+  .split-media { height: 100%; display: flex; flex-direction: column; }
+  .split-figure { height: 100%; display: flex; flex-direction: column; margin: 0; }
+  .split-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 769px) {
+    .split-img { flex: 1; min-height: 0; aspect-ratio: unset; }
+  }
+  .split-figure figcaption {
+    margin-top: 10px;
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .6;
+  }
+
+  /* Riga statistiche bonus musica */
+  .numeri {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 32px;
+  }
+  @media (min-width: 640px) {
+    .numeri { grid-template-columns: repeat(4, 1fr); }
+  }
+  .numero {
+    background: var(--green);
+    color: #fff;
+    border-radius: var(--radius);
+    border: var(--borderW);
+    box-shadow: var(--shadow);
+    padding: 22px 16px;
+    text-align: center;
+  }
+  .numero-value { font-family: "Inter", sans-serif; font-weight: 900; font-size: 30px; letter-spacing: -1px; }
+  .numero-label { margin-top: 6px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 12.5px; opacity: .88; }
+  .numero:nth-child(1) { background: var(--green); }
+  .numero:nth-child(2) { background: color-mix(in srgb, var(--green) 85%, white); }
+  .numero:nth-child(3) { background: color-mix(in srgb, var(--green) 70%, white); }
+  .numero:nth-child(4) { background: color-mix(in srgb, var(--green) 55%, white); }
+
+  .info-box {
+    margin-top: 24px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: var(--border);
+    padding: 18px 24px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14.5px;
+    line-height: 1.6;
+    opacity: .8;
+  }
+
+  /* Card dei metodi di sostegno */
+  .dona-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (min-width: 640px) {
+    .dona-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .dona-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .dona-titolo {
+    margin: 0 0 8px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+  }
+  .dona-testo {
+    margin: 0 0 8px;
+    font-family: "Lexend", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: .8;
+  }
+  .dona-extra {
+    margin: 0 0 12px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--green);
+  }
+  .dona-link {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #1b1b1b;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-green { background: var(--green); color: #fff; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 26px;
   }
 </style>

@@ -2,14 +2,43 @@
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+ 
+const NUMERI = [
+  { value: "350", label: "Soci" },
+  { value: "25", label: "Volontari" },
+  { value: "30", label: "Docenti" },
+  { value: "11", label: "Aule studio" },
+];
+ 
+const RICONOSCIMENTI = [
+  {
+    testo: "Scuola di musica riconosciuta per l'anno scolastico 2026/2027 con determinazione n. 7978 del 23.04.2026 del Responsabile di Settore Programmazione e Regolazione delle Politiche Educative e Formative, di cui alla DGR n. 1291/2018.",
+    nota: "Jam Session APS è inserita nell'elenco regionale delle scuole di musica riconosciute dalla Regione Emilia-Romagna: un riconoscimento che attesta il possesso dei requisiti di qualità didattica, organizzativa e strutturale definiti dalla Regione.",
+  },
+  {
+    testo: "Associazione di Promozione Sociale (APS), iscritta al RUNTS — Registro Unico Nazionale del Terzo Settore — con il numero 569 dal 15/06/2022.",
+  },
+  {
+    testo: "Capofila del progetto \"Musica e Società\", una rete di 10 scuole di musica dell'Emilia-Romagna sostenuta dal Fondo Sociale Europeo Plus (FSE+).",
+  },
+  {
+    testo: "Tra le scuole di musica fondatrici di MusicaSocietà APS, associazione di secondo livello che riunisce scuole di musica ed enti attivi nell'educazione musicale, iscritta al RUNTS nel 2026.",
+  },
+  {
+    testo: "Iscritta all'elenco delle Libere Forme Associative (LFA) del Comune di Bologna.",
+  },
+  {
+    testo: "Partner del progetto \"Qualifichiamo la nostra scuola 0-6\" del Comune di Bologna, dedicato alla prima infanzia.",
+  },
+];
 ---
-
-<BaseLayout title="Chi Siamo — Jam Session APS">
+ 
+<BaseLayout title="Chi Siamo — Jam Session APS" description="La storia, la missione e i numeri di Jam Session APS: scuola di musica riconosciuta dalla Regione Emilia-Romagna, capofila della rete Musica e Società.">
   <Header />
   <div class="container">
     <main class="page-content">
       <h1>Chi Siamo</h1>
-
+ 
       <div class="video-frame">
         <div class="video-wrapper">
           <iframe
@@ -21,31 +50,213 @@ import Footer from '../../components/Footer.astro';
           </iframe>
         </div>
       </div>
-
+ 
       <div class="testo-storia">
-        <p>Contenuto in arrivo.</p>
+        <p class="lead">
+          Dal 2016 accompagniamo bambini, ragazzi e adulti nel loro percorso musicale — a Bologna e online.
+        </p>
+        <p>
+          Crediamo che imparare uno strumento significhi molto più che suonare: è costruire fiducia in se stessi,
+          trovare un linguaggio proprio, creare relazioni. La musica diventa un compagno di strada, presente nei
+          momenti belli e in quelli difficili.
+        </p>
+        <p>
+          Siamo un'Associazione di Promozione Sociale radicata nel territorio bolognese, tra le realtà musicali
+          più attive e in crescita dell'Emilia-Romagna.
+        </p>
       </div>
+ 
+      <section aria-label="I numeri dell'associazione">
+        <div class="numeri">
+          {NUMERI.map(n => (
+            <div class="numero">
+              <div class="numero-value">{n.value}</div>
+              <div class="numero-label">{n.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+ 
+      <section aria-label="Cosa facciamo" class="split-section">
+        <div class="split-text">
+          <div class="section-head">
+            <h2>Cosa facciamo</h2>
+            <p class="subtitle">Portiamo l'amore per la musica a bambini, ragazzi e adulti, con un'attenzione particolare a chi vive situazioni di disagio.</p>
+          </div>
+          <p class="body-text">
+            Ogni anno accogliamo oltre 400 allievi in lezioni individuali e collettive, seguiti da trenta docenti.
+            Accanto ai corsi organizziamo laboratori di avviamento ritmico-musicale per i più piccoli, cori e
+            ensemble, masterclass, concerti, corsi estivi e workshop: la scuola è un punto di riferimento vivo
+            tutto l'anno, non solo un luogo dove si prende lezione.
+          </p>
+          <p class="body-text">
+            Il nostro lavoro esce anche dalle nostre aule. Con progetti come Coro di Periferia e Nausica portiamo
+            la musica dove normalmente non arriva — quartieri, servizi sociali, persone in condizione di fragilità.
+            Dal 2023 siamo capofila della rete regionale Musica e Società, un progetto della Regione
+            Emilia-Romagna finanziato dal Fondo Sociale Europeo Plus che coinvolge scuole di musica e istituti
+            scolastici di tutta la regione: ogni anno oltre 700 studenti emiliano-romagnoli incontrano la musica
+            attraverso questi percorsi di didattica inclusiva.
+          </p>
+          <p class="body-text">
+            Da qui nasce la nostra dimensione europea: le stesse pratiche che sperimentiamo a Bologna le
+            condividiamo con partner internazionali, per costruire modelli educativi replicabili oltre i confini
+            regionali.
+          </p>
+          <div style="margin-top:22px;">
+            <a class="btn btn-green" href="/corsi">Scopri i corsi</a>
+          </div>
+        </div>
+        <div class="split-media">
+          <img
+            class="split-img"
+            src="/assets/chi-siamo/chi-siamo-lezione-pianoforte.webp"
+            alt="Un allievo sorride mentre suona il pianoforte durante una lezione, affiancato dal docente"
+            width="1600"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </section>
+ 
+      <section aria-label="La nostra storia" class="split-section reverse">
+        <div class="split-text">
+          <div class="section-head">
+            <h2>La nostra storia</h2>
+          </div>
+          <p class="body-text">
+            Jam Session nasce dall'idea di un gruppo di appassionati: portare la gioia della musica a tutti. La
+            convinzione di partenza era che chiunque, a qualsiasi età e senza esperienza alle spalle, potesse
+            trovare il proprio modo di suonare in un ambiente accogliente.
+          </p>
+          <p class="body-text">
+            Per quel gruppo un riferimento è stato Marco Tamburini, trombettista e compositore, fondatore del
+            dipartimento jazz del Conservatorio di Rovigo e didatta capace di formare intere generazioni di
+            musicisti. Bolognese d'adozione, scomparso nel 2015, gli abbiamo intitolato il nostro auditorium.
+          </p>
+          <p class="body-text">
+            Da allora l'associazione è cresciuta senza sosta. Nelle nostre aule e sul nostro palco sono passati
+            Paolo Fresu, Serena Brancale, Don Ross, Christian Meyer, Max Ionata, Yuliensky Gonzalez, Luca Colombo,
+            Massimo Varini, Ernesto Marciante e Kalifa Kone, per masterclass, seminari e lezioni-concerto con i
+            nostri allievi. Accanto a loro, ogni anno, centinaia di persone che la musica la stanno ancora
+            scoprendo: sono loro il motivo per cui esistiamo.
+          </p>
+        </div>
+        <div class="split-media">
+          <figure class="split-figure">
+            <img
+              class="split-img"
+              src="/assets/chi-siamo/chi-siamo-staff-voglio-live.webp"
+              alt="Lo staff di Jam Session APS sul palco del festival Voglio Live"
+              width="900"
+              height="675"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Lo staff di Jam Session al festival Voglio Live, 2026.</figcaption>
+          </figure>
+        </div>
+      </section>
+ 
+      <section class="quote-section" aria-label="La nostra visione">
+        <blockquote>
+          La musica ci accoglie tutti. Non ha confini, non impone visti, non chiede documenti.
+        </blockquote>
+        <p class="quote-sub">
+          È per questo che le nostre porte sono aperte a chiunque voglia entrare: qualunque sia la sua età,
+          la sua provenienza, la sua storia.
+        </p>
+      </section>
+ 
+      <section aria-label="Riconoscimenti">
+        <div class="section-head">
+          <h2>Riconoscimenti</h2>
+          <p class="subtitle">La nostra attività è riconosciuta da enti pubblici e reti associative.</p>
+        </div>
+        <ul class="riconoscimenti-list">
+          {RICONOSCIMENTI.map(r => (
+            <li>
+              <span class="r-dot" aria-hidden="true"></span>
+              <div class="r-body">
+                <span class="r-text">{r.testo}</span>
+                {r.nota && <span class="r-nota">{r.nota}</span>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+ 
+      <section aria-label="Governance" class="governance">
+        <p>
+          Jam Session è guidata da un Consiglio Direttivo eletto dai soci. Composizione, ruoli e documenti
+          dell'associazione sono su <a href="/associazione/organigramma">Organigramma</a>.
+        </p>
+      </section>
+ 
+      <figure class="wide-figure">
+        <img
+          src="/assets/chi-siamo/chi-siamo-auditorium.webp"
+          alt="Il Piccolo Auditorium Marco Tamburini, con il palco allestito con batteria, pianoforte e percussioni"
+          width="2400"
+          height="750"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Il Piccolo Auditorium “Marco Tamburini”, nella nostra sede di Via del Perugino.</figcaption>
+      </figure>
+ 
+      <section class="cta-section" aria-label="Prenota una prova">
+        <h2>Vuoi conoscerci di persona?</h2>
+        <p class="subtitle">Prenota una prova gratuita, ti aspettiamo in Via del Perugino.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="/contatti#prenota-prova">Prenota una prova <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-outline-dark" href="/associazione/organigramma">Vedi l'organigramma</a>
+        </div>
+      </section>
+ 
     </main>
     <Footer />
   </div>
 </BaseLayout>
-
+ 
 <style>
+  :root {
+    --green: #0f5f53;
+    --heroGreen: #0e4f46;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+    --borderW: 1px solid rgba(255,255,255,.18);
+  }
+ 
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Lexend", system-ui, sans-serif;
+    color: var(--ink);
+    background: #fff;
+  }
+  a { color: inherit; }
+ 
   .container {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
     padding: 14px 0 90px;
   }
   .page-content {
-    margin: 46px 0 60px;
+    margin: 16px 0 60px;
   }
   .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 40px;
-    margin-bottom: 24px;
+    margin: 0 0 24px;
   }
-
+ 
   .video-frame {
     background: #fff;
     padding: 14px;
@@ -68,11 +279,238 @@ import Footer from '../../components/Footer.astro';
     height: 100%;
     border: none;
   }
-
-  .testo-storia { max-width: 900px; }
+ 
+  .testo-storia { max-width: 760px; margin-bottom: 56px; }
   .testo-storia p {
     font-family: "Lexend", sans-serif;
-    opacity: .7;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-storia .lead {
+    opacity: 1;
+    font-size: 19px;
     line-height: 1.6;
+    font-weight: 500;
+  }
+ 
+  main > section { margin-top: 96px; }
+  .section-head { margin-bottom: 22px; }
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -.25px;
+  }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; max-width: 60ch; line-height: 1.5; }
+  .body-text {
+    margin: 0 0 16px;
+    font-family: "Lexend", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: .85;
+  }
+  .body-text:last-of-type { margin-bottom: 0; }
+ 
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+ 
+  .numeri {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (min-width: 640px) {
+    .numeri { grid-template-columns: repeat(4, 1fr); }
+  }
+  .numero {
+    background: var(--green);
+    color: #fff;
+    border-radius: var(--radius);
+    border: var(--borderW);
+    box-shadow: var(--shadow);
+    padding: 26px 20px;
+    text-align: center;
+  }
+  .numero-value { font-family: "Inter", sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -1px; }
+  .numero-label { margin-top: 6px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 13px; opacity: .88; }
+ 
+  /* Sfumatura di verde: verde pieno a sinistra, più chiaro andando a destra */
+  .numero:nth-child(1) { background: var(--green); }
+  .numero:nth-child(2) { background: color-mix(in srgb, var(--green) 85%, white); }
+  .numero:nth-child(3) { background: color-mix(in srgb, var(--green) 70%, white); }
+  .numero:nth-child(4) { background: color-mix(in srgb, var(--green) 55%, white); }
+ 
+  /* Sezioni testo + immagine affiancate */
+  .split-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 769px) {
+    .split-section {
+      grid-template-columns: 1.05fr 1fr;
+      align-items: stretch;
+    }
+    .split-section.reverse .split-media { order: -1; }
+  }
+ 
+  .split-media { height: 100%; display: flex; flex-direction: column; }
+  .split-figure { height: 100%; display: flex; flex-direction: column; margin: 0; }
+  .split-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 769px) {
+    .split-img { flex: 1; min-height: 0; aspect-ratio: unset; }
+  }
+  .split-figure figcaption,
+  .wide-figure figcaption {
+    margin-top: 10px;
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .6;
+  }
+ 
+  .wide-figure {
+    margin: 56px 0 0;
+  }
+  .wide-figure img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 5;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+    box-shadow: var(--shadow);
+  }
+ 
+  .quote-section {
+    background: var(--heroGreen);
+    border-radius: var(--radiusLg);
+    border: var(--borderW);
+    box-shadow: var(--shadow);
+    padding: 44px 32px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .quote-section { grid-template-columns: 1fr; }
+  }
+  .quote-section blockquote {
+    margin: 0;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.28;
+    max-width: none;
+    position: relative;
+    padding-left: 32px;
+  }
+  .quote-section blockquote::before {
+    content: "\201C";
+    position: absolute;
+    left: -2px;
+    top: -16px;
+    font-size: 76px;
+    line-height: 1;
+    color: var(--accent);
+    opacity: .85;
+  }
+  .quote-section .quote-sub {
+    margin: 0;
+    color: rgba(255,255,255,.78);
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: none;
+  }
+ 
+  .riconoscimenti-list {
+    list-style: none;
+    margin: 0 -24px;
+    padding: 0;
+    max-width: calc(78ch + 48px);
+  }
+  .riconoscimenti-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+  }
+  .riconoscimenti-list li:nth-child(odd) {
+    background: color-mix(in srgb, var(--accent) 18%, white);
+  }
+  .r-dot {
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    margin-top: 7px;
+    border-radius: 999px;
+    background: var(--green);
+  }
+  .r-body { display: flex; flex-direction: column; gap: 8px; }
+  .riconoscimenti-list .r-text {
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .riconoscimenti-list .r-nota {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: .68;
+  }
+ 
+  .governance {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: var(--border);
+    padding: 24px 28px;
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+ 
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle {
+    margin: 12px auto 0;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 26px;
   }
 </style>

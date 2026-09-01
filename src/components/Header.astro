@@ -6,21 +6,21 @@ const MENU = [
       { label: "Chi Siamo", href: "/associazione/chi-siamo" },
       { label: "Organigramma", href: "/associazione/organigramma" },
       { label: "Agevolazioni & Sostienici", href: "/associazione/agevolazioni-sostienici" },
-      { label: "Documenti Utili", href: "/associazione/documenti-utili" },
+      { label: "Documenti & App", href: "/associazione/documenti-utili" },
     ],
   },
   { label: "Corsi", href: "/corsi" },
-  { label: "Docenti", href: "/docenti" },
+  { label: "Certificazioni", href: "/certificazioni" },
   { label: "Progetti", href: "/progetti" },
   { label: "Eventi", href: "/eventi" },
   { label: "European", href: "/european-partners" },
   { label: "Contatti", href: "/contatti" },
 ];
 ---
-
+ 
 <header class="site-header">
   <div class="header-inner">
-
+ 
     <a class="brand" href="/">
       <div class="logo">
         <img src="/assets/logo-jam-session-registrato.png" alt="Jam Session APS - Marchio registrato" />
@@ -30,7 +30,7 @@ const MENU = [
         <small>Scuola di Canto e Musica</small>
       </div>
     </a>
-
+ 
     <nav class="nav-desktop" aria-label="Menu principale">
       {MENU.map(item => (
         item.children ? (
@@ -48,18 +48,18 @@ const MENU = [
         )
       ))}
     </nav>
-
+ 
     <div class="header-right">
-      <a class="top-cta" href="/contatti">Richiedi info</a>
+      <a class="top-cta" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
       <button class="hamburger" aria-label="Apri menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-
+ 
   </div>
-
+ 
   <nav class="nav-mobile" aria-label="Menu mobile">
     {MENU.map(item => (
       item.children ? (
@@ -76,10 +76,10 @@ const MENU = [
         <a class="mobile-link" href={item.href}>{item.label}</a>
       )
     ))}
-    <a class="nav-mobile-cta" href="/contatti">Richiedi info</a>
+    <a class="nav-mobile-cta" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
   </nav>
 </header>
-
+ 
 <style>
   .site-header {
     position: sticky;
@@ -146,7 +146,7 @@ const MENU = [
   }
   .nav-link:hover { opacity: 1; text-decoration: underline; }
   .dropdown-trigger:hover { text-decoration: none; }
-
+ 
   .nav-item { position: relative; }
   .chevron {
     width: 7px;
@@ -162,7 +162,7 @@ const MENU = [
     transform: rotate(225deg);
     margin-top: 3px;
   }
-
+ 
   .dropdown {
     position: absolute;
     top: calc(100% + 14px);
@@ -201,7 +201,7 @@ const MENU = [
     white-space: nowrap;
   }
   .dropdown a:hover { background: #f2f3f1; }
-
+ 
   .header-right {
     display: flex;
     align-items: center;
@@ -285,13 +285,13 @@ const MENU = [
     border-bottom: none !important;
   }
   .nav-mobile.open { display: flex; }
-
+ 
   @media (min-width: 768px) {
     .nav-desktop { display: flex; }
     .hamburger { display: none; }
   }
 </style>
-
+ 
 <script>
   const btn = document.querySelector('.hamburger');
   const nav = document.querySelector('.nav-mobile');
@@ -299,7 +299,7 @@ const MENU = [
     const open = nav?.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-
+ 
   document.querySelectorAll('.nav-item.has-dropdown').forEach((item) => {
     const trigger = item.querySelector('.dropdown-trigger');
     trigger?.addEventListener('click', (e) => {
@@ -320,7 +320,7 @@ const MENU = [
       item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
     });
   });
-
+ 
   document.querySelectorAll('.mobile-item.has-children').forEach((item) => {
     const trigger = item.querySelector('.accordion-trigger');
     trigger?.addEventListener('click', () => {

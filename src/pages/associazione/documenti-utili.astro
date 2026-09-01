@@ -2,20 +2,115 @@
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const DOCUMENTI = [
+  {
+    titolo: "Domanda di Ammissione Socio",
+    testo: "Il modulo per iscriversi come socio, con l'informativa privacy inclusa.",
+    href: "https://form.jotform.com/261443890748366",
+  },
+  {
+    titolo: "Statuto",
+    testo: "Le regole fondamentali dell'associazione.",
+    href: "https://www.assjamsession.it/wp-content/uploads/1-Statuto-Jam-Session-APS.pdf",
+  },
+  {
+    titolo: "Regolamento",
+    testo: "Il regolamento della scuola di musica.",
+    href: "https://www.assjamsession.it/wp-content/uploads/01030106-Regolamento-Scuola-di-musica-20252026.pdf",
+  },
+  {
+    titolo: "Calendario A.A. 2026/2027",
+    testo: "Lezioni, chiusure e festività dell'anno sociale.",
+    href: "/assets/documenti-utili/calendario-2026-2027.pdf",
+  },
+  {
+    titolo: "Area Trasparenza",
+    testo: "Le informazioni pubbliche previste per gli Enti del Terzo Settore.",
+    href: "https://www.assjamsession.it/wp-content/uploads/Area-trasparenza.pdf",
+  },
+  {
+    titolo: "Assicurazione RCT",
+    testo: "Documentazione della polizza di responsabilità civile verso terzi.",
+    href: "/assets/documenti-utili/assicurazione-rct.pdf",
+  },
+];
+
+const APP_FEATURES = [
+  "Corsi, orari e presenze",
+  "Pagamento rette",
+  "Prenotazione aule e sale prove",
+  "Notifiche su scadenze e recuperi",
+  "Documenti personali",
+  "Materiale didattico caricato dai docenti",
+];
 ---
 
-<BaseLayout title="Documenti Utili — Jam Session APS">
+<BaseLayout title="Documenti & App — Jam Session APS" description="Statuto, regolamento e altri documenti di Jam Session APS, più l'app per allievi, famiglie e docenti.">
   <Header />
   <div class="container">
     <main class="page-content">
-      <h1>Documenti Utili</h1>
-      <p>Contenuto in arrivo.</p>
+      <h1>Documenti & App</h1>
+      <p class="intro">
+        Statuto, regolamento e altri documenti dell'associazione, più l'app per allievi, famiglie e docenti.
+      </p>
+
+      <section aria-label="Documenti">
+        <div class="section-head">
+          <h2>Documenti</h2>
+        </div>
+        <div class="doc-grid">
+          {DOCUMENTI.map(d => (
+            <a class="doc-card" href={d.href} target="_blank" rel="noopener">
+              <span class="doc-tag">PDF</span>
+              <span class="doc-titolo">{d.titolo}</span>
+              <span class="doc-testo">{d.testo}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section aria-label="App Jam Session" class="app-section">
+        <div class="app-header">
+          <img class="app-logo" src="/assets/documenti-utili/app-logo.png" alt="Logo dell'app Jam Session" onerror="this.style.display='none'" />
+          <div class="section-head">
+            <h2>App Jam Session</h2>
+            <p class="subtitle">Pensata per allievi, famiglie e docenti: tutto quello che serve per seguire corsi e lezioni sempre a portata di mano.</p>
+          </div>
+        </div>
+        <ul class="app-features">
+          {APP_FEATURES.map(f => (
+            <li>{f}</li>
+          ))}
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-outline-dark" href="https://apps.apple.com/it/app/jam-session-aps/id6739428765" target="_blank" rel="noopener">App Store</a>
+          <a class="btn btn-outline-dark" href="https://play.google.com/store/apps/details?id=com.jamsessionaps.android" target="_blank" rel="noopener">Google Play</a>
+        </div>
+      </section>
+
     </main>
     <Footer />
   </div>
 </BaseLayout>
 
 <style>
+  :root {
+    --green: #0f5f53;
+    --heroGreen: #0e4f46;
+    --accent: #f2a844;
+    --beige: #f6ead6;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+    --borderW: 1px solid rgba(255,255,255,.18);
+  }
+
+  * { box-sizing: border-box; }
+
   .container {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
@@ -23,16 +118,134 @@ import Footer from '../../components/Footer.astro';
   }
   .page-content {
     margin: 46px 0 60px;
-    max-width: 900px;
   }
   .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
     font-size: 40px;
+    margin: 0 0 12px;
+  }
+  .intro {
+    font-family: "Lexend", sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    opacity: .82;
+    max-width: 70ch;
+    margin: 0 0 8px;
+  }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 22px; }
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -.25px;
+  }
+  .subtitle { margin: 10px 0 0; font-family: "Lexend", sans-serif; opacity: .74; font-size: 16px; max-width: 60ch; line-height: 1.55; }
+
+  /* Documenti */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .doc-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .doc-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+  }
+  .doc-tag {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: .6px;
+    color: var(--green);
+    background: color-mix(in srgb, var(--green) 12%, white);
+    border-radius: 999px;
+    padding: 4px 10px;
     margin-bottom: 12px;
   }
-  .page-content p {
+  .doc-titolo {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .doc-testo {
     font-family: "Lexend", sans-serif;
-    opacity: .7;
+    font-size: 14.5px;
+    line-height: 1.5;
+    opacity: .74;
+  }
+
+  /* App */
+  .app-section {
+    background: var(--beige);
+    border-radius: var(--radiusLg);
+    padding: 40px 32px;
+  }
+  .app-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  .app-logo {
+    width: 92px;
+    height: 92px;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    flex: 0 0 auto;
+  }
+  .app-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .app-features li {
+    background: #fff;
+    border: var(--border);
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 26px;
   }
 </style>
