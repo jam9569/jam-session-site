@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const FASI = [
+  {
+    titolo: "Sei laboratori",
+    testo: "Libera professione, accesso al lavoro pubblico, performance dal vivo, leadership nella direzione di un ensemble, ruoli tecnici e progettazione culturale: incontri pratici, con casi reali, simulazioni contrattuali e strumenti concreti da portare a casa.",
+  },
+  {
+    titolo: "Incubatore e mentoring",
+    testo: "Le partecipanti sviluppano un proprio micro-progetto musicale, completo di piano operativo e strategia di sostenibilità, affiancate da mentor dedicati fino alla sua presentazione pubblica.",
+  },
+  {
+    titolo: "Due eventi pubblici",
+    testo: "Un concerto e una tavola rotonda con professioniste del settore aprono il percorso; un secondo evento, con la presentazione dei micro-progetti nati durante l'incubatore, lo chiude.",
+  },
+];
+---
+
+<BaseLayout title="Musa — Jam Session APS" description="Musa: il percorso di Jam Session APS per l'autonomia professionale di giovani musiciste, tra laboratori, incubatore e mentoring dedicato.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Parità di genere nella musica</p>
+      <h1>Musa</h1>
+      <p class="lead">Uno spazio per trasformare l'ispirazione in competenza professionale, e l'aspirazione in autonomia economica.</p>
+
+      <div class="testo-intro">
+        <p>
+          Nel settore musicale la parità resta una strada in salita: le donne sono ancora una minoranza
+          nei ruoli tecnici, produttivi e decisionali, e chi sceglie la musica come professione si scontra
+          spesso con la difficoltà di negoziare un compenso, strutturare la propria attività autonoma, o
+          immaginarsi alla guida di un ensemble. Musa nasce per intervenire proprio lì, dove la formazione
+          musicale tradizionale si ferma: non insegna a suonare meglio, ma a costruire una carriera.
+        </p>
+        <p>
+          Il percorso, rivolto a giovani musiciste tra i 18 e i 30 anni del territorio bolognese, unisce
+          laboratori tematici a un vero e proprio incubatore, dove sviluppare un proprio progetto musicale
+          con il sostegno di mentor dedicati. Il tutto si apre e si chiude con due momenti pubblici, pensati
+          per portare la riflessione sulla parità di genere nella musica fuori dall'aula e dentro la città.
+        </p>
+      </div>
+
+      <section aria-label="Come funziona">
+        <div class="section-head">
+          <h2>Come funziona</h2>
+        </div>
+        <div class="fasi-grid">
+          {FASI.map(f => (
+            <div class="fase-card">
+              <h3>{f.titolo}</h3>
+              <p>{f.testo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <p class="partner-nota">
+        Musa è realizzato in collaborazione con il Liceo Galvani e il Liceo Arcangeli di Bologna, ed è
+        sostenuto da Fondazione del Monte di Bologna e Ravenna nell'ambito del bando "Percorsi per la
+        parità di genere".
+      </p>
+
+      <section class="cta-section" aria-label="Contatti">
+        <h2>Vuoi saperne di più su Musa?</h2>
+        <p class="subtitle">Scrivici per conoscere il progetto, ospitare un laboratorio o sostenere una nuova edizione.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .fasi-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .fasi-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .fase-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .fase-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--green);
+  }
+  .fase-card p {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .78;
+    margin: 0;
+  }
+
+  .partner-nota {
+    margin: 40px 0 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: .6;
+    font-style: italic;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>

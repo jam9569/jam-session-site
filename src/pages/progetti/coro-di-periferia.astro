@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const TAPPE = [
+  {
+    titolo: "Nuovi Echi per Nuovi Orizzonti",
+    testo: "Il Coro di Periferia è fondatore di questa rassegna annuale, che si tiene in Piazza Santo Stefano a Bologna.",
+  },
+  {
+    titolo: "Babelebab",
+    testo: "Il Coro di Periferia è tra i fondatori di questa rete nazionale di cori interculturali, e ha partecipato alle edizioni del festival di Napoli (2023) e Torino (2025).",
+  },
+  {
+    titolo: "Venezia in coro",
+    testo: "Nel 2025 il coro si è esibito alla manifestazione corale organizzata da A.S.A.C. Veneto a Venezia.",
+  },
+  {
+    titolo: "Festival Alta Pusteria",
+    testo: "Nel 2026 il coro ha partecipato al Festival Internazionale di Canto Corale Alta Pusteria.",
+  },
+];
+---
+
+<BaseLayout title="Coro di Periferia — Jam Session APS" description="Il Coro di Periferia di Jam Session APS: un coro interculturale senza limiti di età, guidato da Mariagrazia Vincitorio.">
+  <Header />
+  <div class="container">
+    <div class="hero-media">
+      <img src="/assets/progetti/coro-di-periferia-hero.jpg" alt="Le prove del Coro di Periferia" />
+    </div>
+    <main class="page-content">
+      <p class="kicker">Coro interculturale</p>
+      <h1>Coro di Periferia</h1>
+      <p class="lead">Un'opportunità di crescita interculturale, esplorando nuova musica insieme.</p>
+
+      <div class="testo-intro">
+        <p>
+          Il Coro di Periferia è una comunità senza limiti di età, fatta di persone che condividono la
+          voglia di gridare al mondo la bellezza della diversità. Guidato da Mariagrazia Vincitorio, il
+          coro costruisce il proprio repertorio insieme a chi ne fa parte: sono i partecipanti stessi a
+          scegliere i canti e gli arrangiamenti, portando con sé le proprie tradizioni musicali. Da questo
+          incontro nasce quello che amiamo chiamare un vero e proprio "repertorio di periferia" — un
+          suono che non appartiene a nessuno in particolare, perché appartiene a tutti.
+        </p>
+        <p>
+          Dietro le note c'è un obiettivo preciso: contaminare il territorio con una presenza attiva, capace
+          di contrastare l'ostilità verso immigrati e minoranze con lo strumento più semplice e universale
+          che conosciamo, la musica fatta insieme. Il Coro di Periferia si propone come una realtà senza
+          confini, fondata sulla condivisione più che sull'appartenenza.
+        </p>
+      </div>
+
+      <section aria-label="Le tappe del coro">
+        <div class="section-head">
+          <h2>Dove si è portato</h2>
+        </div>
+        <div class="tappe-grid">
+          {TAPPE.map(t => (
+            <div class="tappa-card">
+              <h3>{t.titolo}</h3>
+              <p>{t.testo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="cta-section" aria-label="Partecipa">
+        <h2>Vuoi farne parte?</h2>
+        <p class="subtitle">Nessun limite di età, nessuna esperienza richiesta: solo la voglia di cantare insieme agli altri. Scrivici per un colloquio conoscitivo.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .page-content { margin: 46px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .tappe-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .tappe-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .tappa-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .tappa-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--green);
+  }
+  .tappa-card p {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .78;
+    margin: 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>

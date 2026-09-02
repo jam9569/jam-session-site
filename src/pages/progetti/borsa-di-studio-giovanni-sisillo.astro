@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="Borsa di Studio &quot;Giovanni Sisillo&quot; — Jam Session APS" description="La Borsa di Studio Giovanni Sisillo, dedicata alla memoria di un batterista e docente di Jam Session APS, per trasmettere alle nuove generazioni i suoi valori musicali e umani.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Borsa di studio · Anno Accademico 2026/2027</p>
+      <h1>Borsa di Studio "Giovanni Sisillo"</h1>
+      <p class="lead">Dove c'è bisogno di musica, io ci sono.</p>
+
+      <div class="testo-intro">
+        <p>
+          Giovanni è stato per anni batterista e docente della nostra scuola di musica, e per chi lo ha
+          conosciuto — allievi e colleghi, primo fra tutti Andrea Belvederi Mosti, con cui ha condiviso a
+          lungo il lavoro in aula — resta un punto di riferimento raro. La sua massima, "dove c'è bisogno di
+          musica, io ci sono", non era soltanto una frase: era il modo in cui intendeva la musica come
+          servizio condiviso, sempre disponibile, sempre presente.
+        </p>
+        <p>
+          Da quando ci ha lasciati, abbiamo sentito il bisogno di dare continuità a ciò che rappresentava.
+          Nasce così questa borsa di studio, dedicata alla sua memoria: un riconoscimento pensato per
+          trasmettere alle nuove generazioni di musicisti gli stessi principi che hanno guidato il suo
+          percorso — la ricerca seria dello strumento, l'autenticità della passione musicale, e una
+          sensibilità verso le persone che andava sempre oltre la lezione.
+        </p>
+      </div>
+
+      <section class="cta-section" aria-label="Candidatura">
+        <h2>Come partecipare</h2>
+        <p class="subtitle">Scrivici per ricevere il bando, il modulo di domanda e la guida alla compilazione per l'anno accademico 2026/2027.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi il bando</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    font-style: italic;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; opacity: .74; font-size: 16px; line-height: 1.5; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>

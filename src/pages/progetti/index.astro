@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const PROGETTI = [
+  {
+    nome: "Musica e Società",
+    kicker: "Rete regionale di educazione musicale",
+    teaser: "La rete di educazione musicale che Jam Session coordina come capofila in Emilia-Romagna: 36 progetti e circa 900 studenti, alla sesta edizione.",
+    href: "/progetti/musica-e-societa",
+  },
+  {
+    nome: "Coro di Periferia",
+    kicker: "Coro interculturale",
+    teaser: "Un coro senza limiti di età che mescola le tradizioni musicali di chi ne fa parte, per contaminare il territorio con la bellezza della diversità.",
+    href: "/progetti/coro-di-periferia",
+  },
+  {
+    nome: "Nausica",
+    kicker: "Musicoterapia inclusiva",
+    teaser: "Un percorso di musicoterapia per persone con disabilità, in collaborazione con l'ASP Rodriguez di San Lazzaro di Savena.",
+    href: "/progetti/nausica",
+  },
+  {
+    nome: "Borsa di Studio \"Giovanni Sisillo\"",
+    kicker: "Un riconoscimento in memoria",
+    teaser: "Una borsa di studio dedicata a Giovanni, batterista e docente della scuola, per trasmettere i valori musicali e umani che lo hanno sempre guidato.",
+    href: "/progetti/borsa-di-studio-giovanni-sisillo",
+  },
+  {
+    nome: "Incubatore Orchestrale",
+    kicker: "Percorso di incubazione artistica",
+    teaser: "Un percorso annuale con cui sosteniamo giovani ensemble nella crescita verso la piena autonomia artistica e organizzativa: oggi ospitiamo la Off Topic Jazz Orchestra.",
+    href: "/progetti/incubatore-orchestrale",
+  },
+  {
+    nome: "Musa",
+    kicker: "Parità di genere nella musica",
+    teaser: "Un percorso di laboratori e incubatore per l'autonomia professionale di giovani musiciste tra i 18 e i 30 anni, dalla libera professione alla leadership.",
+    href: "/progetti/musa",
+  },
+];
+---
+
+<BaseLayout title="Progetti — Jam Session APS" description="I progetti di Jam Session APS: Musica e Società, Coro di Periferia, Nausica, la Borsa di Studio Giovanni Sisillo, l'Incubatore Orchestrale e Musa.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <h1>Progetti</h1>
+      <p class="lead">
+        Oltre alle lezioni, Jam Session porta la musica dove normalmente non arriva: nei quartieri, nei
+        servizi sociali, sui palchi dei giovani talenti che meritano un'occasione in più. Ecco i progetti
+        che portiamo avanti oggi.
+      </p>
+
+      <div class="progetti-grid">
+        {PROGETTI.map(p => (
+          <a class="progetto-card" href={p.href}>
+            <span class="progetto-kicker">{p.kicker}</span>
+            <span class="progetto-nome">{p.nome}</span>
+            <p class="progetto-teaser">{p.teaser}</p>
+            <span class="progetto-link">Scopri il progetto →</span>
+          </a>
+        ))}
+      </div>
+
+      <section class="passati-cta" aria-label="Progetti passati">
+        <div>
+          <h2>Progetti passati</h2>
+          <p class="subtitle">Qui raccogliamo i progetti che Jam Session ha portato a termine nel tempo.</p>
+        </div>
+        <a class="btn btn-outline-dark" href="/progetti/passati">Vedi i progetti passati →</a>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --heroGreen: #0e4f46;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 40px;
+  }
+
+  .progetti-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 640px) {
+    .progetti-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .progetto-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid rgba(11,11,11,.1);
+    box-shadow: var(--shadow);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+  }
+  .progetto-kicker {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .progetto-nome {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .progetto-teaser {
+    font-family: "Lexend", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: .76;
+    margin: 0 0 18px;
+  }
+  .progetto-link {
+    margin-top: auto;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  .passati-cta {
+    margin-top: 56px;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 40px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .passati-cta h2 {
+    margin: 0 0 8px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+  }
+  .passati-cta .subtitle {
+    margin: 0;
+    font-family: "Lexend", sans-serif;
+    opacity: .74;
+    font-size: 15px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+</style>

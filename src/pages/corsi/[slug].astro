@@ -7,34 +7,58 @@ import Footer from '../../components/Footer.astro';
 export async function getStaticPaths() {
   const corsi = await getCollection('corsi');
   return corsi.map(corso => ({
-    params: { slug: corso.slug },
+    params: { slug: corso.id },
     props: { corso },
   }));
 }
 
 const { corso } = Astro.props;
-const { title, strumento, intro, livelli, metodo, team } = corso.data;
+const { title, intro, immagine, video, fasce_eta, livelli, metodo, team } = corso.data;
 ---
 
 <BaseLayout title={`${title} — Jam Session APS`} description={intro}>
   <Header />
   <div class="container">
+    {video ? (
+      <div class="hero-media">
+        <video src={video} autoplay muted loop playsinline></video>
+      </div>
+    ) : immagine ? (
+      <div class="hero-media">
+        <img src={immagine} alt={`Lezione di ${title} a Jam Session`} />
+      </div>
+    ) : null}
     <main class="page-content">
-      <p class="kicker">Corso di {strumento}</p>
       <h1>{title}</h1>
       <p class="intro">{intro}</p>
 
-      <section class="block">
-        <h2>I livelli</h2>
-        <div class="livelli-grid">
-          {livelli.map(l => (
-            <div class="livello-card">
-              <h3>{l.nome}</h3>
-              <p>{l.descrizione}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {fasce_eta && fasce_eta.length > 0 && (
+        <section class="block block-eta">
+          <h2>Le fasce d'età</h2>
+          <div class="eta-grid">
+            {fasce_eta.map(f => (
+              <div class="eta-card">
+                <span class="eta-nome">{f.nome}</span>
+                <span class="eta-range">{f.range}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {livelli && livelli.length > 0 && (
+        <section class="block">
+          <h2>I livelli</h2>
+          <div class="livelli-grid">
+            {livelli.map(l => (
+              <div class="livello-card">
+                <h3>{l.nome}</h3>
+                <p>{l.descrizione}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section class="block">
         <h2>Come funzionano le lezioni</h2>
@@ -47,9 +71,12 @@ const { title, strumento, intro, livelli, metodo, team } = corso.data;
           <div class="team-list">
             {team.map(t => (
               <div class="team-item">
-                <div class="team-name">{t.nome}</div>
-                <div class="team-role">{t.ruolo}</div>
-                {t.tratto && <p class="team-tratto">{t.tratto}</p>}
+                <div class="team-photo" aria-hidden="true"></div>
+                <div class="team-info">
+                  <div class="team-name">{t.nome}</div>
+                  <div class="team-role">{t.ruolo}</div>
+                  {t.tratto && <p class="team-tratto">{t.tratto}</p>}
+                </div>
               </div>
             ))}
           </div>
@@ -74,76 +101,126 @@ const { title, strumento, intro, livelli, metodo, team } = corso.data;
   }
   .page-content {
     margin: 46px 0 60px;
-    max-width: 780px;
   }
-  .kicker {
-    font-family: "Inter", sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    color: #0f5f53;
-    margin: 0 0 10px;
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img,
+  .hero-media video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .page-content h1 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
-    font-size: 40px;
-    margin: 0 0 18px;
+    font-size: clamp(36px, 4.4vw, 50px);
+    margin: 0 0 20px;
   }
   .intro {
     font-family: "Lexend", sans-serif;
     opacity: .78;
-    line-height: 1.6;
-    font-size: 16px;
+    line-height: 1.65;
+    font-size: 18px;
   }
-  .block { margin-top: 56px; }
+  .block { margin-top: 64px; }
   .block h2 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
-    font-size: 24px;
-    margin: 0 0 20px;
+    font-size: 28px;
+    margin: 0 0 24px;
   }
   .block p {
     font-family: "Lexend", sans-serif;
     opacity: .78;
-    line-height: 1.6;
+    line-height: 1.65;
+    font-size: 17px;
   }
-  .livelli-grid { display: grid; gap: 18px; }
+
+  /* Fasce d'età */
+  .eta-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+  .eta-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    background: #f6ead6;
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: 18px;
+    padding: 26px 16px;
+  }
+  .eta-nome {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+  }
+  .eta-range {
+    font-family: "Lexend", sans-serif;
+    opacity: .7;
+    font-size: 15px;
+  }
+
+  .livelli-grid { display: grid; gap: 22px; }
   .livello-card {
     background: #f2f4f3;
     border: 1px solid rgba(11,11,11,.1);
     border-radius: 18px;
-    padding: 20px;
+    padding: 26px;
   }
   .livello-card h3 {
     font-family: "Inter", sans-serif;
     font-weight: 900;
-    font-size: 16px;
-    margin: 0 0 8px;
+    font-size: 18px;
+    margin: 0 0 10px;
   }
   .livello-card p {
     font-family: "Lexend", sans-serif;
     opacity: .74;
-    font-size: 14px;
+    font-size: 15px;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
   }
-  .team-list { display: grid; gap: 14px; }
+  .team-list { display: grid; gap: 18px; }
   .team-item {
-    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 22px;
     border-radius: 14px;
     background: #fff;
     border: 1px solid rgba(11,11,11,.1);
   }
+  .team-photo {
+    flex: 0 0 auto;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #f2f4f3;
+    border: 1px solid rgba(11,11,11,.1);
+  }
+  .team-info { flex: 1 1 auto; min-width: 0; }
   .team-name {
     font-family: "Inter", sans-serif;
     font-weight: 900;
-    font-size: 15px;
+    font-size: 17px;
   }
   .team-role {
     font-family: "Lexend", sans-serif;
     opacity: .65;
-    font-size: 13px;
-    margin-top: 2px;
+    font-size: 14px;
+    margin-top: 3px;
   }
   .team-tratto {
     margin: 8px 0 0;
@@ -173,5 +250,9 @@ const { title, strumento, intro, livelli, metodo, team } = corso.data;
   @media (min-width: 768px) {
     .livelli-grid { grid-template-columns: repeat(3, 1fr); }
     .team-list { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .eta-grid { grid-template-columns: 1fr; }
   }
 </style>

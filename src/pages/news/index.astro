@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const newsEntries = await getCollection('news');
+const news = newsEntries
+  .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
+  .map(n => ({
+    slug: n.id,
+    title: n.data.title,
+    dateDisplay: new Date(n.data.date).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
+  }));
+---
+
+<BaseLayout title="News — Jam Session APS" description="L'archivio di tutte le news di Jam Session APS: aggiornamenti su corsi, iscrizioni, saggi ed eventi.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <h1>News</h1>
+      <p class="lead">Tutti gli aggiornamenti di Jam Session APS, dalla data più vicina alla più lontana.</p>
+
+      {news.length > 0 ? (
+        <div class="news-grid">
+          {news.map(n => (
+            <a class="news-card" href={`/news/${n.slug}`}>
+              <span class="news-date">{n.dateDisplay}</span>
+              <span class="news-title">{n.title}</span>
+              <span class="news-more">Leggi i dettagli →</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p>Non ci sono ancora news pubblicate.</p>
+        </div>
+      )}
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 40px;
+  }
+
+  .news-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 640px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
+  .news-card {
+    display: block;
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid rgba(11,11,11,.1);
+    box-shadow: var(--shadow);
+    padding: 22px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .news-date { display: block; font-size: 12px; opacity: .62; font-weight: 700; font-family: "Inter", sans-serif; }
+  .news-title { display: block; margin: 10px 0 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 16px; line-height: 1.25; }
+  .news-more { display: block; margin-top: 10px; font-size: 13px; opacity: .75; font-weight: 800; font-family: "Inter", sans-serif; color: var(--green); }
+
+  .empty-state {
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .empty-state p {
+    font-family: "Lexend", sans-serif;
+    opacity: .74;
+    font-size: 17px;
+    margin: 0;
+  }
+</style>

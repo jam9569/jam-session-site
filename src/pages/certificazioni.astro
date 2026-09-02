@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const PROGRAMMI = [
+  {
+    nome: "Classical & Jazz",
+    livelli: "9 livelli progressivi, da Initial a Grade 8",
+    strumenti: "Archi, arpa, ottoni, legni, pianoforte, tastiere, chitarra, percussioni, canto",
+    note: "Disponibile anche in formato digitale, tramite video-registrazione.",
+  },
+  {
+    nome: "Rock & Pop",
+    livelli: "9 livelli, da Initial a Grade 8",
+    strumenti: "Basso, batteria, chitarra, tastiere, voce",
+    note: "Disponibile anche in formato digitale.",
+  },
+  {
+    nome: "Music Theory",
+    livelli: "8 livelli, da Grade 1 a Grade 8",
+    strumenti: "Esame scritto in lingua inglese",
+    note: "Disponibile anche in formato digitale.",
+  },
+];
+
+const CARATTERISTICHE = [
+  "Certificazioni riconosciute internazionalmente, valide sia in ambito accademico sia professionale",
+  "Percorsi personalizzati per età e livello di ciascun allievo",
+  "Approccio pratico e motivante, costruito sul repertorio dello studente",
+  "Obiettivi progressivi, dal livello base fino a traguardi professionali",
+];
+---
+
+<BaseLayout title="Certificazioni Trinity — Jam Session APS" description="Jam Session APS è sede d'esame Trinity College London (centro 74879): certificazioni musicali internazionali in Classical & Jazz, Rock & Pop e Music Theory.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Trinity College London — Centro d'esame 74879</p>
+      <h1>Certificazioni Musicali Trinity College London</h1>
+      <p class="lead">Un punto di incontro tra passione, competenza e riconoscimento internazionale.</p>
+
+      <div class="video-frame">
+        <div class="video-wrapper">
+          <iframe
+            src="https://player.vimeo.com/video/1223300708?title=0&byline=0&portrait=0"
+            title="Presentazione delle Certificazioni Trinity a Jam Session"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-nota">Video registrato a gennaio 2026, durante l'anno scolastico 2025/2026.</p>
+      </div>
+
+      <div class="testo-intro">
+        <p>
+          Jam Session APS è sede d'esame ufficiale Trinity College London, centro 74879: un riconoscimento
+          che ci permette di accompagnare i nostri allievi, passo dopo passo, fino a certificazioni musicali
+          riconosciute a livello internazionale, sia in ambito accademico sia professionale. I percorsi
+          coprono musica classica, jazz, rock &amp; pop, teoria musicale e i diplomi di alta formazione, e
+          vengono costruiti su misura sull'età, il livello e gli obiettivi di ciascuno studente.
+        </p>
+        <p>
+          Una certificazione Trinity, però, non è un traguardo riservato a chi sogna una carriera da
+          musicista. È un percorso che allena costanza, metodo di studio e capacità di esibirsi in pubblico:
+          competenze che restano preziose ben oltre lo strumento, arricchiscono il curriculum e, nel Regno
+          Unito, concorrono persino ai punti UCAS per l'ammissione all'università. Per questo lo consideriamo
+          prima di tutto un percorso di crescita personale, con tappe concrete e verificabili che ogni allievo
+          vede avvicinarsi lezione dopo lezione.
+        </p>
+      </div>
+
+      <section aria-label="Programmi certificativi">
+        <div class="section-head">
+          <h2>I nostri programmi certificativi</h2>
+        </div>
+        <div class="programmi-grid">
+          {PROGRAMMI.map(p => (
+            <div class="programma-card">
+              <h3>{p.nome}</h3>
+              <p class="programma-livelli">{p.livelli}</p>
+              <p class="programma-strumenti">{p.strumenti}</p>
+              <p class="programma-note">{p.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-label="Perché una certificazione Trinity" class="split-section">
+        <div class="split-text">
+          <div class="section-head">
+            <h2>Perché una certificazione Trinity</h2>
+          </div>
+          <ul class="caratteristiche-list">
+            {CARATTERISTICHE.map(c => (
+              <li>
+                <span class="c-dot" aria-hidden="true"></span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta-section" aria-label="Scopri di più">
+        <h2>Vuoi saperne di più?</h2>
+        <p class="subtitle">Scrivici o vieni a trovarci in Via del Perugino: ti aiutiamo a scegliere il percorso di certificazione più adatto a te.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+          <a class="btn btn-outline-dark" href="https://www.trinitycollege.it/certificazione-musicale/" target="_blank" rel="noopener">Sito Trinity College London</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --heroGreen: #0e4f46;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+    --borderW: 1px solid rgba(255,255,255,.18);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Lexend", system-ui, sans-serif;
+    color: var(--ink);
+    background: #fff;
+  }
+  a { color: inherit; }
+
+  .container {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0 90px;
+  }
+  .page-content {
+    margin: 16px 0 60px;
+  }
+  .kicker {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+    margin: 0 0 10px;
+  }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    max-width: 90ch;
+    margin: 0 0 32px;
+  }
+
+  .video-frame {
+    background: #fff;
+    padding: 14px;
+    border-radius: 26px;
+    border: 1px solid rgba(11,11,11,.10);
+    box-shadow: 0 16px 34px rgba(0,0,0,.10);
+    margin-bottom: 40px;
+  }
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .video-nota {
+    margin: 12px 4px 2px;
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .55;
+    font-style: italic;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: -.25px;
+  }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; max-width: 60ch; line-height: 1.5; }
+
+  .programmi-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .programmi-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .programma-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 26px;
+  }
+  .programma-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+    margin: 0 0 12px;
+    color: var(--green);
+  }
+  .programma-livelli {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+  .programma-strumenti {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .78;
+    margin: 0 0 12px;
+  }
+  .programma-note {
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .6;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .caratteristiche-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 100ch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .caratteristiche-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: .85;
+  }
+  .c-dot {
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    margin-top: 7px;
+    border-radius: 999px;
+    background: var(--green);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 26px;
+  }
+</style>

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const EVENTI = [
+  {
+    nome: "Voglio Live 2027",
+    kicker: "Restituzione pubblica · Sabato 29 maggio 2027",
+    teaser: "L'evento che chiude il percorso di Musica e Società: un pomeriggio in Piazza Lucio Dalla a Bologna con la restituzione pubblica dei laboratori nelle scuole di tutta la regione.",
+    href: "/eventi/voglio-live-2027",
+  },
+];
+---
+
+<BaseLayout title="Eventi — Jam Session APS" description="Gli eventi pubblici di Jam Session APS: da Voglio Live 2027 all'archivio di masterclass, workshop e concerti realizzati negli anni.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <h1>Eventi</h1>
+      <p class="lead">
+        Oltre alle lezioni e ai progetti, Jam Session porta la musica sul palco: masterclass, workshop e
+        concerti aperti al pubblico. Ecco gli eventi in programma.
+      </p>
+
+      <div class="eventi-grid">
+        {EVENTI.map(e => (
+          <a class="evento-card" href={e.href}>
+            <span class="evento-kicker">{e.kicker}</span>
+            <span class="evento-nome">{e.nome}</span>
+            <p class="evento-teaser">{e.teaser}</p>
+            <span class="evento-link">Scopri l'evento →</span>
+          </a>
+        ))}
+      </div>
+
+      <section class="passati-cta" aria-label="Eventi passati">
+        <div>
+          <h2>Eventi passati</h2>
+          <p class="subtitle">Qui raccogliamo le masterclass, i workshop e i concerti che Jam Session ha realizzato nel tempo.</p>
+        </div>
+        <a class="btn btn-outline-dark" href="/eventi/passati">Vedi gli eventi passati →</a>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 40px;
+  }
+
+  .eventi-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 640px) {
+    .eventi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .evento-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid rgba(11,11,11,.1);
+    box-shadow: var(--shadow);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+  }
+  .evento-kicker {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .evento-nome {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .evento-teaser {
+    font-family: "Lexend", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: .76;
+    margin: 0 0 18px;
+  }
+  .evento-link {
+    margin-top: auto;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  .passati-cta {
+    margin-top: 56px;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 40px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .passati-cta h2 {
+    margin: 0 0 8px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+  }
+  .passati-cta .subtitle {
+    margin: 0;
+    font-family: "Lexend", sans-serif;
+    opacity: .74;
+    font-size: 15px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+</style>

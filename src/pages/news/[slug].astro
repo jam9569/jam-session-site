@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news');
+  return news.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { title, date } = entry.data;
+const dateDisplay = new Date(date).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${title} — Jam Session APS`} description={title}>
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker"><a href="/news">← Tutte le news</a></p>
+      <span class="news-date">{dateDisplay}</span>
+      <h1>{title}</h1>
+      <div class="news-body">
+        <Content />
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --ink: #0b0b0b;
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; max-width: 760px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; margin: 0 0 18px; }
+  .kicker a { color: var(--green); text-decoration: none; }
+  .kicker a:hover { text-decoration: underline; }
+  .news-date {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    opacity: .6;
+    margin-bottom: 10px;
+  }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 38px);
+    margin: 0 0 30px;
+  }
+  .news-body {
+    font-family: "Lexend", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: .85;
+  }
+  .news-body p { margin: 0 0 18px; }
+  .news-body p:last-child { margin-bottom: 0; }
+</style>

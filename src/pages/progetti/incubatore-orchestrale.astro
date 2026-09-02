@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const FASI = [
+  {
+    nome: "Residenza",
+    testo: "Prove regolari lungo tutto l'anno, per consolidare l'organico e produrre un repertorio originale scritto dagli stessi musicisti dell'ensemble.",
+  },
+  {
+    nome: "Formazione",
+    testo: "Masterclass con professionisti di alto livello e prove di perfezionamento, con un'eventuale apertura a uditori esterni.",
+  },
+  {
+    nome: "Produzione",
+    testo: "Concerti pubblici nell'area metropolitana di Bologna e registrazione in studio del repertorio prodotto durante l'anno.",
+  },
+];
+
+const MEMBRI = [
+  { nome: "Pierpaolo Zenni", ruolo: "Pianoforte", tratto: "Vincitore del Conad Jazz Contest 2022, si esibisce in festival come Umbria Jazz e Bologna Jazz Festival." },
+  { nome: "Lorenzo Negroni", ruolo: "Chitarra elettrica, Composizione", tratto: "Vincitore del concorso \"Mister Jazz\" 2022 con il Karabò Quintet." },
+  { nome: "Giovanni Tamburini", ruolo: "Tromba", tratto: "Collabora con Richard Spaven, Savana Funk e A Toys Orchestra." },
+  { nome: "Valerio Garagnani", ruolo: "Sassofono Tenore", tratto: "Ha condiviso il palco con Joe Lovano e Paolo Fresu sotto la direzione di Vince Mendoza." },
+  { nome: "Enrico Bonora", ruolo: "Sassofono Baritono", tratto: "Attivo in diverse realtà musicali del territorio bolognese, tra cui la Bridge Band." },
+  { nome: "Moreno Di Matteo", ruolo: "Contrabbasso, Basso elettrico", tratto: "Premio Massimo Mutti 2024 e Jaci & Jazz Award." },
+  { nome: "Alberto Bonora", ruolo: "Sassofono Contralto e Soprano, Flauto", tratto: "Ha collaborato con Vince Mendoza, Joe Lovano e Flavio Boltro." },
+  { nome: "Lorenzo Bonora", ruolo: "Tromba", tratto: "Masterclass con docenti internazionali come Damrow, Saunier e Plog." },
+  { nome: "Francesco Stella", ruolo: "Trombone", tratto: "Si è esibito in Italia e all'estero con artisti come Javier Girotto e Maria Pia De Vito." },
+  { nome: "Paolo Mancini", ruolo: "Trombone", tratto: "Attivo come trombonista, compositore e arrangiatore in diverse formazioni." },
+  { nome: "Giordano Cattano", ruolo: "Chitarra elettrica", tratto: "Vincitore del concorso band dei Conservatori al Jaci & Jazz Festival 2023." },
+  { nome: "Mattia Bassetti", ruolo: "Batteria", tratto: "Finalista al Conad Jazz 2025 con Homlette Octet." },
+  { nome: "Olmo Minarelli", ruolo: "Clarinetti, Composizione", tratto: "Esperienza in ambito musicoterapico, tra competenze teoriche e progettuali." },
+  { nome: "Nicola Parolari", ruolo: "Sassofono Tenore e Contralto", tratto: "Nella Martini Big Band e nell'Orchestra Nazionale Jazz dei Conservatori Italiani." },
+  { nome: "Marco Zenni", ruolo: "Tromba", tratto: "Si è esibito alla sede RAI di Torino per Rai 2 con la Medit Orchestra." },
+  { nome: "Francesco Pesaturo", ruolo: "Tromba", tratto: "Si è esibito al Roccella Jazz Festival e in un tour di 30 concerti in Cina." },
+  { nome: "Natxo Fuster", ruolo: "Corno francese", tratto: "Finalista con l'Homlet Octet a Umbria Jazz Festival 2025." },
+  { nome: "Enrico Erriquez", ruolo: "Clarinetto, Sassofono Tenore", tratto: "Diploma in jazz con il massimo dei voti al Conservatorio G.B. Martini." },
+  { nome: "Francesco Assini", ruolo: "Tromba", tratto: "Si perfeziona in ambito jazz al Conservatorio di Rovigo con il M° Fulvio Sigurtà." },
+];
+---
+
+<BaseLayout title="Incubatore Orchestrale — Jam Session APS" description="L'Incubatore Orchestrale di Jam Session APS: un percorso annuale di sostegno a giovani ensemble verso l'autonomia artistica e organizzativa. Oggi ospita la Off Topic Jazz Orchestra.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Percorso di incubazione artistica</p>
+      <h1>Incubatore Orchestrale</h1>
+      <p class="lead">Diamo a chi ha già un progetto musicale lo spazio, la struttura e il tempo per farlo crescere davvero.</p>
+
+      <div class="testo-intro">
+        <p>
+          Non tutti i progetti musicali hanno bisogno di una lezione: alcuni hanno bisogno di uno spazio
+          dove provare con continuità, di una struttura organizzativa alle spalle e di qualcuno che
+          creda nel loro progetto abbastanza da sostenerlo per un anno intero. È esattamente ciò che
+          facciamo con l'Incubatore Orchestrale: un percorso annuale pensato per ensemble under 35, che
+          offre stabilità, spazio prove e accompagnamento verso la piena autonomia artistica e
+          organizzativa.
+        </p>
+        <p>
+          L'obiettivo non è ospitare un gruppo, ma costruire con loro un modello replicabile: un anno in
+          cui l'ensemble può concentrarsi sulla produzione di repertorio originale e sulla propria crescita
+          professionale, sapendo di avere Jam Session al proprio fianco per la parte organizzativa e
+          amministrativa. Al termine del percorso, l'ensemble sceglie la propria strada — costituirsi come
+          associazione autonoma, restare ospite della nostra struttura, oppure appoggiarsi a un service
+          amministrativo esterno.
+        </p>
+      </div>
+
+      <section aria-label="Le fasi del percorso">
+        <div class="section-head">
+          <h2>Come funziona il percorso</h2>
+        </div>
+        <div class="fasi-grid">
+          {FASI.map((f, i) => (
+            <div class="fase-card">
+              <span class="fase-numero">{i + 1}</span>
+              <h3>{f.nome}</h3>
+              <p>{f.testo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-label="Il progetto ospitato" class="ospitato">
+        <div class="section-head">
+          <p class="kicker">Il progetto ospitato</p>
+          <h2>Off Topic Jazz Orchestra</h2>
+          <p class="subtitle">La prima grande formazione ad attraversare il nostro Incubatore Orchestrale.</p>
+        </div>
+        <div class="testo-intro">
+          <p>
+            Off Topic Jazz Orchestra è una big band under 35 nata a Bologna con un obiettivo chiaro:
+            costruire un'orchestra jazz professionale interamente ideata, organizzata e gestita da giovani
+            musicisti del territorio. Nasce con una duplice vocazione — valorizzare l'eccellenza musicale
+            delle nuove generazioni e promuovere la composizione e l'arrangiamento originali — e infatti
+            molti dei suoi membri stabili sono anche i compositori che scrivono e arrangiano i brani
+            dell'ensemble, contribuendo a un repertorio contemporaneo e identitario.
+          </p>
+          <p>
+            Più che un'esperienza musicale, Off Topic Jazz Orchestra si propone come un laboratorio
+            permanente in cui giovani professionisti costruiscono competenze — artistiche e organizzative
+            — producono nuove opere e generano opportunità concrete per la scena jazz bolognese e
+            italiana.
+          </p>
+        </div>
+
+        <div class="section-head">
+          <h3 class="membri-title">L'organico</h3>
+        </div>
+        <div class="team-list">
+          {MEMBRI.map(m => (
+            <div class="team-item">
+              <div class="team-info">
+                <div class="team-name">{m.nome}</div>
+                <div class="team-role">{m.ruolo}</div>
+                <p class="team-tratto">{m.tratto}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="video-link-block">
+          <a class="btn btn-outline-dark" href="https://youtube.com/shorts/8msz8X4IyIM?feature=shared" target="_blank" rel="noopener">Guarda il video →</a>
+        </div>
+      </section>
+
+      <section class="cta-section" aria-label="Contatti">
+        <h2>Vuoi saperne di più sull'Incubatore Orchestrale?</h2>
+        <p class="subtitle">Scrivici per conoscere il percorso o proporre il tuo ensemble.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 40px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .fasi-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 768px) {
+    .fasi-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .fase-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 24px;
+    position: relative;
+  }
+  .fase-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .fase-card h3 { font-family: "Inter", sans-serif; font-weight: 900; font-size: 17px; margin: 0 0 10px; }
+  .fase-card p { font-family: "Lexend", sans-serif; font-size: 14px; line-height: 1.55; opacity: .78; margin: 0; }
+
+  .ospitato {
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 44px;
+  }
+  .ospitato .testo-intro { margin-bottom: 32px; }
+  .membri-title { font-family: "Inter", sans-serif; font-weight: 900; font-size: 18px; margin: 0; }
+
+  .team-list { display: grid; gap: 12px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) {
+    .team-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .team-list { grid-template-columns: repeat(3, 1fr); }
+  }
+  .team-item {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid rgba(11,11,11,.1);
+  }
+  .team-name { font-family: "Inter", sans-serif; font-weight: 900; font-size: 15px; }
+  .team-role { font-family: "Lexend", sans-serif; opacity: .65; font-size: 13px; margin-top: 2px; }
+  .team-tratto { margin: 8px 0 0; font-family: "Lexend", sans-serif; font-size: 13px; line-height: 1.5; opacity: .74; }
+
+  .video-link-block { margin-top: 28px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Quando un progetto si conclude, spostalo qui aggiungendo un oggetto a questo array.
+const PROGETTI_PASSATI: { nome: string; periodo: string; teaser: string; href?: string }[] = [];
+---
+
+<BaseLayout title="Progetti passati — Jam Session APS" description="I progetti di Jam Session APS che si sono conclusi nel tempo.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker"><a href="/progetti">← Tutti i progetti</a></p>
+      <h1>Progetti passati</h1>
+      <p class="lead">Qui raccogliamo i progetti che Jam Session ha portato a termine nel tempo.</p>
+
+      {PROGETTI_PASSATI.length > 0 ? (
+        <div class="progetti-grid">
+          {PROGETTI_PASSATI.map(p => (
+            <div class="progetto-card">
+              <span class="progetto-periodo">{p.periodo}</span>
+              <span class="progetto-nome">{p.nome}</span>
+              <p class="progetto-teaser">{p.teaser}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p>Non ci sono ancora progetti conclusi da mostrare: sono tutti in corso.</p>
+          <a class="btn btn-outline-dark" href="/progetti">Vedi i progetti in corso →</a>
+        </div>
+      )}
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; margin: 0 0 10px; }
+  .kicker a { color: var(--green); text-decoration: none; }
+  .kicker a:hover { text-decoration: underline; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 40px;
+  }
+
+  .progetti-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 640px) { .progetti-grid { grid-template-columns: repeat(2, 1fr); } }
+  .progetto-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid rgba(11,11,11,.1);
+    box-shadow: var(--shadow);
+    padding: 26px;
+  }
+  .progetto-periodo { font-family: "Inter", sans-serif; font-weight: 800; font-size: 12px; color: var(--green); }
+  .progetto-nome { display: block; font-family: "Inter", sans-serif; font-weight: 900; font-size: 20px; margin: 10px 0 12px; }
+  .progetto-teaser { font-family: "Lexend", sans-serif; font-size: 15px; line-height: 1.6; opacity: .76; margin: 0; }
+
+  .empty-state {
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .empty-state p {
+    font-family: "Lexend", sans-serif;
+    opacity: .74;
+    font-size: 17px;
+    margin: 0 0 22px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+</style>

@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const TAPPE = [
+  {
+    titolo: "Nausica",
+    testo: "Il primo percorso, con lezioni di canto e pianoforte per ragazze seguite dalla Cooperativa CSAPSA 2, ha creato curiosità verso la musica, passione e fiducia in sé stessi.",
+  },
+  {
+    titolo: "Nausica 2.0",
+    testo: "Il progetto si estende ad adulti con disabilità seguiti dall'ASP Rodriguez di San Lazzaro di Savena, tra lezioni di batteria, pianoforte e musica d'insieme.",
+  },
+  {
+    titolo: "Nausica 3.0",
+    testo: "Il percorso cresce ancora, affiancando alle lezioni individuali un lavoro costante con l'équipe educativa e pedagogica del centro.",
+  },
+];
+---
+
+<BaseLayout title="Nausica — Jam Session APS" description="Nausica: il progetto di musicoterapia di Jam Session APS per persone con disabilità, in collaborazione con l'ASP Rodriguez di San Lazzaro di Savena.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Musicoterapia inclusiva</p>
+      <h1>Nausica</h1>
+      <p class="lead">L'arte musicale come mezzo di educazione, di espressione e di guarigione sociale.</p>
+
+      <div class="testo-intro">
+        <p>
+          Nausica è il progetto con cui Jam Session porta la musica a persone con disabilità, in
+          collaborazione con l'ASP Rodriguez di San Lazzaro di Savena e, in passato, con la Cooperativa
+          CSAPSA. Crediamo che l'arte, e in particolare il linguaggio musicale, debba circolare libera tra
+          tutti, senza vincoli né restrizioni: è una fonte vitale di respiro, un momento per ricentrarsi e
+          per ritrovare l'altro, in una profondità dalla quale lo stress quotidiano spesso ci allontana.
+        </p>
+        <p>
+          Ogni partecipante inizia il percorso con l'équipe educativa e pedagogica del centro — psicologi,
+          educatori, pedagoghi — che ne individua insieme a noi il percorso più adatto. L'apprendimento
+          tecnico dello strumento non è mai l'obiettivo principale, ma la naturale conseguenza di un lavoro
+          costruito sull'espressione creativa, sul divertimento, sulla relazione, sull'improvvisazione e
+          sulla composizione. Nel tempo il progetto è cresciuto edizione dopo edizione — Nausica, Nausica
+          2.0, Nausica 3.0 — allargandosi a nuovi partecipanti senza mai perdere la propria natura più
+          intima.
+        </p>
+      </div>
+
+      <section aria-label="Il percorso nel tempo">
+        <div class="section-head">
+          <h2>Un percorso che cresce nel tempo</h2>
+        </div>
+        <div class="tappe-grid">
+          {TAPPE.map(t => (
+            <div class="tappa-card">
+              <h3>{t.titolo}</h3>
+              <p>{t.testo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-label="I risultati" class="risultati">
+        <div class="section-head">
+          <h2>Cosa abbiamo visto crescere</h2>
+        </div>
+        <p class="body-text">
+          Ogni edizione del progetto ha portato con sé curiosità verso la musica, passioni costruite lezione
+          dopo lezione, momenti d'incontro, di svago e di lavoro sulle emozioni — ma soprattutto fiducia in
+          se stessi. I benefici non si sono fermati ai partecipanti: genitori, tutori e operatori dei centri
+          coinvolti hanno raccontato con entusiasmo il cambiamento visto crescere anche nei nuclei
+          familiari. Il progetto è stato sostenuto, nelle sue prime edizioni, anche dal fondo di liberalità
+          territoriale di Intesa Sanpaolo.
+        </p>
+      </section>
+
+      <section class="cta-section" aria-label="Sostieni il progetto">
+        <h2>Vuoi saperne di più su Nausica?</h2>
+        <p class="subtitle">Scrivici per conoscere il progetto, sostenerlo o proporre una nuova collaborazione.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .tappe-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .tappe-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .tappa-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .tappa-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--green);
+  }
+  .tappa-card p {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .78;
+    margin: 0;
+  }
+
+  .body-text {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>

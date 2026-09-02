@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -33,12 +34,15 @@ const RECENSIONI = [
   },
 ];
  
-const NEWS_HOME = [
-  { title: "Open day: prova gratuita e orientamento", date: "10 Feb 2026", href: "/news/open-day" },
-  { title: "Saggio di fine trimestre: info e scaletta", date: "3 Feb 2026", href: "/news/saggio-trimestre" },
-  { title: "Laboratorio band: nuove formazioni", date: "28 Gen 2026", href: "/news/lab-band" },
-  { title: "Coro di Periferia: iscrizioni aperte", date: "20 Gen 2026", href: "/news/coro-periferia" },
-];
+const newsEntries = await getCollection('news');
+const NEWS_HOME = newsEntries
+  .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
+  .slice(0, 4)
+  .map(n => ({
+    title: n.data.title,
+    date: new Date(n.data.date).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' }),
+    href: `/news/${n.id}`,
+  }));
  
 const PARTNER = [
   { name: "Trinity College London", logo: "/assets/partner/partner-trinity-college-london.svg", href: "/partner/trinity" },
@@ -69,8 +73,7 @@ const PARTNER = [
           </h1>
           <p class="hero-lead">Una scuola-laboratorio musicale inclusiva davvero, affidabile nei fatti e innovativa per natura.</p>
           <div class="hero-actions">
-            <a class="btn btn-accent" href="/contatti#prenota-prova">Prenota una prova <span aria-hidden="true">↗</span></a>
-            <a class="btn btn-outline" href="/corsi">Vedi tutti i corsi</a>
+            <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>

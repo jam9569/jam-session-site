@@ -1,0 +1,35 @@
+---
+title: "Chitarra e Basso"
+strumento: "Chitarra e Basso"
+ordine: 2
+immagine: "/assets/corsi/chitarra-e-basso-hero.jpg"
+intro: "Chitarra e basso sono gli strumenti che si imparano con le mani prima ancora che con la testa: la corda che vibra sotto le dita, il primo accordo che finalmente suona pulito, il groove che si sente nel corpo prima che nell'orecchio. Il Dipartimento di Chitarra e Basso di Jam Session è pensato per chi vuole imparare davvero a suonare, non solo a strimpellare: dal folk al metal, dal pop al funk, costruiamo un percorso sulla musica che ami ascoltare, con lo strumento in mano fin dalla prima lezione."
+fasce_eta:
+  - nome: "Junior"
+    range: "7-13 anni"
+  - nome: "Young"
+    range: "14-19 anni"
+  - nome: "Senior"
+    range: "dai 20 anni"
+livelli:
+  - nome: "Livello Base"
+    descrizione: "Per chi non ha mai preso in mano una chitarra o un basso. Si parte dalle tecniche fondamentali e dai primi brani, con le basi di teoria e lettura musicale."
+  - nome: "Livello Intermedio"
+    descrizione: "Per chi ha già confidenza con lo strumento. Si approfondiscono accompagnamento e assoli, armonia e improvvisazione, con la possibilità di affacciarsi a registrazione e performance dal vivo."
+  - nome: "Livello Avanzato"
+    descrizione: "Per chi ha già una solida tecnica e vuole svilupparla ulteriormente. Si lavora su analisi degli stili, arrangiamento, composizione, registrazione in studio e gestione della performance dal vivo."
+metodo: "Ogni allievo ha un docente di riferimento per tutto il percorso, con materiale costruito su misura in base a età ed esigenze, fornito sia in digitale sia in cartaceo. Le lezioni si tengono in presenza, nelle nostre sedi di via del Perugino, oppure online."
+team:
+  - nome: "Andrea Belvederi Mosti"
+    ruolo: "Chitarra acustica ed elettrica: folk, blues, rock, country rock, pop — basso per principianti"
+  - nome: "Antonio Del Gaudio"
+    ruolo: "Basso elettrico: pop, funk, rock, metal — chitarra elettrica: pop, rock, metal"
+  - nome: "Giacomo Deschi"
+    ruolo: "Chitarra elettrica e acustica: pop, rock, funk, fusion — basso per principianti"
+  - nome: "Marco Giudice"
+    ruolo: "Chitarra classica, acustica, elettrica: rock, pop — basso per principianti"
+  - nome: "Erik Storari"
+    ruolo: "Chitarra acustica ed elettrica: pop, rock, folk, metal — basso per principianti"
+  - nome: "Lorenzo Valdesalici"
+    ruolo: "Chitarra classica, acustica, elettrica: sperimentale, rock d'avanguardia, musica da film — basso per principianti"
+---

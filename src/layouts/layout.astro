@@ -35,12 +35,16 @@ const pageTitle = title === SITE_NAME ? title : `${title} • ${SITE_NAME}`;
   <link rel="icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
  
-  <style>
+  <style is:global>
     body {
       margin: 0;
       font-family: "Lexend", system-ui, sans-serif;
       color: #0b0b0b;
       background: #fff;
+    }
+    /* Evita che l'ultima riga di un paragrafo lasci una singola parola isolata ("vedova") */
+    p, li, blockquote {
+      text-wrap: pretty;
     }
   </style>
 </head>

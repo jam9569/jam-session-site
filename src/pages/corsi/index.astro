@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const tuttiICorsi = await getCollection('corsi');
+const corsi = tuttiICorsi.sort((a, b) => a.data.ordine - b.data.ordine);
+---
+
+<BaseLayout title="Corsi — Jam Session APS" description="Tutti i corsi e i laboratori di Jam Session APS: canto, strumenti, DJ e produzione, musica d'insieme e molto altro.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <h1>Corsi</h1>
+      <p class="intro">
+        Una scuola-laboratorio musicale inclusiva davvero, affidabile nei fatti e innovativa per natura. Scegli il tuo corso: qui trovi tutti i dipartimenti e i laboratori di Jam Session.
+      </p>
+
+      <div class="corsi-grid">
+        {corsi.map(corso => (
+          <a class="corso-card" href={`/corsi/${corso.id}`}>
+            <span class="corso-titolo">{corso.data.title}</span>
+            <p class="corso-intro">{corso.data.intro}</p>
+            <span class="corso-link">Scopri il corso →</span>
+          </a>
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 14px 0 90px;
+  }
+  .page-content {
+    margin: 46px 0 60px;
+  }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin: 0 0 12px;
+  }
+  .intro {
+    font-family: "Lexend", sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    opacity: .82;
+        margin: 0 0 40px;
+  }
+
+  .corsi-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 640px) {
+    .corsi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 980px) {
+    .corsi-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .corso-card {
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid rgba(11,11,11,.1);
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+  }
+  .corso-titolo {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .corso-intro {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .74;
+    margin: 0 0 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .corso-link {
+    margin-top: auto;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #0f5f53;
+  }
+</style>

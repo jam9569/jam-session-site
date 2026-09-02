@@ -1,0 +1,425 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const PILASTRI = [
+  {
+    titolo: "Una rete diffusa",
+    testo: "36 progetti in sei province dell'Emilia-Romagna, con scuole di musica partner, enti locali e organizzazioni del Terzo Settore.",
+  },
+  {
+    titolo: "Percorsi gratuiti",
+    testo: "Moduli di canto corale, propedeutica musicale e musica d'insieme, ad accesso libero e gratuito, calibrati per età e ordine scolastico.",
+  },
+  {
+    titolo: "Inclusione al centro",
+    testo: "Repertori, arrangiamenti e ruoli musicali adattati per garantire la piena partecipazione di allievi con disabilità, DSA e altri bisogni educativi speciali.",
+  },
+  {
+    titolo: "Docenti qualificati",
+    testo: "I moduli sono condotti da insegnanti specializzati nelle diverse pratiche musicali collettive, con un approccio didattico pensato per gruppi eterogenei per età ed esperienza.",
+  },
+  {
+    titolo: "Voglio Live 2027",
+    testo: "Il percorso si chiude con Voglio Live 2027, la restituzione pubblica dei laboratori: sabato 29 maggio, in Piazza Lucio Dalla a Bologna.",
+    href: "/eventi/voglio-live-2027",
+  },
+];
+
+const SCUOLE_MUSICA_PARTNER = [
+  "Amici della Musica di Minerbio",
+  "Doremiusic",
+  "Scuola Mondo Musica di Parma",
+  "Bimbi in Musica",
+  "Ass. Culturale Musicale Orchestra Amadeus",
+  "Accademia di Musica Ars Nova",
+  "Circolo Girolamo Frescobaldi APS",
+  "Centro Mousiké APS",
+];
+
+const ISTITUTI = [
+  {
+    provincia: "Bologna",
+    scuole: ["IC 16 Bologna", "Liceo Galvani", "Liceo Artistico Arcangeli", "IIS Aldini-Valeriani", "IIS Manfredi Tanari", "Liceo Scientifico Sabin", "Liceo Scientifico Fermi", "IC 1 Bologna", "IC Minerbio", "IC Malalbergo", "IIS Crescenzi-Pacinotti-Sirani"],
+  },
+  {
+    provincia: "Reggio Emilia",
+    scuole: ["IC Manzoni", "IC Fermi", "IC Leonardo da Vinci", "IC Correggio 1", "Convitto Nazionale R. Corso"],
+  },
+  {
+    provincia: "Parma",
+    scuole: ["IC Statale di Busseto", "IC di Traversetolo", 'IC Noceto "R. Levi Montalcini"', 'D.D. Fidenza "Ilaria Alpi"', "Primaria Paritaria Casa Famiglia (San Pancrazio)", "ITT C. Rondani"],
+  },
+  {
+    provincia: "Piacenza",
+    scuole: ["IC della Val Nure", "Liceo Classico Gioia", "IC Faustini Frank Nicolini", "IC Card. Agostino Casaroli", "IC E. Carella (Pianello Val Tidone)", "IC Rivergaro", "VIII Circolo Didattico", "Primaria Paritaria Sant'Orsola", "IS Tramello-Cassinari", "IC Castell'Arquato"],
+  },
+  {
+    provincia: "Ferrara",
+    scuole: ["IC Don Milani", "IC Alberto Manzi"],
+  },
+  {
+    provincia: "Ravenna",
+    scuole: ["IT Morigia-Perdisa", "Liceo Scientifico Oriani"],
+  },
+];
+---
+
+<BaseLayout title="Musica e Società — Jam Session APS" description="Musica e Società: la rete regionale di educazione musicale coordinata da Jam Session APS in Emilia-Romagna, con percorsi gratuiti nelle scuole.">
+  <Header />
+  <div class="container">
+    <div class="hero-media">
+      <img src="/assets/progetti/musica-e-societa-hero.jpg" alt="Il Coro del Liceo Ginnasio Galvani si esibisce nella biblioteca storica del liceo" />
+    </div>
+    <p class="hero-caption">Il Coro del Liceo Ginnasio Galvani</p>
+    <main class="page-content">
+      <p class="kicker">Rete regionale di educazione musicale</p>
+      <h1>Musica e Società</h1>
+      <p class="lead">Portare la pratica musicale dentro le scuole, gratuitamente e senza distinzioni.</p>
+
+      <div class="testo-intro">
+        <p>
+          Musica e Società è il progetto con cui Jam Session APS, in qualità di soggetto capofila,
+          coordina una rete di educazione musicale che nell'anno scolastico 2026/2027 coinvolgerà 36
+          progetti e circa 900 studenti in sei province dell'Emilia-Romagna. Giunto alla
+          sua sesta edizione consecutiva, il progetto è sostenuto dalla Regione Emilia-Romagna
+          nell'ambito del Programma regionale FSE+ 2021-2027, cofinanziato dall'Unione Europea.
+        </p>
+        <p>
+          Il progetto porterà la pratica musicale collettiva — canto corale, propedeutica musicale e musica
+          strumentale d'insieme — dentro le scuole, in percorsi gratuiti e ad accesso libero rivolti a
+          bambine, bambini e ragazzi della primaria, della secondaria di primo e secondo grado e dei
+          percorsi di istruzione e formazione professionale. L'obiettivo non è soltanto l'apprendimento
+          tecnico, ma la costruzione di un'esperienza collettiva capace di sviluppare ascolto,
+          responsabilità e senso di appartenenza, con un'attenzione specifica all'inclusione di allievi
+          con disabilità, DSA e altri bisogni educativi speciali.
+        </p>
+      </div>
+
+      <section aria-label="Come funziona">
+        <div class="section-head">
+          <h2>Come funziona</h2>
+        </div>
+        <div class="come-funziona-layout">
+          <div class="pilastri-grid">
+            {PILASTRI.map(p => (
+              p.href ? (
+                <a class="pilastro-card pilastro-card-link" href={p.href}>
+                  <h3>{p.titolo}</h3>
+                  <p>{p.testo}</p>
+                  <span class="pilastro-link">Scopri l'evento →</span>
+                </a>
+              ) : (
+                <div class="pilastro-card">
+                  <h3>{p.titolo}</h3>
+                  <p>{p.testo}</p>
+                </div>
+              )
+            ))}
+          </div>
+          <figure class="scheda-fse-figure" role="img" aria-label="Scheda informativa del Fondo sociale europeo Plus per il progetto Musica e Società">
+            <div class="scheda-fse-bg"></div>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-label="Istituti coinvolti">
+        <div class="section-head">
+          <h2>Le scuole e gli istituti coinvolti</h2>
+          <p class="subtitle">Nell'anno scolastico 2026/2027 la rete coinvolgerà 36 istituti in sei province dell'Emilia-Romagna.</p>
+        </div>
+        <div class="istituti-grid">
+          {ISTITUTI.map(gruppo => (
+            <div class="istituti-provincia">
+              <h3>{gruppo.provincia}</h3>
+              <ul>
+                {gruppo.scuole.map(s => <li>{s}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p class="scuole-musica-nota">
+          Le scuole di musica partner che affiancano Jam Session nella realizzazione dei percorsi sono:{" "}
+          {SCUOLE_MUSICA_PARTNER.join(", ")}.
+        </p>
+      </section>
+
+      <p class="partner-nota">
+        Musica e Società è finanziato dalla Regione Emilia-Romagna nell'ambito del Programma regionale
+        FSE+ 2021-2027, in attuazione della Legge regionale 16 marzo 2018, n. 2 "Norme in materia di
+        sviluppo del settore musicale". Il progetto nasce per rispondere alle disuguaglianze
+        nell'accesso alle attività musicali extrascolastiche, dovute alle condizioni economiche delle
+        famiglie, alla distanza dai servizi o alla scarsa disponibilità di offerte nei centri più
+        piccoli: renderà quindi disponibili percorsi gratuiti, senza prerequisiti musicali, realizzati
+        prevalentemente presso le scuole o in sedi territorialmente vicine, per rimuovere ostacoli
+        economici, culturali e logistici e ampliare le opportunità educative sul territorio.
+      </p>
+
+      <div class="loghi-fse" aria-label="Cofinanziamento europeo">
+        <p class="dicitura-fse">Il progetto è realizzato grazie ai Fondi europei della Regione Emilia-Romagna.</p>
+        <p class="riferimenti-fse">
+          Percorso approvato dalla Regione Emilia-Romagna con Delibera di Giunta regionale n. 1351 del 03/08/2026.<br />
+          Rif. PA. NUMERO 2026-27006/RER — Soggetto attuatore: Jam Session APS (capofila).
+        </p>
+        <div class="loghi-row">
+          <img src="/assets/progetti/loghi-fse/loghi-fse-ue.jpg" alt="Coesione Italia 21-27 Emilia-Romagna, Unione Europea, Repubblica Italiana, Regione Emilia-Romagna" />
+        </div>
+      </div>
+
+      <section class="cta-section" aria-label="Contatti">
+        <h2>Vuoi saperne di più su Musica e Società?</h2>
+        <p class="subtitle">Scrivici se la tua scuola vuole entrare a far parte della rete, o per conoscere meglio il progetto.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-caption {
+    margin: 8px 0 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #8a8a8a;
+  }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 46px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .come-funziona-layout {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 900px) {
+    .come-funziona-layout { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  }
+  .pilastri-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  .scheda-fse-figure { margin: 0; }
+  .scheda-fse-bg {
+    width: 100%;
+    aspect-ratio: 2481 / 3154;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-image: url("/assets/progetti/musica-e-societa-scheda-fse.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  @media (min-width: 900px) {
+    .scheda-fse-figure { height: 100%; }
+    .scheda-fse-bg { height: 100%; aspect-ratio: auto; }
+  }
+  .pilastro-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .pilastro-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--green);
+  }
+  .pilastro-card p {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .78;
+    margin: 0;
+  }
+  .pilastro-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .pilastro-link {
+    margin-top: 12px;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  .istituti-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .istituti-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .istituti-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .istituti-provincia {
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    background: #f6c9c9;
+  }
+  .istituti-provincia:nth-child(6n+2) { background: #ffffff; border: 1px solid rgba(11,11,11,.1); }
+  .istituti-provincia:nth-child(6n+3) { background: #fdf3d6; }
+  .istituti-provincia:nth-child(6n+4) { background: #ffffff; border: 1px solid rgba(11,11,11,.1); }
+  .istituti-provincia:nth-child(6n+5) { background: #e4f0ea; }
+  .istituti-provincia:nth-child(6n+6) { background: #ffffff; border: 1px solid rgba(11,11,11,.1); }
+  .istituti-provincia h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin: 0 0 12px;
+    color: var(--green);
+  }
+  .istituti-provincia ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .istituti-provincia li {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: .78;
+    padding: 3px 0;
+  }
+  .scuole-musica-nota {
+    margin: 24px 0 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: .68;
+  }
+
+  .partner-nota {
+    margin: 40px 0 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: .6;
+    font-style: italic;
+  }
+
+  .loghi-fse {
+    margin: 32px 0 0;
+    padding-top: 28px;
+    border-top: 1px solid rgba(11,11,11,.1);
+  }
+  .dicitura-fse {
+    margin: 0 0 18px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    opacity: .68;
+  }
+  .riferimenti-fse {
+    margin: -8px 0 18px;
+    font-family: "Lexend", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: .5;
+  }
+  .loghi-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .loghi-row img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>
