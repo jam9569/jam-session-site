@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const SITE = {
+  addressLine1: "Via del Perugino 6B e 6C",
+  addressLine2: "40139 Bologna",
+  email: "info@assjamsession.it",
+  pec: "ass.jamsession@pec.it",
+  whatsapp: "https://wa.me/393202244932",
+  whatsappDisplay: "+39 320 224 4932",
+};
+---
+
+<BaseLayout title="Contatti — Jam Session APS" description="Contatta Jam Session APS: sede a Bologna, email, PEC, WhatsApp e modulo per richiedere informazioni su corsi e progetti.">
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Scrivici, chiamaci o passa a trovarci</p>
+      <h1>Contatti</h1>
+      <p class="lead">Siamo a Bologna, in Via del Perugino. Scegli il modo che preferisci per raggiungerci.</p>
+
+      <div class="contatti-layout">
+        <div class="info-card">
+          <div class="info-block">
+            <span class="info-label">Sede</span>
+            <p class="info-value">{SITE.addressLine1}<br />{SITE.addressLine2}</p>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Email</span>
+            <p class="info-value"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          </div>
+          <div class="info-block">
+            <span class="info-label">PEC</span>
+            <p class="info-value"><a href={`mailto:${SITE.pec}`}>{SITE.pec}</a></p>
+          </div>
+          <div class="info-block">
+            <span class="info-label">WhatsApp</span>
+            <p class="info-value"><a href={SITE.whatsapp} target="_blank" rel="noopener">{SITE.whatsappDisplay}</a></p>
+          </div>
+          <div class="info-actions">
+            <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+            <a class="btn btn-outline-dark" href={SITE.whatsapp} target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <iframe
+            title="Mappa: Via del Perugino 6B e 6C, Bologna"
+            src="https://www.google.com/maps?q=Via+del+Perugino+6B,+40139+Bologna&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 16px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 40px;
+  }
+
+  .contatti-layout {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 900px) {
+    .contatti-layout { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  }
+
+  .info-card {
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .info-block { display: flex; flex-direction: column; gap: 4px; }
+  .info-label {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+  .info-value {
+    margin: 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .info-value a { text-decoration: underline; }
+  .info-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .map-card {
+    border-radius: var(--radiusLg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-height: 320px;
+  }
+  .map-card iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    border: 0;
+    display: block;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+</style>
