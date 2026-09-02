@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 const SITE = {
   addressLine1: "Via del Perugino 6B e 6C",
   addressLine2: "40139 Bologna",
-  email: "info@assjamsession.it",
+  email: "segreteria@assjamsession.it",
   pec: "ass.jamsession@pec.it",
   whatsapp: "https://wa.me/393202244932",
   whatsappDisplay: "+39 320 224 4932",
@@ -87,14 +87,10 @@ const SITE = {
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
   .page-content { margin: 16px 0 60px; }
   .sede-photos {
-    margin: 56px auto 0;
-    max-width: 760px;
+    margin: 56px 0 0;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  @media (min-width: 480px) {
-    .sede-photos { grid-template-columns: 1fr 1fr; }
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
   .sede-photo {
     border-radius: var(--radius);
