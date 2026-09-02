@@ -55,8 +55,13 @@ const SITE = {
         </div>
       </div>
 
-      <div class="sede-photo">
-        <img src="/assets/contatti/sede-cabine-insonorizzate.jpg" alt="Le cabine insonorizzate per lo studio individuale nella sede di Jam Session APS" />
+      <div class="sede-photos">
+        <div class="sede-photo">
+          <img src="/assets/contatti/sede-cabine-insonorizzate.jpg" alt="Le cabine insonorizzate per lo studio individuale nella sede di Jam Session APS" />
+        </div>
+        <div class="sede-photo">
+          <img src="/assets/contatti/sede-sala-prove.jpg" alt="La sala prove della sede di Jam Session APS" />
+        </div>
       </div>
 
     </main>
@@ -81,15 +86,23 @@ const SITE = {
 
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
   .page-content { margin: 16px 0 60px; }
-  .sede-photo {
+  .sede-photos {
     margin: 56px auto 0;
-    max-width: 460px;
+    max-width: 760px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 480px) {
+    .sede-photos { grid-template-columns: 1fr 1fr; }
+  }
+  .sede-photo {
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid rgba(11,11,11,.1);
     box-shadow: var(--shadow);
   }
-  .sede-photo img { width: 100%; height: auto; display: block; }
+  .sede-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
   .page-content h1 {
     font-family: "Inter", sans-serif;
