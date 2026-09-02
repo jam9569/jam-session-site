@@ -7,11 +7,17 @@ import Footer from '../../components/Footer.astro';
 const newsEntries = await getCollection('news');
 const news = newsEntries
   .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
-  .map(n => ({
-    slug: n.id,
-    title: n.data.title,
-    dateDisplay: new Date(n.data.date).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
-  }));
+  .map(n => {
+    const d = new Date(n.data.date);
+    return {
+      slug: n.id,
+      title: n.data.title,
+      dateDisplay: d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
+      year: String(d.getFullYear()),
+    };
+  });
+
+const YEARS = [...new Set(news.map(n => n.year))].sort((a, b) => Number(b) - Number(a));
 ---
 
 <BaseLayout title="News — Jam Session APS" description="L'archivio di tutte le news di Jam Session APS: aggiornamenti su corsi, iscrizioni, saggi ed eventi.">
@@ -21,10 +27,19 @@ const news = newsEntries
       <h1>News</h1>
       <p class="lead">Tutti gli aggiornamenti di Jam Session APS, dalla data più vicina alla più lontana.</p>
 
+      {news.length > 0 && YEARS.length > 1 && (
+        <div class="news-filters" role="group" aria-label="Filtra le news per anno">
+          <button type="button" class="filter-btn is-active" data-year="all">Tutte</button>
+          {YEARS.map(y => (
+            <button type="button" class="filter-btn" data-year={y}>{y}</button>
+          ))}
+        </div>
+      )}
+
       {news.length > 0 ? (
-        <div class="news-grid">
+        <div class="news-grid" id="news-grid">
           {news.map(n => (
-            <a class="news-card" href={`/news/${n.slug}`}>
+            <a class="news-card" href={`/news/${n.slug}`} data-year={n.year}>
               <span class="news-date">{n.dateDisplay}</span>
               <span class="news-title">{n.title}</span>
               <span class="news-more">Leggi i dettagli →</span>
@@ -41,6 +56,22 @@ const news = newsEntries
     <Footer />
   </div>
 </BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLAnchorElement>('#news-grid .news-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const year = btn.dataset.year;
+      buttons.forEach(b => b.classList.toggle('is-active', b === btn));
+      cards.forEach(card => {
+        const show = year === 'all' || card.dataset.year === year;
+        card.hidden = !show;
+      });
+    });
+  });
+</script>
 
 <style>
   :root {
@@ -69,7 +100,30 @@ const news = newsEntries
     font-size: 19px;
     line-height: 1.6;
     opacity: .82;
-    margin: 0 0 40px;
+    margin: 0 0 28px;
+  }
+
+  .news-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 28px;
+  }
+  .filter-btn {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(11,11,11,.18);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .filter-btn.is-active {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
   }
 
   .news-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -84,6 +138,7 @@ const news = newsEntries
     text-decoration: none;
     color: inherit;
   }
+  .news-card[hidden] { display: none; }
   .news-date { display: block; font-size: 12px; opacity: .62; font-weight: 700; font-family: "Inter", sans-serif; }
   .news-title { display: block; margin: 10px 0 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 16px; line-height: 1.25; }
   .news-more { display: block; margin-top: 10px; font-size: 13px; opacity: .75; font-weight: 800; font-family: "Inter", sans-serif; color: var(--green); }
