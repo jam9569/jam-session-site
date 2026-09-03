@@ -128,7 +128,7 @@ const MENU = [
           <circle cx="11" cy="11" r="7"></circle>
           <line x1="21" y1="21" x2="16.2" y2="16.2"></line>
         </svg>
-        <input type="text" class="search-input" placeholder="Cerca corsi, progetti, news..." autocomplete="off" />
+        <input type="text" class="search-input" placeholder="Cerca corsi, progetti, news, persone..." autocomplete="off" />
         <button class="search-close" aria-label="Chiudi ricerca">&times;</button>
       </div>
       <div class="search-results" aria-live="polite"></div>
@@ -452,6 +452,12 @@ const MENU = [
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
+  .search-result-excerpt mark {
+    background: #fce8b5;
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
   .search-empty, .search-hint {
     padding: 24px 16px;
     text-align: center;
@@ -519,33 +525,63 @@ const MENU = [
     return searchIndexPromise;
   }
 
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function highlight(text, query) {
+    const escaped = escapeHtml(text);
+    if (!query) return escaped;
+    const escQuery = escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return escaped.replace(new RegExp('(' + escQuery + ')', 'ig'), '<mark>$1</mark>');
+  }
+
+  function buildSnippet(content, q, radius) {
+    const lower = content.toLowerCase();
+    const idx = lower.indexOf(q);
+    if (idx === -1) return content.slice(0, radius * 2);
+    const start = Math.max(0, idx - radius);
+    const end = Math.min(content.length, idx + q.length + radius);
+    let snippet = content.slice(start, end).trim();
+    if (start > 0) snippet = '…' + snippet;
+    if (end < content.length) snippet = snippet + '…';
+    return snippet;
+  }
+
   function renderResults(query) {
     if (!searchResults) return;
     const q = query.trim().toLowerCase();
     if (!q) {
-      searchResults.innerHTML = '<div class="search-hint">Scrivi per cercare tra corsi, progetti, news e pagine del sito.</div>';
+      searchResults.innerHTML = '<div class="search-hint">Scrivi per cercare tra corsi, progetti, news, persone e pagine del sito.</div>';
       return;
     }
     const items = (searchIndex || []).filter((item) => {
       return (
         item.title.toLowerCase().includes(q) ||
-        (item.excerpt || '').toLowerCase().includes(q) ||
+        (item.content || '').toLowerCase().includes(q) ||
         (item.category || '').toLowerCase().includes(q)
       );
     }).slice(0, 30);
 
     if (items.length === 0) {
-      searchResults.innerHTML = '<div class="search-empty">Nessun risultato per "' + query.replace(/</g, '&lt;') + '".</div>';
+      searchResults.innerHTML = '<div class="search-empty">Nessun risultato per "' + escapeHtml(query) + '".</div>';
       return;
     }
 
-    searchResults.innerHTML = items.map((item) => (
-      '<a class="search-result" href="' + item.url + '">' +
-        '<span class="search-result-cat">' + item.category + '</span>' +
-        '<span class="search-result-title">' + item.title + '</span>' +
-        (item.excerpt ? '<span class="search-result-excerpt">' + item.excerpt + '</span>' : '') +
-      '</a>'
-    )).join('');
+    searchResults.innerHTML = items.map((item) => {
+      const content = item.content || '';
+      const titleMatches = item.title.toLowerCase().includes(q);
+      const snippet = content
+        ? highlight(buildSnippet(content, q, 90), titleMatches && !content.toLowerCase().includes(q) ? '' : query.trim())
+        : '';
+      return (
+        '<a class="search-result" href="' + item.url + '">' +
+          '<span class="search-result-cat">' + item.category + '</span>' +
+          '<span class="search-result-title">' + highlight(item.title, query.trim()) + '</span>' +
+          (snippet ? '<span class="search-result-excerpt">' + snippet + '</span>' : '') +
+        '</a>'
+      );
+    }).join('');
   }
 
   function openSearch() {
