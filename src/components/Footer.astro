@@ -76,7 +76,7 @@ const YEAR = new Date().getFullYear();
       <a href="/cookie">Cookie</a>
     </div>
     <div class="footer-eu">
-      <a href="/european-partners">🇪🇺 For European Partners</a>
+      <a href="/european-partners"><span class="flag-badge">🇪🇺</span> For European Partners</a>
     </div>
   </div>
  
@@ -191,7 +191,22 @@ const YEAR = new Date().getFullYear();
     font-weight: 900;
     font-size: 13px;
   }
-  .footer-eu a { color: rgba(255,255,255,.96); text-decoration: none; }
+  .footer-eu a {
+    color: rgba(255,255,255,.96);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .flag-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 2px 4px;
+    line-height: 1;
+  }
   .copyright { margin-top: 14px; font-size: 12px; opacity: .9; }
  
   @media (min-width: 768px) {
