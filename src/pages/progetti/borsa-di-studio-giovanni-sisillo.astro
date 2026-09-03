@@ -8,9 +8,14 @@ import Footer from '../../components/Footer.astro';
   <Header />
   <div class="container">
     <main class="page-content">
-      <p class="kicker">Borsa di studio · Anno Accademico 2026/2027</p>
-      <h1>Borsa di Studio "Giovanni Sisillo"</h1>
-      <p class="lead">Dove c'è bisogno di musica, io ci sono.</p>
+      <div class="intro-header">
+        <img class="intro-foto" src="/assets/progetti/giovanni-sisillo.jpg" alt="Giovanni Sisillo alla batteria" loading="lazy" />
+        <div class="intro-testo">
+          <p class="kicker">Borsa di studio · Anno Accademico 2026/2027</p>
+          <h1>Borsa di Studio "Giovanni Sisillo"</h1>
+          <p class="lead">Dove c'è bisogno di musica, io ci sono.</p>
+        </div>
+      </div>
 
       <div class="testo-intro">
         <p>
@@ -58,6 +63,26 @@ import Footer from '../../components/Footer.astro';
 
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
   .page-content { margin: 16px 0 60px; }
+  .intro-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .intro-testo { flex: 1 1 auto; min-width: 0; }
+  img.intro-foto {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    box-shadow: var(--shadow);
+  }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
   .page-content h1 {
     font-family: "Inter", sans-serif;
