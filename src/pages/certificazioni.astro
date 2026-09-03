@@ -192,6 +192,23 @@ const CARATTERISTICHE = [
     height: 100%;
     border: none;
   }
+</style>
+
+<style is:global>
+  /* Iubenda sostituisce l'iframe originale con uno nuovo quando l'utente
+     accetta i cookie: quello nuovo non porta l'attributo di scoping di
+     Astro, quindi la regola sopra (scoped) non gli si applicherebbe.
+     Questa versione globale garantisce che riempia comunque il riquadro. */
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+
+<style>
   .video-nota {
     margin: 12px 4px 2px;
     font-family: "Lexend", sans-serif;
