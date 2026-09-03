@@ -106,11 +106,11 @@ const FASI = [
   .hero-media {
     margin-top: 6px;
     width: 100%;
-    aspect-ratio: 882 / 540;
+    min-height: 520px;
     border-radius: 28px;
     overflow: hidden;
     position: relative;
-    background: #fafafa;
+    background: #fff;
     box-shadow: 0 12px 28px rgba(0,0,0,.08);
   }
   .hero-media img {
@@ -119,6 +119,9 @@ const FASI = [
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
+    padding: 48px;
+    box-sizing: border-box;
     display: block;
   }
   .page-content { margin: 46px 0 60px; }
