@@ -22,6 +22,9 @@ const FASI = [
 <BaseLayout title="Musa — Jam Session APS" description="Musa: il percorso di Jam Session APS per l'autonomia professionale di giovani musiciste, tra laboratori, incubatore e mentoring dedicato.">
   <Header />
   <div class="container">
+    <div class="hero-media">
+      <img src="/assets/progetti/musa-logo-cover.png" alt="Musa — Percorsi di autonomia professionale per giovani donne nella musica" />
+    </div>
     <main class="page-content">
       <p class="kicker">Parità di genere nella musica</p>
       <h1>Musa</h1>
@@ -100,7 +103,25 @@ const FASI = [
   a { color: inherit; }
 
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
-  .page-content { margin: 16px 0 60px; }
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    aspect-ratio: 882 / 540;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #fafafa;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .page-content { margin: 46px 0 60px; }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
   .page-content h1 {
     font-family: "Inter", sans-serif;
