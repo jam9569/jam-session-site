@@ -76,7 +76,23 @@ const YEAR = new Date().getFullYear();
       <a href="/cookie">Cookie</a>
     </div>
     <div class="footer-eu">
-      <a href="/european-partners"><span class="flag-badge">🇪🇺</span> For European Partners</a>
+      <a href="/european-partners"><svg class="eu-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="30" height="20" fill="#039" />
+          <g fill="#fc0">
+            <polygon points="15.0,1.9 15.38,2.98 16.52,3.01 15.61,3.7 15.94,4.79 15.0,4.14 14.06,4.79 14.39,3.7 13.48,3.01 14.62,2.98"/>
+            <polygon points="18.25,2.77 18.63,3.85 19.77,3.88 18.86,4.57 19.19,5.67 18.25,5.01 17.31,5.67 17.64,4.57 16.73,3.88 17.87,3.85"/>
+            <polygon points="20.63,5.15 21.01,6.23 22.15,6.26 21.24,6.95 21.57,8.04 20.63,7.39 19.69,8.04 20.02,6.95 19.11,6.26 20.25,6.23"/>
+            <polygon points="21.5,8.4 21.88,9.48 23.02,9.51 22.11,10.2 22.44,11.29 21.5,10.64 20.56,11.29 20.89,10.2 19.98,9.51 21.12,9.48"/>
+            <polygon points="20.63,11.65 21.01,12.73 22.15,12.76 21.24,13.45 21.57,14.54 20.63,13.89 19.69,14.54 20.02,13.45 19.11,12.76 20.25,12.73"/>
+            <polygon points="18.25,14.03 18.63,15.11 19.77,15.13 18.86,15.83 19.19,16.92 18.25,16.27 17.31,16.92 17.64,15.83 16.73,15.13 17.87,15.11"/>
+            <polygon points="15.0,14.9 15.38,15.98 16.52,16.01 15.61,16.7 15.94,17.79 15.0,17.14 14.06,17.79 14.39,16.7 13.48,16.01 14.62,15.98"/>
+            <polygon points="11.75,14.03 12.13,15.11 13.27,15.13 12.36,15.83 12.69,16.92 11.75,16.27 10.81,16.92 11.14,15.83 10.23,15.13 11.37,15.11"/>
+            <polygon points="9.37,11.65 9.75,12.73 10.89,12.76 9.98,13.45 10.31,14.54 9.37,13.89 8.43,14.54 8.76,13.45 7.85,12.76 8.99,12.73"/>
+            <polygon points="8.5,8.4 8.88,9.48 10.02,9.51 9.11,10.2 9.44,11.29 8.5,10.64 7.56,11.29 7.89,10.2 6.98,9.51 8.12,9.48"/>
+            <polygon points="9.37,5.15 9.75,6.23 10.89,6.26 9.98,6.95 10.31,8.04 9.37,7.39 8.43,8.04 8.76,6.95 7.85,6.26 8.99,6.23"/>
+            <polygon points="11.75,2.77 12.13,3.85 13.27,3.88 12.36,4.57 12.69,5.67 11.75,5.01 10.81,5.67 11.14,4.57 10.23,3.88 11.37,3.85"/>
+          </g>
+        </svg> For European Partners</a>
     </div>
   </div>
  
@@ -196,16 +212,15 @@ const YEAR = new Date().getFullYear();
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
   }
-  .flag-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: 4px;
-    padding: 2px 4px;
-    line-height: 1;
+  .eu-flag {
+    width: 30px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.3), 0 2px 5px rgba(0,0,0,.35);
   }
   .copyright { margin-top: 14px; font-size: 12px; opacity: .9; }
  
