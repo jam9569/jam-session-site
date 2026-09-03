@@ -8,8 +8,9 @@ const SITE = {
   addressLine2: "40139 Bologna",
   email: "segreteria@assjamsession.it",
   pec: "ass.jamsession@pec.it",
+  phone: "tel:+393202244932",
+  phoneDisplay: "+39 320 224 4932",
   whatsapp: "https://wa.me/393202244932",
-  whatsappDisplay: "+39 320 224 4932",
 };
 ---
 
@@ -36,13 +37,13 @@ const SITE = {
             <p class="info-value"><a href={`mailto:${SITE.pec}`}>{SITE.pec}</a></p>
           </div>
           <div class="info-block">
-            <span class="info-label">WhatsApp</span>
-            <p class="info-value"><a href={SITE.whatsapp} target="_blank" rel="noopener">{SITE.whatsappDisplay}</a></p>
+            <span class="info-label">Telefono</span>
+            <p class="info-value"><a href={SITE.phone}>{SITE.phoneDisplay}</a></p>
           </div>
           <div class="info-actions">
-            <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
-            <a class="btn btn-outline-dark" href={SITE.whatsapp} target="_blank" rel="noopener">Scrivici su WhatsApp</a>
-            <a class="btn btn-green" href="https://form.jotform.com/262452189887069" target="_blank" rel="noopener">Lavora con noi</a>
+            <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Chiedi info</a>
+            <a class="btn btn-outline-dark" href={SITE.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-green" href="https://form.jotform.com/262452189887069" target="_blank" rel="noopener">Candidati</a>
           </div>
         </div>
 
