@@ -9,11 +9,13 @@ import Footer from '../../components/Footer.astro';
   <div class="container">
     <main class="page-content">
       <div class="intro-header">
-        <img class="intro-foto" src="/assets/progetti/giovanni-sisillo.jpg" alt="Giovanni Sisillo alla batteria" loading="lazy" />
         <div class="intro-testo">
-          <p class="kicker">Borsa di studio · Anno Accademico 2026/2027</p>
+          <p class="kicker">Borsa di studio · Giovanni Sisillo</p>
           <h1>Borsa di Studio "Giovanni Sisillo"</h1>
           <p class="lead">Dove c'è bisogno di musica, io ci sono.</p>
+        </div>
+        <div class="intro-foto">
+          <img src="/assets/progetti/giovanni-sisillo.jpg" alt="Giovanni Sisillo alla batteria" loading="lazy" />
         </div>
       </div>
 
@@ -34,11 +36,21 @@ import Footer from '../../components/Footer.astro';
         </p>
       </div>
 
+      <section aria-label="Vincitrice 2026/2027">
+        <div class="section-head">
+          <h2>La vincitrice 2026/2027</h2>
+        </div>
+        <p class="vincitrice-testo">
+          La prima Borsa di Studio "Giovanni Sisillo" — un corso annuale di pianoforte da 36 lezioni — è
+          stata assegnata a <strong>Layla Scavuzzo</strong>, studentessa del Liceo Ginnasio Galvani.
+        </p>
+      </section>
+
       <section class="cta-section" aria-label="Candidatura">
-        <h2>Come partecipare</h2>
-        <p class="subtitle">Scrivici per ricevere il bando, il modulo di domanda e la guida alla compilazione per l'anno accademico 2026/2027.</p>
+        <h2>La prossima edizione</h2>
+        <p class="subtitle">Il bando per l'anno accademico 2027/2028 sarà pubblicato a gennaio 2027. Scrivici per essere avvisato e ricevere tutte le informazioni.</p>
         <div class="hero-actions">
-          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi il bando</a>
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
         </div>
       </section>
 
@@ -66,22 +78,24 @@ import Footer from '../../components/Footer.astro';
   .intro-header {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 28px;
+    flex-wrap: wrap;
     margin-bottom: 32px;
   }
-  .intro-testo { flex: 1 1 auto; min-width: 0; }
-  img.intro-foto {
-    flex: none;
-    width: 64px;
-    height: 64px;
-    max-width: 64px;
-    max-height: 64px;
-    min-width: 64px;
-    min-height: 64px;
-    border-radius: 50%;
+  .intro-testo { flex: 1 1 320px; }
+  .intro-foto {
+    flex: 0 0 auto;
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .intro-foto img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
-    box-shadow: var(--shadow);
   }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
   .page-content h1 {
@@ -111,6 +125,15 @@ import Footer from '../../components/Footer.astro';
 
   main > section { margin-top: 72px; }
   h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .section-head { margin-bottom: 20px; }
+  .vincitrice-testo {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    max-width: 70ch;
+    margin: 0;
+  }
 
   .btn {
     display: inline-flex;
