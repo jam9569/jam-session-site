@@ -42,7 +42,7 @@ const SITE = {
           <div class="info-actions">
             <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
             <a class="btn btn-outline-dark" href={SITE.whatsapp} target="_blank" rel="noopener">Scrivici su WhatsApp</a>
-            <a class="btn btn-outline-dark" href="https://form.jotform.com/262452189887069" target="_blank" rel="noopener">Lavora con noi</a>
+            <a class="btn btn-green" href="https://form.jotform.com/262452189887069" target="_blank" rel="noopener">Lavora con noi</a>
           </div>
         </div>
 
@@ -150,10 +150,11 @@ const SITE = {
   .info-value a { text-decoration: underline; }
   .info-actions {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 12px;
     margin-top: 8px;
   }
+  .info-actions .btn { justify-content: center; }
 
   .map-card {
     border-radius: var(--radiusLg);
@@ -184,4 +185,5 @@ const SITE = {
   }
   .btn-accent { background: var(--accent); color: #1b1b1b; }
   .btn-outline-dark { background: #fff; color: var(--ink); }
+  .btn-green { background: var(--green); color: #fff; border-color: var(--green); }
 </style>
