@@ -281,7 +281,18 @@ const SEGRETERIA = [
     gap: 20px;
   }
   .persone-grid-segreteria { grid-template-columns: 1fr; max-width: 420px; }
-  .persona-card-segreteria { box-shadow: none; border: 1px solid rgba(11,11,11,.10); }
+  .persona-card-segreteria {
+    box-shadow: none;
+    border: 1px solid rgba(11,11,11,.10);
+    justify-content: center;
+  }
+  .persona-card-segreteria .persona-photo-wrap {
+    width: 168px;
+    height: 168px;
+    margin-bottom: 20px;
+  }
+  .persona-card-segreteria .persona-iniziali { font-size: 44px; }
+  .persona-card-segreteria .persona-desc { flex-grow: 0; margin-bottom: 10px; }
 
   .segreteria-foto {
     border-radius: var(--radius);
