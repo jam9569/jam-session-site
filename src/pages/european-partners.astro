@@ -22,6 +22,15 @@ const YEAR = new Date().getFullYear();
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+
+  <!-- Iubenda Cookie Solution: banner di consenso, deve caricare il prima possibile -->
+  <script type="text/javascript" set:html={`
+    var _iub = _iub || [];
+    _iub.csConfiguration = {"siteId":1599914,"cookiePolicyId":74857805,"lang":"en"};
+  `} />
+  <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/1599914.js"></script>
+  <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{SITE_EN.name} • For European Partners</title>
 
