@@ -101,25 +101,34 @@ const SEGRETERIA = [
           <h2>Segreteria</h2>
           <p class="subtitle">Il punto di riferimento per allievi, famiglie e docenti nella gestione quotidiana.</p>
         </div>
-        <div class="persone-grid persone-grid-segreteria">
-          {SEGRETERIA.map(p => (
-            <div class="persona-card persona-card-segreteria">
-              <div class="persona-photo-wrap">
-                <span class="persona-iniziali">{iniziali(p.nome)}</span>
-                <img
-                  class="persona-photo"
-                  src={p.foto}
-                  alt={`Foto di ${p.nome}`}
-                  loading="lazy"
-                  onerror="this.style.display='none'"
-                />
+        <div class="segreteria-content">
+          <div class="persone-grid persone-grid-segreteria">
+            {SEGRETERIA.map(p => (
+              <div class="persona-card persona-card-segreteria">
+                <div class="persona-photo-wrap">
+                  <span class="persona-iniziali">{iniziali(p.nome)}</span>
+                  <img
+                    class="persona-photo"
+                    src={p.foto}
+                    alt={`Foto di ${p.nome}`}
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                  />
+                </div>
+                <span class="persona-ruolo">{p.ruolo}</span>
+                <h3 class="persona-nome">{p.nome}</h3>
+                <p class="persona-desc">{p.descrizione}</p>
+                <a class="persona-email" href={`mailto:${p.email}`}>{p.email}</a>
               </div>
-              <span class="persona-ruolo">{p.ruolo}</span>
-              <h3 class="persona-nome">{p.nome}</h3>
-              <p class="persona-desc">{p.descrizione}</p>
-              <a class="persona-email" href={`mailto:${p.email}`}>{p.email}</a>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div class="segreteria-foto">
+            <img
+              src="/assets/organigramma/segreteria-ufficio.jpg"
+              alt="La segreteria di Jam Session APS al lavoro"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
  
@@ -266,6 +275,26 @@ const SEGRETERIA = [
     border-radius: var(--radiusLg);
     padding: 32px;
   }
-  .persone-grid-segreteria { grid-template-columns: 1fr; max-width: 420px; }
+  .segreteria-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 24px;
+  }
+  .persone-grid-segreteria { grid-template-columns: 1fr; max-width: 420px; flex: 1 1 340px; }
   .persona-card-segreteria { box-shadow: none; border: 1px solid rgba(11,11,11,.10); }
+
+  .segreteria-foto {
+    flex: 1 1 320px;
+    min-width: 260px;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .segreteria-foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+  }
 </style>
