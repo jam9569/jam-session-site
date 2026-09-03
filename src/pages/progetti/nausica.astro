@@ -22,6 +22,9 @@ const TAPPE = [
 <BaseLayout title="Nausica — Jam Session APS" description="Nausica: il progetto di musicoterapia di Jam Session APS per persone con disabilità, in collaborazione con l'ASP Rodriguez di San Lazzaro di Savena.">
   <Header />
   <div class="container">
+    <div class="hero-media">
+      <img src="/assets/progetti/nausica-hero.jpg" alt="Un momento di musica d'insieme del progetto Nausica" />
+    </div>
     <main class="page-content">
       <p class="kicker">Musicoterapia inclusiva</p>
       <h1>Nausica</h1>
@@ -103,7 +106,25 @@ const TAPPE = [
   a { color: inherit; }
 
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
-  .page-content { margin: 16px 0 60px; }
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .page-content { margin: 46px 0 60px; }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
   .page-content h1 {
     font-family: "Inter", sans-serif;
