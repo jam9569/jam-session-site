@@ -10,7 +10,7 @@ const FASI = [
   },
   {
     titolo: "Incubatore e mentoring",
-    testo: "Le partecipanti sviluppano un proprio micro-progetto musicale, completo di piano operativo e strategia di sostenibilità, affiancate da mentor dedicati fino alla sua presentazione pubblica.",
+    testo: "Le partecipanti sviluppano un proprio micro-progetto musicale, completo di piano operativo e strategia di sostenibilità, affiancate da mentor dedicati fino alla sua presentazione pubblica. Ai tre migliori progetti va un micro-fondo di 300 euro per realizzarli.",
   },
   {
     titolo: "Due eventi pubblici",
@@ -36,10 +36,11 @@ const FASI = [
           musicale tradizionale si ferma: non insegna a suonare meglio, ma a costruire una carriera.
         </p>
         <p>
-          Il percorso, rivolto a giovani musiciste tra i 18 e i 30 anni del territorio bolognese, unisce
-          laboratori tematici a un vero e proprio incubatore, dove sviluppare un proprio progetto musicale
-          con il sostegno di mentor dedicati. Il tutto si apre e si chiude con due momenti pubblici, pensati
-          per portare la riflessione sulla parità di genere nella musica fuori dall'aula e dentro la città.
+          Il percorso, rivolto a un gruppo di 15-20 giovani musiciste tra i 18 e i 30 anni di Bologna e
+          della Città Metropolitana, si sviluppa da giugno 2026 a maggio 2027 e unisce sei laboratori
+          tematici a un vero e proprio incubatore, dove sviluppare un proprio progetto musicale con il
+          sostegno di mentor dedicati. Il tutto si apre e si chiude con due momenti pubblici, pensati per
+          portare la riflessione sulla parità di genere nella musica fuori dall'aula e dentro la città.
         </p>
       </div>
 
@@ -62,6 +63,13 @@ const FASI = [
         sostenuto da Fondazione del Monte di Bologna e Ravenna nell'ambito del bando "Percorsi per la
         parità di genere".
       </p>
+
+      <div class="loghi-partner" aria-label="Con il contributo di">
+        <p class="dicitura-loghi">Con il contributo di</p>
+        <div class="loghi-row">
+          <img src="/assets/progetti/fondazione-del-monte-logo.jpg" alt="Fondazione del Monte di Bologna e Ravenna, 1473" />
+        </div>
+      </div>
 
       <section class="cta-section" aria-label="Contatti">
         <h2>Vuoi saperne di più su Musa?</h2>
@@ -159,6 +167,27 @@ const FASI = [
     line-height: 1.6;
     opacity: .6;
     font-style: italic;
+  }
+
+  .loghi-partner { margin: 20px 0 0; }
+  .dicitura-loghi {
+    margin: 0 0 12px;
+    font-family: "Lexend", sans-serif;
+    font-size: 12px;
+    opacity: .55;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .loghi-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .loghi-row img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
   }
 
   .btn {
