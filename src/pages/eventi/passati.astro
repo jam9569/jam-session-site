@@ -45,7 +45,7 @@ const archivio = tuttiEventi
 const TIPI_PRESENTI = ORDINE_TIPI.filter(t => archivio.some(e => e.tipo === t));
 const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) => b.localeCompare(a));
 const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
-const mostraFiltri = TIPI_PRESENTI.length > 1 || ANNI_SOCIALI.length > 1;
+const mostraFiltri = archivio.length > 0;
 ---
 
 <BaseLayout title="Eventi passati — Jam Session APS" description="L'archivio delle masterclass, dei workshop e dei concerti che Jam Session APS ha realizzato nel tempo.">
@@ -99,7 +99,7 @@ const mostraFiltri = TIPI_PRESENTI.length > 1 || ANNI_SOCIALI.length > 1;
 
           {mostraFiltri && (
             <div class="filtri-riga">
-              {TIPI_PRESENTI.length > 1 && (
+              {TIPI_PRESENTI.length > 0 && (
                 <div class="filtri-gruppo">
                   <span class="filtri-label">Tipo</span>
                   <div class="filtri" role="group" aria-label="Filtra per tipo di evento">
