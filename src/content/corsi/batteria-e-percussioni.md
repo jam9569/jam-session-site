@@ -1,7 +1,7 @@
 ---
 title: "Batteria e Percussioni"
 strumento: "Batteria e Percussioni"
-ordine: 4
+ordine: 2
 video: "/assets/corsi/batteria-e-percussioni-hero.mp4"
 intro: "La batteria è il cuore che batte sotto ogni brano: prima ancora della melodia è il ritmo a farci muovere, ed è proprio lì che lavora questo strumento, con tutto il corpo coinvolto — braccia, gambe, respiro. Il Dipartimento di Batteria e Percussioni di Jam Session è guidato da musicisti attivi sul palco e in studio, tra jazz, rock e pop, e il ritmo qui si impara suonando: fin dalla prima lezione ti mettiamo dietro allo strumento, per scoprire subito la scarica di energia che solo tenere il tempo di una band può dare."
 fasce_eta:

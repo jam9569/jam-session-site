@@ -1,7 +1,7 @@
 ---
 title: "Pianoforte e Tastiere"
 strumento: "Pianoforte e Tastiere"
-ordine: 3
+ordine: 7
 immagine: "/assets/corsi/pianoforte-e-tastiere-hero.jpg"
 intro: "Il pianoforte è lo strumento in cui la musica si vede oltre che si sente: ottantotto tasti che raccontano insieme melodia, armonia e ritmo, e che regalano a chi li padroneggia una visione d'insieme rara. Il Dipartimento di Pianoforte e Tastiere di Jam Session accoglie chi si siede alla tastiera per la prima volta e chi invece cerca un livello sempre più alto, dal classico al pop, dal rock al blues, con un percorso costruito lezione dopo lezione sulle tue esigenze — e sulla soddisfazione, insostituibile, di suonare a due mani un brano intero."
 fasce_eta:

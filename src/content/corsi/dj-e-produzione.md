@@ -1,7 +1,7 @@
 ---
 title: "DJ e Produzione"
 strumento: "DJ e Produzione"
-ordine: 7
+ordine: 5
 immagine: "/assets/corsi/dj-e-produzione-hero.jpg"
 intro: "Fare DJ set e produrre musica significa avere il controllo pieno di un suono che prima esisteva solo nella tua testa: mixare due tracce alla perfezione, costruire un beat da zero, sentire una pista da ballo rispondere a una tua scelta. Il Dipartimento DJ e Produzione di Jam Session è composto da professionisti attivi in studio e sulla scena live, in collaborazione con All for Music, Rimini Deejay Academy e con il supporto tecnico di Pioneer DJ / AlphaTheta. Qui impari a mixare e a produrre davvero, non solo in teoria, con la consolle e il software sempre sotto le tue mani."
 livelli:

@@ -1,7 +1,7 @@
 ---
 title: "Archi"
 strumento: "Archi"
-ordine: 6
+ordine: 1
 video: "/assets/corsi/archi-hero.mp4"
 intro: "Gli strumenti ad arco hanno una voce che sembra cantare: l'archetto che scivola sulla corda crea un suono che si allunga, respira, si piega all'emozione di chi lo guida. Il Dipartimento di Archi di Jam Session è guidato da musicisti con anni di esperienza concertistica e orchestrale, che hanno scelto l'insegnamento come vocazione, e che sanno rendere accessibile — dal repertorio classico al jazz, dal folk al pop — uno strumento che ha fama di essere complesso. Che tu sia un bambino o un adulto, costruiamo insieme il percorso più adatto a te."
 fasce_eta:

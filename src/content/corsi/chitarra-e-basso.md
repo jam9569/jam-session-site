@@ -1,7 +1,7 @@
 ---
 title: "Chitarra e Basso"
 strumento: "Chitarra e Basso"
-ordine: 2
+ordine: 4
 immagine: "/assets/corsi/chitarra-e-basso-hero.jpg"
 intro: "Chitarra e basso sono gli strumenti che si imparano con le mani prima ancora che con la testa: la corda che vibra sotto le dita, il primo accordo che finalmente suona pulito, il groove che si sente nel corpo prima che nell'orecchio. Il Dipartimento di Chitarra e Basso di Jam Session è pensato per chi vuole imparare davvero a suonare, non solo a strimpellare: dal folk al metal, dal pop al funk, costruiamo un percorso sulla musica che ami ascoltare, con lo strumento in mano fin dalla prima lezione."
 fasce_eta:

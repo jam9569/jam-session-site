@@ -1,7 +1,7 @@
 ---
 title: "Fiati"
 strumento: "Fiati"
-ordine: 5
+ordine: 6
 video: "/assets/corsi/fiati-hero.mp4"
 intro: "Gli strumenti a fiato trasformano il respiro stesso in musica: non c'è mediazione tra te e il suono, solo l'aria che controlli e plasmi nota dopo nota. Il Dipartimento di Fiati di Jam Session accompagna chi si avvicina per la prima volta a sax, tromba, clarinetto, flauto o trombone, e chi invece vuole affinare tecnica e stile in un percorso costruito sulla propria voce strumentale — su quel timbro unico che ogni fiatista, con il tempo, impara a riconoscere come proprio."
 fasce_eta:
