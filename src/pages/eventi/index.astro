@@ -1,16 +1,34 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const EVENTI = [
-  {
-    nome: "Voglio Live 2027",
-    kicker: "Festival e restituzione pubblica · Sabato 29 maggio 2027",
-    teaser: "Il festival delle scuole di musica nato nel 2019, oggi anche la restituzione pubblica dei laboratori di Musica e Società: un pomeriggio di musica in Piazza Lucio Dalla a Bologna.",
-    href: "/eventi/voglio-live-2027",
-  },
-];
+const TIPO_LABEL: Record<string, string> = {
+  masterclass: "Masterclass",
+  workshop: "Workshop",
+  live: "Live",
+  festival: "Festival",
+};
+
+const oggiStr = new Date().toISOString().slice(0, 10);
+const tuttiEventi = await getCollection('eventi');
+
+function formatData(d: string) {
+  const s = new Date(d).toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+const EVENTI = tuttiEventi
+  .filter(e => e.data.data >= oggiStr)
+  .sort((a, b) => (a.data.data > b.data.data ? 1 : -1))
+  .map(e => ({
+    nome: e.data.nome,
+    kicker: `${TIPO_LABEL[e.data.tipo]} · ${formatData(e.data.data)}`,
+    teaser: e.data.teaser,
+    ospiti: e.data.ospiti,
+    href: e.data.href,
+  }));
 ---
 
 <BaseLayout title="Eventi — Jam Session APS" description="Gli eventi pubblici di Jam Session APS: da Voglio Live 2027 all'archivio di masterclass, workshop e concerti realizzati negli anni.">
@@ -23,16 +41,32 @@ const EVENTI = [
         concerti aperti al pubblico. Ecco gli eventi in programma.
       </p>
 
+      {EVENTI.length > 0 ? (
       <div class="eventi-grid">
         {EVENTI.map(e => (
-          <a class="evento-card" href={e.href}>
-            <span class="evento-kicker">{e.kicker}</span>
-            <span class="evento-nome">{e.nome}</span>
-            <p class="evento-teaser">{e.teaser}</p>
-            <span class="evento-link">Scopri l'evento →</span>
-          </a>
+          e.href ? (
+            <a class="evento-card" href={e.href}>
+              <span class="evento-kicker">{e.kicker}</span>
+              <span class="evento-nome">{e.nome}</span>
+              <p class="evento-teaser">{e.teaser}</p>
+              {e.ospiti && e.ospiti.length > 0 && <p class="evento-ospiti">Con {e.ospiti.join(', ')}</p>}
+              <span class="evento-link">Scopri l'evento →</span>
+            </a>
+          ) : (
+            <div class="evento-card">
+              <span class="evento-kicker">{e.kicker}</span>
+              <span class="evento-nome">{e.nome}</span>
+              <p class="evento-teaser">{e.teaser}</p>
+              {e.ospiti && e.ospiti.length > 0 && <p class="evento-ospiti">Con {e.ospiti.join(', ')}</p>}
+            </div>
+          )
         ))}
       </div>
+      ) : (
+        <div class="empty-state">
+          <p>Al momento non ci sono eventi in programma: torna presto a trovarci, oppure dai un'occhiata a quelli passati.</p>
+        </div>
+      )}
 
       <section class="passati-cta" aria-label="Eventi passati">
         <div>
@@ -118,12 +152,31 @@ const EVENTI = [
     opacity: .76;
     margin: 0 0 18px;
   }
+  .evento-ospiti {
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    font-style: italic;
+    opacity: .65;
+    margin: -10px 0 14px;
+  }
   .evento-link {
     margin-top: auto;
     font-family: "Inter", sans-serif;
     font-weight: 800;
     font-size: 13px;
     color: var(--green);
+  }
+  .empty-state {
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .empty-state p {
+    font-family: "Lexend", sans-serif;
+    opacity: .74;
+    font-size: 17px;
+    margin: 0;
   }
 
   .passati-cta {

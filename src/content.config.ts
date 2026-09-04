@@ -57,4 +57,20 @@ const voglioLiveFoto = defineCollection({
   }),
 });
 
-export const collections = { corsi, news, voglioLiveFoto };
+// Eventi (masterclass, workshop, live, festival...): un file per evento, sia futuro
+// che passato. La data decide da sola dove compare (pagina Eventi se futura, Eventi
+// passati se già avvenuta), senza bisogno di spostare nulla a mano.
+const eventi = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/eventi' }),
+  schema: z.object({
+    nome: z.string(),
+    tipo: z.enum(['masterclass', 'workshop', 'live', 'festival']),
+    data: z.string(),
+    teaser: z.string(),
+    ospiti: z.array(z.string()).optional(),
+    immagine: z.string().optional(),
+    href: z.string().optional(),
+  }),
+});
+
+export const collections = { corsi, news, voglioLiveFoto, eventi };

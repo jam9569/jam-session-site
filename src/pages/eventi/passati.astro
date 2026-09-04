@@ -1,10 +1,46 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-// Quando un evento (masterclass, workshop, concerto...) si conclude, aggiungilo qui.
-const EVENTI_PASSATI: { nome: string; data: string; tipo: string; teaser: string; href?: string }[] = [];
+const TIPO_LABEL: Record<string, string> = {
+  masterclass: "Masterclass",
+  workshop: "Workshop",
+  live: "Live",
+  festival: "Festival",
+};
+const ORDINE_TIPI = ["masterclass", "workshop", "live", "festival"];
+
+// L'associazione ragiona per anno sociale (es. "2026/2027", da settembre ad agosto),
+// non per anno solare: il raggruppamento sotto segue lo stesso criterio delle news.
+function annoSociale(d: Date) {
+  const y = d.getFullYear();
+  return d.getMonth() >= 8 ? `${y}/${y + 1}` : `${y - 1}/${y}`;
+}
+
+const oggiStr = new Date().toISOString().slice(0, 10);
+const tuttiEventi = await getCollection('eventi');
+
+const archivio = tuttiEventi
+  .filter(e => e.data.data < oggiStr)
+  .sort((a, b) => (a.data.data < b.data.data ? 1 : -1))
+  .map(e => {
+    const d = new Date(e.data.data);
+    return {
+      nome: e.data.nome,
+      tipo: e.data.tipo,
+      tipoLabel: TIPO_LABEL[e.data.tipo],
+      dataDisplay: d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
+      teaser: e.data.teaser,
+      ospiti: e.data.ospiti,
+      href: e.data.href,
+      annoSociale: annoSociale(d),
+    };
+  });
+
+const TIPI_PRESENTI = ORDINE_TIPI.filter(t => archivio.some(e => e.tipo === t));
+const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) => b.localeCompare(a));
 ---
 
 <BaseLayout title="Eventi passati — Jam Session APS" description="L'archivio delle masterclass, dei workshop e dei concerti che Jam Session APS ha realizzato nel tempo.">
@@ -15,17 +51,35 @@ const EVENTI_PASSATI: { nome: string; data: string; tipo: string; teaser: string
       <h1>Eventi passati</h1>
       <p class="lead">Qui raccogliamo le masterclass, i workshop e i concerti che Jam Session ha realizzato nel tempo.</p>
 
-      {EVENTI_PASSATI.length > 0 ? (
-        <div class="eventi-grid">
-          {EVENTI_PASSATI.map(e => (
-            <div class="evento-card">
-              <span class="evento-tipo">{e.tipo}</span>
-              <span class="evento-data">{e.data}</span>
-              <span class="evento-nome">{e.nome}</span>
-              <p class="evento-teaser">{e.teaser}</p>
+      {archivio.length > 0 ? (
+        <>
+          {TIPI_PRESENTI.length > 1 && (
+            <div class="filtri" role="group" aria-label="Filtra per tipo di evento">
+              <button type="button" class="filtro-btn is-active" data-filter="tutti">Tutti</button>
+              {TIPI_PRESENTI.map(t => (
+                <button type="button" class="filtro-btn" data-filter={t}>{TIPO_LABEL[t]}</button>
+              ))}
             </div>
+          )}
+
+          {ANNI_SOCIALI.map(anno => (
+            <section class="anno-section" aria-label={`Anno sociale ${anno}`}>
+              <h2>{anno}</h2>
+              <div class="eventi-grid">
+                {archivio.filter(e => e.annoSociale === anno).map(e => (
+                  <div class="evento-card" data-tipo={e.tipo}>
+                    <span class="evento-tipo">{e.tipoLabel}</span>
+                    <span class="evento-data">{e.dataDisplay}</span>
+                    <span class="evento-nome">{e.nome}</span>
+                    <p class="evento-teaser">{e.teaser}</p>
+                    {e.ospiti && e.ospiti.length > 0 && <p class="evento-ospiti">Con {e.ospiti.join(', ')}</p>}
+                    {e.href && <a class="evento-link" href={e.href}>Scopri di più →</a>}
+                  </div>
+                ))}
+              </div>
+            </section>
           ))}
-        </div>
+        </>
       ) : (
         <div class="empty-state">
           <p>Stiamo raccogliendo l'archivio degli eventi passati: a breve qui troverai masterclass, workshop e concerti realizzati negli anni.</p>
@@ -37,6 +91,31 @@ const EVENTI_PASSATI: { nome: string; data: string; tipo: string; teaser: string
     <Footer />
   </div>
 </BaseLayout>
+
+<script>
+  const bottoni = Array.from(document.querySelectorAll<HTMLButtonElement>('.filtro-btn'));
+  const schede = Array.from(document.querySelectorAll<HTMLDivElement>('.evento-card'));
+  const sezioni = Array.from(document.querySelectorAll<HTMLElement>('.anno-section'));
+
+  function applica(filtro: string) {
+    schede.forEach(s => {
+      const match = filtro === 'tutti' || s.dataset.tipo === filtro;
+      s.hidden = !match;
+    });
+    sezioni.forEach(sec => {
+      const visibili = Array.from(sec.querySelectorAll<HTMLDivElement>('.evento-card')).some(s => !s.hidden);
+      sec.hidden = !visibili;
+    });
+  }
+
+  bottoni.forEach(b => {
+    b.addEventListener('click', () => {
+      bottoni.forEach(x => x.classList.remove('is-active'));
+      b.classList.add('is-active');
+      applica(b.dataset.filter ?? 'tutti');
+    });
+  });
+</script>
 
 <style>
   :root {
@@ -68,7 +147,35 @@ const EVENTI_PASSATI: { nome: string; data: string; tipo: string; teaser: string
     font-size: 19px;
     line-height: 1.6;
     opacity: .82;
-    margin: 0 0 40px;
+    margin: 0 0 32px;
+  }
+
+  .filtri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .filtro-btn {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: var(--border);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .filtro-btn.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .anno-section { margin-top: 48px; }
+  .anno-section:first-of-type { margin-top: 0; }
+  .anno-section h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    margin: 0 0 18px;
   }
 
   .eventi-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
@@ -79,9 +186,12 @@ const EVENTI_PASSATI: { nome: string; data: string; tipo: string; teaser: string
     border: 1px solid rgba(11,11,11,.1);
     box-shadow: var(--shadow);
     padding: 26px;
+    display: flex;
+    flex-direction: column;
   }
   .evento-tipo {
     display: inline-block;
+    align-self: flex-start;
     font-family: "Inter", sans-serif;
     font-weight: 800;
     font-size: 11px;
@@ -95,7 +205,24 @@ const EVENTI_PASSATI: { nome: string; data: string; tipo: string; teaser: string
   }
   .evento-data { display: block; font-family: "Inter", sans-serif; font-weight: 800; font-size: 12px; opacity: .6; }
   .evento-nome { display: block; font-family: "Inter", sans-serif; font-weight: 900; font-size: 20px; margin: 8px 0 12px; }
-  .evento-teaser { font-family: "Lexend", sans-serif; font-size: 15px; line-height: 1.6; opacity: .76; margin: 0; }
+  .evento-teaser { font-family: "Lexend", sans-serif; font-size: 15px; line-height: 1.6; opacity: .76; margin: 0 0 8px; }
+  .evento-ospiti {
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    font-style: italic;
+    opacity: .65;
+    margin: 0 0 8px;
+  }
+  .evento-link {
+    margin-top: auto;
+    padding-top: 8px;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+    text-decoration: none;
+  }
+  .evento-link:hover { text-decoration: underline; }
 
   .empty-state {
     background: var(--surface);
