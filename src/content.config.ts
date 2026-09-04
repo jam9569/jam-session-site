@@ -30,7 +30,8 @@ const corsi = defineCollection({
         ruolo: z.string(),
         tratto: z.string().optional(),
       })
-    ),
+    ).optional(),
+    nota_team: z.string().optional(),
   }),
 });
 

@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { corso } = Astro.props;
-const { title, intro, immagine, video, fasce_eta, livelli, metodo, team } = corso.data;
+const { title, intro, immagine, video, fasce_eta, livelli, metodo, team, nota_team } = corso.data;
 ---
 
 <BaseLayout title={`${title} — Jam Session APS`} description={intro}>
@@ -66,22 +66,32 @@ const { title, intro, immagine, video, fasce_eta, livelli, metodo, team } = cors
       </section>
 
       <section class="block">
-        <h2>Il team docenti</h2>
         {team && team.length > 0 ? (
-          <div class="team-list">
-            {team.map(t => (
-              <div class="team-item">
-                <div class="team-photo" aria-hidden="true"></div>
-                <div class="team-info">
-                  <div class="team-name">{t.nome}</div>
-                  <div class="team-role">{t.ruolo}</div>
-                  {t.tratto && <p class="team-tratto">{t.tratto}</p>}
+          <>
+            <h2>Il team docenti</h2>
+            <div class="team-list">
+              {team.map(t => (
+                <div class="team-item">
+                  <div class="team-photo" aria-hidden="true"></div>
+                  <div class="team-info">
+                    <div class="team-name">{t.nome}</div>
+                    <div class="team-role">{t.ruolo}</div>
+                    {t.tratto && <p class="team-tratto">{t.tratto}</p>}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </>
+        ) : nota_team ? (
+          <>
+            <h2>Il coach</h2>
+            <p class="team-nota">{nota_team}</p>
+          </>
         ) : (
-          <p class="team-placeholder">Il team docenti di questo dipartimento sarà presto pubblicato.</p>
+          <>
+            <h2>Il team docenti</h2>
+            <p class="team-placeholder">Il team docenti di questo dipartimento sarà presto pubblicato.</p>
+          </>
         )}
       </section>
 
@@ -232,6 +242,12 @@ const { title, intro, immagine, video, fasce_eta, livelli, metodo, team } = cors
     font-family: "Lexend", sans-serif;
     opacity: .6;
     font-style: italic;
+  }
+  .team-nota {
+    font-family: "Lexend", sans-serif;
+    opacity: .78;
+    line-height: 1.65;
+    font-size: 17px;
   }
   .cta-block { margin-top: 56px; }
   .btn {
