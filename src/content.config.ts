@@ -70,6 +70,7 @@ const eventi = defineCollection({
     ospiti: z.array(z.string()).optional(),
     immagine: z.string().optional(),
     href: z.string().optional(),
+    video: z.string().optional(),
   }),
 });
 

@@ -35,6 +35,8 @@ const archivio = tuttiEventi
       teaser: e.data.teaser,
       ospiti: e.data.ospiti,
       href: e.data.href,
+      video: e.data.video,
+      immagine: e.data.immagine,
       annoSociale: annoSociale(d),
     };
   });
@@ -68,12 +70,22 @@ const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) 
               <div class="eventi-grid">
                 {archivio.filter(e => e.annoSociale === anno).map(e => (
                   <div class="evento-card" data-tipo={e.tipo}>
-                    <span class="evento-tipo">{e.tipoLabel}</span>
-                    <span class="evento-data">{e.dataDisplay}</span>
-                    <span class="evento-nome">{e.nome}</span>
-                    <p class="evento-teaser">{e.teaser}</p>
-                    {e.ospiti && e.ospiti.length > 0 && <p class="evento-ospiti">Con {e.ospiti.join(', ')}</p>}
-                    {e.href && <a class="evento-link" href={e.href}>Scopri di più →</a>}
+                    {e.immagine && (
+                      <div class="evento-foto">
+                        <img src={e.immagine} alt={e.nome} loading="lazy" />
+                      </div>
+                    )}
+                    <div class="evento-corpo">
+                      <span class="evento-tipo">{e.tipoLabel}</span>
+                      <span class="evento-data">{e.dataDisplay}</span>
+                      <span class="evento-nome">{e.nome}</span>
+                      <p class="evento-teaser">{e.teaser}</p>
+                      {e.ospiti && e.ospiti.length > 0 && <p class="evento-ospiti">Con {e.ospiti.join(', ')}</p>}
+                      <div class="evento-links">
+                        {e.href && <a class="evento-link" href={e.href}>Scopri di più →</a>}
+                        {e.video && <a class="evento-link" href={e.video} target="_blank" rel="noopener">Guarda il video →</a>}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -185,9 +197,20 @@ const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) 
     border-radius: var(--radius);
     border: 1px solid rgba(11,11,11,.1);
     box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .evento-foto {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+  }
+  .evento-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .evento-corpo {
     padding: 26px;
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
   }
   .evento-tipo {
     display: inline-block;
@@ -213,9 +236,15 @@ const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) 
     opacity: .65;
     margin: 0 0 8px;
   }
-  .evento-link {
+  .evento-links {
     margin-top: auto;
     padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .evento-link {
     font-family: "Inter", sans-serif;
     font-weight: 800;
     font-size: 13px;
