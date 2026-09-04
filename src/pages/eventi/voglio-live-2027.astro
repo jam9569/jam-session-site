@@ -78,9 +78,12 @@ const ANTEPRIMA = tutteLeFoto
           </div>
           <div class="gallery-preview">
             {ANTEPRIMA.map(foto => (
-              <div class="gallery-preview-item">
-                <img src={foto.src} alt={foto.alt} loading="lazy" />
-              </div>
+              <figure class="gallery-preview-item">
+                <div class="gallery-preview-photo">
+                  <img src={foto.src} alt={foto.alt} loading="lazy" />
+                </div>
+                <figcaption>{foto.alt}</figcaption>
+              </figure>
             ))}
           </div>
           <a class="gallery-link" href="/eventi/voglio-live-foto">Guarda tutte le foto delle edizioni passate →</a>
@@ -212,13 +215,20 @@ const ANTEPRIMA = tutteLeFoto
   @media (min-width: 640px) {
     .gallery-preview { grid-template-columns: repeat(3, 1fr); }
   }
-  .gallery-preview-item {
+  .gallery-preview-item { margin: 0; }
+  .gallery-preview-photo {
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     aspect-ratio: 4 / 3;
   }
   .gallery-preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-preview-item figcaption {
+    margin-top: 10px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    opacity: .68;
+  }
   .gallery-link {
     display: inline-block;
     margin-top: 18px;
