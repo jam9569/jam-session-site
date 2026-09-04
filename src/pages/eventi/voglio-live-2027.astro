@@ -1,16 +1,29 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+// Un piccolo assaggio delle foto delle edizioni passate: l'archivio completo, per anno, è su
+// /eventi/voglio-live-foto — per aggiungere altre foto basta un nuovo file in
+// src/content/voglio-live-foto, non serve toccare questa pagina.
+const tutteLeFoto = await getCollection('voglioLiveFoto');
+const ANTEPRIMA = tutteLeFoto
+  .sort((a, b) => {
+    if (b.data.anno !== a.data.anno) return b.data.anno - a.data.anno;
+    return (a.data.ordine ?? 0) - (b.data.ordine ?? 0);
+  })
+  .slice(0, 3)
+  .map(f => ({ src: f.data.immagine, alt: f.data.didascalia }));
 ---
 
-<BaseLayout title="Voglio Live 2027 — Jam Session APS" description="Voglio Live 2027: la restituzione pubblica dei laboratori di Musica e Società, sabato 29 maggio in Piazza Lucio Dalla a Bologna.">
+<BaseLayout title="Voglio Live 2027 — Jam Session APS" description="Voglio Live: il festival delle scuole di musica nato nel 2019 a Pian del Voglio, oggi anche la restituzione pubblica dei laboratori di Musica e Società. Sabato 29 maggio 2027, Piazza Lucio Dalla, Bologna.">
   <Header />
   <div class="container">
     <main class="page-content">
       <p class="kicker"><a href="/eventi">← Tutti gli eventi</a></p>
       <h1>Voglio Live 2027</h1>
-      <p class="lead">La musica delle scuole scende in piazza: la restituzione pubblica dei laboratori di Musica e Società.</p>
+      <p class="lead">Il festival delle scuole di musica diventato anche la restituzione pubblica dei laboratori di Musica e Società: un pomeriggio di musica dal vivo in Piazza Lucio Dalla.</p>
 
       <div class="info-pratiche" aria-label="Informazioni pratiche">
         <div class="info-item">
@@ -29,20 +42,46 @@ import Footer from '../../components/Footer.astro';
 
       <div class="testo-intro">
         <p>
-          Voglio Live 2027 è l'evento che chiude l'edizione 2026/2027 di{" "}
-          <a href="/progetti/musica-e-societa">Musica e Società</a>, la rete regionale di educazione
-          musicale che Jam Session APS coordina come soggetto capofila in sei province dell'Emilia-Romagna.
-          In Piazza Lucio Dalla a Bologna si incontrano i cori, gli ensemble e i gruppi nati nei laboratori
-          di canto corale, propedeutica musicale e musica d'insieme portati avanti durante l'anno nelle
-          scuole della rete.
+          Voglio Live nasce nel 2019 a Pian del Voglio come festival delle scuole di musica: un palco su
+          cui salgono i gruppi di musica d'insieme nati nei corsi e nei laboratori delle scuole partner —
+          non singoli allievi, ma formazioni che suonano insieme. Da allora non si è mai fermato, nemmeno
+          negli anni della pandemia.
         </p>
         <p>
-          Non è un saggio, ma una restituzione pubblica: il momento in cui il lavoro fatto in aula, spesso
-          invisibile a chi non ne fa parte, si mostra alla città. Un pomeriggio pensato per raccontare, con
-          la musica, cosa significhi rendere la pratica musicale collettiva accessibile a tutte le bambine,
-          i bambini e i ragazzi della regione, senza distinzioni.
+          Dal 2026 il festival si è trasferito a Bologna, in Piazza Lucio Dalla, dove torna anche nel 2027.
+          Con il cambio di sede è arrivata anche una nuova identità: Voglio Live resta il palco delle scuole
+          di musica partner, che continuano a portare i propri allievi, ma è diventato anche la restituzione
+          pubblica dei laboratori di{" "}<a href="/progetti/musica-e-societa">Musica e Società</a>, la rete
+          regionale di educazione musicale che Jam Session APS coordina come soggetto capofila in sei
+          province dell'Emilia-Romagna: cori, ensemble e gruppi nati nei laboratori di canto corale,
+          propedeutica musicale e musica d'insieme portati avanti durante l'anno nelle scuole — soprattutto
+          superiori — della rete.
+        </p>
+        <p>
+          L'edizione 2027 porta per la prima volta due ospiti internazionali: il Rytmus Musikgymnasium di
+          Göteborg, in Svezia, e la big band del Gymnasium Bethel di Bielefeld, in Germania.
+        </p>
+        <p>
+          Non è un saggio, ma una restituzione pubblica: il momento in cui il lavoro fatto durante l'anno —
+          nelle scuole di musica come nelle aule delle scuole della rete — si mostra alla città, in musica.
         </p>
       </div>
+
+      {ANTEPRIMA.length > 0 && (
+        <section class="gallery-section" aria-label="Foto delle edizioni passate">
+          <div class="section-head">
+            <h2>Le edizioni passate</h2>
+          </div>
+          <div class="gallery-preview">
+            {ANTEPRIMA.map(foto => (
+              <div class="gallery-preview-item">
+                <img src={foto.src} alt={foto.alt} loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <a class="gallery-link" href="/eventi/voglio-live-foto">Guarda tutte le foto delle edizioni passate →</a>
+        </section>
+      )}
 
       <section class="cta-section" aria-label="Contatti">
         <h2>Vuoi saperne di più su Voglio Live 2027?</h2>
@@ -130,6 +169,35 @@ import Footer from '../../components/Footer.astro';
   .testo-intro p:last-child { margin-bottom: 0; }
 
   h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+
+  .gallery-section { margin-bottom: 64px; }
+  .gallery-section .section-head { margin-bottom: 20px; }
+  .gallery-section h2 { font-size: 22px; }
+  .gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 640px) {
+    .gallery-preview { grid-template-columns: repeat(3, 1fr); }
+  }
+  .gallery-preview-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    aspect-ratio: 4 / 3;
+  }
+  .gallery-preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--green);
+    text-decoration: none;
+  }
+  .gallery-link:hover { text-decoration: underline; }
 
   .btn {
     display: inline-flex;

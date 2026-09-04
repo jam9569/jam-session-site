@@ -43,4 +43,16 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { corsi, news };
+// Foto delle varie edizioni di Voglio Live. Per aggiungerne una basta creare un nuovo file
+// .md in src/content/voglio-live-foto con lo stesso formato: non serve toccare il codice.
+const voglioLiveFoto = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/voglio-live-foto' }),
+  schema: z.object({
+    anno: z.number(),
+    immagine: z.string(),
+    didascalia: z.string(),
+    ordine: z.number().optional(),
+  }),
+});
+
+export const collections = { corsi, news, voglioLiveFoto };
