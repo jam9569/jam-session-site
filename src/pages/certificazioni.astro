@@ -87,6 +87,28 @@ const CARATTERISTICHE = [
         </div>
       </section>
 
+      <section aria-label="Trinity Digital Transformation Badge" class="badge-section">
+        <div class="badge-media">
+          <img src="/assets/certificazioni/trinity-digital-transformation-badge.png" alt="Trinity Digital Transformation Award, sede d'esame n. 74879, anno accademico 2025-26" loading="lazy" />
+        </div>
+        <div class="badge-text">
+          <div class="section-head">
+            <h2>Trinity Digital Transformation Badge</h2>
+          </div>
+          <p>
+            Trinity College London ci ha assegnato il <strong>Trinity Digital Transformation Badge</strong> per
+            l'anno accademico 2025/2026: un riconoscimento dedicato alle sedi d'esame che hanno scelto di proporre
+            gli esami Trinity anche in formato digitale, promuovendo un approccio alla valutazione innovativo,
+            sostenibile e contemporaneo.
+          </p>
+          <p>
+            Sostenere gli esami in modalità digitale significa allenare competenze sempre più centrali nel percorso
+            di ogni allievo: l'uso consapevole della tecnologia, la flessibilità e la capacità di affrontare nuove
+            modalità di valutazione in un contesto internazionale.
+          </p>
+        </div>
+      </section>
+
       <section aria-label="Perché una certificazione Trinity" class="split-section">
         <div class="split-text">
           <div class="section-head">
@@ -281,6 +303,32 @@ const CARATTERISTICHE = [
     font-style: italic;
     margin: 0;
   }
+
+  .badge-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 40px;
+  }
+  .badge-media {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
+  }
+  .badge-media img { width: 100%; height: 100%; display: block; }
+  .badge-text { flex: 1 1 320px; }
+  .badge-text .section-head { margin-bottom: 14px; }
+  .badge-text p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 16px;
+    margin: 0 0 14px;
+  }
+  .badge-text p:last-child { margin-bottom: 0; }
 
   .caratteristiche-list {
     list-style: none;
