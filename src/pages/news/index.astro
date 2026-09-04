@@ -11,20 +11,33 @@ function annoSociale(d: Date) {
   return d.getMonth() >= 8 ? `${y}/${y + 1}` : `${y - 1}/${y}`;
 }
 
-const newsEntries = await getCollection('news');
-const news = newsEntries
-  .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
-  .map(n => {
-    const d = new Date(n.data.date);
-    return {
-      slug: n.id,
-      title: n.data.title,
-      dateDisplay: d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
-      annoSociale: annoSociale(d),
-    };
-  });
+// Una news resta tra i "Prossimi appuntamenti" fino al giorno stesso dell'evento;
+// dal giorno dopo passa automaticamente nell'archivio, raggruppato per anno sociale.
+const oggiStr = new Date().toISOString().slice(0, 10);
 
-const ANNI_SOCIALI = [...new Set(news.map(n => n.annoSociale))].sort((a, b) => b.localeCompare(a));
+const newsEntries = await getCollection('news');
+
+function mapNews(n: (typeof newsEntries)[number]) {
+  const d = new Date(n.data.date);
+  return {
+    slug: n.id,
+    title: n.data.title,
+    dateDisplay: d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
+    annoSociale: annoSociale(d),
+  };
+}
+
+const prossime = newsEntries
+  .filter(n => n.data.date >= oggiStr)
+  .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
+  .map(mapNews);
+
+const archivio = newsEntries
+  .filter(n => n.data.date < oggiStr)
+  .sort((a, b) => (a.data.date < b.data.date ? 1 : -1))
+  .map(mapNews);
+
+const ANNI_SOCIALI = [...new Set(archivio.map(n => n.annoSociale))].sort((a, b) => b.localeCompare(a));
 ---
 
 <BaseLayout title="News — Jam Session APS" description="L'archivio di tutte le news di Jam Session APS: aggiornamenti su corsi, iscrizioni, saggi ed eventi.">
@@ -32,28 +45,53 @@ const ANNI_SOCIALI = [...new Set(news.map(n => n.annoSociale))].sort((a, b) => b
   <div class="container">
     <main class="page-content">
       <h1>News</h1>
-      <p class="lead">Tutti gli aggiornamenti di Jam Session APS, dalla data più vicina alla più lontana.</p>
+      <p class="lead">I prossimi appuntamenti e l'archivio delle news passate, anno sociale per anno sociale.</p>
 
-      {news.length > 0 && ANNI_SOCIALI.length > 1 && (
-        <div class="news-filters" role="group" aria-label="Filtra le news per anno sociale">
-          <button type="button" class="filter-btn is-active" data-year="all">Tutte</button>
-          {ANNI_SOCIALI.map(y => (
-            <button type="button" class="filter-btn" data-year={y}>{y}</button>
-          ))}
-        </div>
+      {prossime.length > 0 && (
+        <section aria-label="Prossimi appuntamenti">
+          <div class="section-head">
+            <h2>Prossimamente</h2>
+          </div>
+          <div class="news-grid">
+            {prossime.map(n => (
+              <a class="news-card" href={`/news/${n.slug}`}>
+                <span class="news-date">{n.dateDisplay}</span>
+                <span class="news-title">{n.title}</span>
+                <span class="news-more">Leggi i dettagli →</span>
+              </a>
+            ))}
+          </div>
+        </section>
       )}
 
-      {news.length > 0 ? (
-        <div class="news-grid" id="news-grid">
-          {news.map(n => (
-            <a class="news-card" href={`/news/${n.slug}`} data-year={n.annoSociale}>
-              <span class="news-date">{n.dateDisplay}</span>
-              <span class="news-title">{n.title}</span>
-              <span class="news-more">Leggi i dettagli →</span>
-            </a>
-          ))}
-        </div>
-      ) : (
+      {archivio.length > 0 && (
+        <section aria-label="Archivio news">
+          <div class="section-head">
+            <h2>Archivio</h2>
+          </div>
+
+          {ANNI_SOCIALI.length > 1 && (
+            <div class="news-filters" role="group" aria-label="Filtra l'archivio per anno sociale">
+              <button type="button" class="filter-btn is-active" data-year="all">Tutti</button>
+              {ANNI_SOCIALI.map(y => (
+                <button type="button" class="filter-btn" data-year={y}>{y}</button>
+              ))}
+            </div>
+          )}
+
+          <div class="news-grid" id="news-grid">
+            {archivio.map(n => (
+              <a class="news-card" href={`/news/${n.slug}`} data-year={n.annoSociale}>
+                <span class="news-date">{n.dateDisplay}</span>
+                <span class="news-title">{n.title}</span>
+                <span class="news-more">Leggi i dettagli →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {prossime.length === 0 && archivio.length === 0 && (
         <div class="empty-state">
           <p>Non ci sono ancora news pubblicate.</p>
         </div>
@@ -110,11 +148,16 @@ const ANNI_SOCIALI = [...new Set(news.map(n => n.annoSociale))].sort((a, b) => b
     margin: 0 0 28px;
   }
 
+  main > section { margin-top: 48px; }
+  main > section:first-of-type { margin-top: 0; }
+  .section-head { margin-bottom: 20px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 22px; letter-spacing: -.25px; }
+
   .news-filters {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin: 0 0 28px;
+    margin: 0 0 20px;
   }
   .filter-btn {
     font-family: "Inter", sans-serif;

@@ -34,8 +34,12 @@ const RECENSIONI = [
   },
 ];
  
+// Mostriamo solo le news future o del giorno stesso: appena una data è passata,
+// la news esce dalla home (resta comunque consultabile nell'archivio su /news).
+const oggiStr = new Date().toISOString().slice(0, 10);
 const newsEntries = await getCollection('news');
 const NEWS_HOME = newsEntries
+  .filter(n => n.data.date >= oggiStr)
   .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
   .slice(0, 4)
   .map(n => ({
@@ -122,24 +126,26 @@ const PARTNER = [
         <img src="/assets/home/chitarre-scuola-musica-jam-session.avif" alt="Chitarre alla Jam Session APS" loading="lazy" decoding="async" />
       </div>
  
-      <section class="news-section" aria-label="News">
-        <div class="section-head" style="margin-bottom:22px;">
-          <h2>News e novità</h2>
-          <p class="subtitle">Eventi, saggi, laboratori: il sito resta vivo, come la scuola.</p>
-        </div>
-        <div class="news">
-          {NEWS_HOME.map(n => (
-            <a class="news-card" href={n.href}>
-              <div class="news-date">{n.date}</div>
-              <div class="news-title">{n.title}</div>
-              <div class="news-more">Leggi i dettagli →</div>
-            </a>
-          ))}
-        </div>
-        <div style="margin-top:22px;">
-          <a class="btn btn-accent" href="/news">Tutte le news</a>
-        </div>
-      </section>
+      {NEWS_HOME.length > 0 && (
+        <section class="news-section" aria-label="News">
+          <div class="section-head" style="margin-bottom:22px;">
+            <h2>News e novità</h2>
+            <p class="subtitle">Eventi, saggi, laboratori: il sito resta vivo, come la scuola.</p>
+          </div>
+          <div class="news">
+            {NEWS_HOME.map(n => (
+              <a class="news-card" href={n.href}>
+                <div class="news-date">{n.date}</div>
+                <div class="news-title">{n.title}</div>
+                <div class="news-more">Leggi i dettagli →</div>
+              </a>
+            ))}
+          </div>
+          <div style="margin-top:22px;">
+            <a class="btn btn-accent" href="/news">Tutte le news</a>
+          </div>
+        </section>
+      )}
  
       <section aria-label="Partner">
         <div class="section-head">
