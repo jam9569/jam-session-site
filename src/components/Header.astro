@@ -19,10 +19,12 @@ const MENU = [
       { label: "DJ e Produzione", href: "/corsi/dj-e-produzione" },
       { label: "Fiati", href: "/corsi/fiati" },
       { label: "Pianoforte e Tastiere", href: "/corsi/pianoforte-e-tastiere" },
+      { divider: true },
       { label: "Musica d'insieme", href: "/corsi/musica-dinsieme" },
       { label: "Band Coaching", href: "/corsi/band-coaching" },
       { label: "Laboratorio di Improvvisazione e Jam Session", href: "/corsi/laboratorio-improvvisazione-e-jam-session" },
       { label: "Laboratorio Propedeutica 3-6 anni", href: "/corsi/laboratorio-propedeutica-3-6-anni" },
+      { divider: true },
       { label: "Tutti i corsi", href: "/corsi" },
     ],
   },
@@ -36,6 +38,7 @@ const MENU = [
       { label: "Musa", href: "/progetti/musa" },
       { label: "Musica e Società", href: "/progetti/musica-e-societa" },
       { label: "Nausica", href: "/progetti/nausica" },
+      { divider: true },
       { label: "Tutti i progetti", href: "/progetti" },
       { label: "Progetti passati", href: "/progetti/passati" },
     ],
@@ -76,7 +79,9 @@ const MENU = [
               <span class="chevron" aria-hidden="true"></span>
             </button>
             <div class="dropdown">
-              {item.children.map(child => <a href={child.href}>{child.label}</a>)}
+              {item.children.map(child => (
+                child.divider ? <hr class="dropdown-divider" /> : <a href={child.href}>{child.label}</a>
+              ))}
             </div>
           </div>
         ) : (
@@ -111,7 +116,9 @@ const MENU = [
             <span class="chevron" aria-hidden="true"></span>
           </button>
           <div class="mobile-submenu">
-            {item.children.map(child => <a class="mobile-sublink" href={child.href}>{child.label}</a>)}
+            {item.children.map(child => (
+              child.divider ? <hr class="mobile-divider" /> : <a class="mobile-sublink" href={child.href}>{child.label}</a>
+            ))}
           </div>
         </div>
       ) : (
@@ -257,6 +264,11 @@ const MENU = [
     white-space: nowrap;
   }
   .dropdown a:hover { background: #f2f3f1; }
+  .dropdown-divider {
+    border: none;
+    border-top: 1px solid rgba(11,11,11,.12);
+    margin: 4px 6px;
+  }
  
   .header-right {
     display: flex;
@@ -331,6 +343,11 @@ const MENU = [
     text-decoration: none;
     color: inherit;
     opacity: .8;
+  }
+  .mobile-divider {
+    border: none;
+    border-top: 1px solid rgba(11,11,11,.12);
+    margin: 6px 0;
   }
   .nav-mobile-cta {
     margin-top: 14px;
