@@ -20,6 +20,10 @@ const ANTEPRIMA = tutteLeFoto
 <BaseLayout title="Voglio Live 2027 — Jam Session APS" description="Voglio Live: il festival delle scuole di musica nato nel 2019 a Pian del Voglio, oggi anche la restituzione pubblica dei laboratori di Musica e Società. Sabato 29 maggio 2027, Piazza Lucio Dalla, Bologna.">
   <Header />
   <div class="container">
+    <div class="hero-media">
+      <img src="/assets/eventi/voglio-live/voglio-live-2027-hero.jpg" alt="Lo staff di Jam Session APS sul palco di Voglio Live" />
+    </div>
+    <p class="hero-caption">Staff Jam Session</p>
     <main class="page-content">
       <p class="kicker"><a href="/eventi">← Tutti gli eventi</a></p>
       <h1>Voglio Live 2027</h1>
@@ -112,7 +116,34 @@ const ANTEPRIMA = tutteLeFoto
   a { color: inherit; }
 
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
-  .page-content { margin: 16px 0 60px; }
+
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-caption {
+    margin: 8px 0 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #8a8a8a;
+  }
+
+  .page-content { margin: 24px 0 60px; }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; margin: 0 0 10px; }
   .kicker a { color: var(--green); text-decoration: none; }
   .kicker a:hover { text-decoration: underline; }
