@@ -1,6 +1,7 @@
 ---
 title: "Jam Session riceve il Trinity Digital Transformation Badge"
 date: "2026-09-01"
+immagine: "/assets/certificazioni/trinity-digital-transformation-badge.png"
 ---
 
 Trinity College London ci ha assegnato il Trinity Digital Transformation Badge per l'anno accademico 2025/2026: un riconoscimento dedicato alle sedi d'esame — come la nostra, il centro 74879 — che hanno scelto di proporre gli esami Trinity anche in formato digitale.

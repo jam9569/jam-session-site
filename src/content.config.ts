@@ -41,6 +41,7 @@ const news = defineCollection({
     title: z.string(),
     date: z.string(),
     excerpt: z.string().optional(),
+    immagine: z.string().optional(),
   }),
 });
 
