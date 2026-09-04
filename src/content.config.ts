@@ -71,6 +71,7 @@ const eventi = defineCollection({
     immagine: z.string().optional(),
     href: z.string().optional(),
     video: z.string().optional(),
+    vetrina: z.boolean().optional(),
   }),
 });
 

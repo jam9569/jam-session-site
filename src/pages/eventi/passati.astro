@@ -37,12 +37,14 @@ const archivio = tuttiEventi
       href: e.data.href,
       video: e.data.video,
       immagine: e.data.immagine,
+      vetrina: e.data.vetrina,
       annoSociale: annoSociale(d),
     };
   });
 
 const TIPI_PRESENTI = ORDINE_TIPI.filter(t => archivio.some(e => e.tipo === t));
 const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) => b.localeCompare(a));
+const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
 ---
 
 <BaseLayout title="Eventi passati — Jam Session APS" description="L'archivio delle masterclass, dei workshop e dei concerti che Jam Session APS ha realizzato nel tempo.">
@@ -52,6 +54,34 @@ const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) 
       <p class="kicker"><a href="/eventi">← Tutti gli eventi</a></p>
       <h1>Eventi passati</h1>
       <p class="lead">Qui raccogliamo le masterclass, i workshop e i concerti che Jam Session ha realizzato nel tempo.</p>
+
+      {inVetrina.length > 0 && (
+        <section class="vetrina-section" aria-label="Eventi in vetrina">
+          <h2>In vetrina</h2>
+          <div class="eventi-grid">
+            {inVetrina.map(e => (
+              <div class="evento-card" data-tipo={e.tipo}>
+                {e.immagine && (
+                  <div class="evento-foto">
+                    <img src={e.immagine} alt={e.nome} loading="lazy" />
+                  </div>
+                )}
+                <div class="evento-corpo">
+                  <span class="evento-tipo">{e.tipoLabel}</span>
+                  <span class="evento-data">{e.dataDisplay}</span>
+                  <span class="evento-nome">{e.nome}</span>
+                  <p class="evento-teaser">{e.teaser}</p>
+                  {e.ospiti && e.ospiti.length > 0 && <p class="evento-ospiti">Con {e.ospiti.join(', ')}</p>}
+                  <div class="evento-links">
+                    {e.href && <a class="evento-link" href={e.href}>Scopri di più →</a>}
+                    {e.video && <a class="evento-link" href={e.video} target="_blank" rel="noopener">Guarda il video →</a>}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {archivio.length > 0 ? (
         <>
@@ -106,7 +136,7 @@ const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) 
 
 <script>
   const bottoni = Array.from(document.querySelectorAll<HTMLButtonElement>('.filtro-btn'));
-  const schede = Array.from(document.querySelectorAll<HTMLDivElement>('.evento-card'));
+  const schede = Array.from(document.querySelectorAll<HTMLDivElement>('.anno-section .evento-card'));
   const sezioni = Array.from(document.querySelectorAll<HTMLElement>('.anno-section'));
 
   function applica(filtro: string) {
@@ -180,6 +210,14 @@ const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) 
     cursor: pointer;
   }
   .filtro-btn.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .vetrina-section { margin-bottom: 48px; }
+  .vetrina-section h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    margin: 0 0 18px;
+  }
 
   .anno-section { margin-top: 48px; }
   .anno-section:first-of-type { margin-top: 0; }
