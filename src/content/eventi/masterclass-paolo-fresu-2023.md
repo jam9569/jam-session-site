@@ -1,5 +1,5 @@
 ---
-nome: "JS Masterclass con Paolo Fresu"
+nome: "Masterclass con Paolo Fresu"
 tipo: "masterclass"
 data: "2023-11-13"
 teaser: "Una giornata di masterclass con uno dei trombettisti jazz italiani più conosciuti a livello internazionale: due sessioni di lavoro nel nostro Piccolo Auditorium Tamburini, aperte a 20 partecipanti più uditori."

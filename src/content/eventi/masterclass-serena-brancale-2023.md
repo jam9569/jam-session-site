@@ -1,5 +1,5 @@
 ---
-nome: "JS Masterclass con Serena Brancale"
+nome: "Masterclass con Serena Brancale"
 tipo: "masterclass"
 data: "2023-05-19"
 teaser: "La masterclass \"Frittura Creativa\" con la cantante e producer Serena Brancale, un incontro nel nostro Piccolo Auditorium tra musica, scrittura e produzione."

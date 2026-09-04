@@ -45,6 +45,7 @@ const archivio = tuttiEventi
 const TIPI_PRESENTI = ORDINE_TIPI.filter(t => archivio.some(e => e.tipo === t));
 const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) => b.localeCompare(a));
 const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
+const mostraFiltri = TIPI_PRESENTI.length > 1 || ANNI_SOCIALI.length > 1;
 ---
 
 <BaseLayout title="Eventi passati — Jam Session APS" description="L'archivio delle masterclass, dei workshop e dei concerti che Jam Session APS ha realizzato nel tempo.">
@@ -60,7 +61,7 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
           <h2>In vetrina</h2>
           <div class="eventi-grid">
             {inVetrina.map(e => (
-              <div class="evento-card" data-tipo={e.tipo}>
+              <div class="evento-card">
                 {e.immagine && (
                   <div class="evento-foto">
                     <img src={e.immagine} alt={e.nome} loading="lazy" />
@@ -80,17 +81,46 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
               </div>
             ))}
           </div>
+          {archivio.length > 0 && (
+            <p class="archivio-toggle">
+              <button type="button" id="vedi-archivio" class="link-btn">Vedi tutto l'archivio →</button>
+            </p>
+          )}
         </section>
       )}
 
       {archivio.length > 0 ? (
-        <>
-          {TIPI_PRESENTI.length > 1 && (
-            <div class="filtri" role="group" aria-label="Filtra per tipo di evento">
-              <button type="button" class="filtro-btn is-active" data-filter="tutti">Tutti</button>
-              {TIPI_PRESENTI.map(t => (
-                <button type="button" class="filtro-btn" data-filter={t}>{TIPO_LABEL[t]}</button>
-              ))}
+        <div id="archivio-eventi" hidden={inVetrina.length > 0}>
+          {inVetrina.length > 0 && (
+            <p class="archivio-toggle">
+              <button type="button" id="torna-vetrina" class="link-btn">← Torna alla vetrina</button>
+            </p>
+          )}
+
+          {mostraFiltri && (
+            <div class="filtri-riga">
+              {TIPI_PRESENTI.length > 1 && (
+                <div class="filtri-gruppo">
+                  <span class="filtri-label">Tipo</span>
+                  <div class="filtri" role="group" aria-label="Filtra per tipo di evento">
+                    <button type="button" class="filtro-btn filtro-tipo is-active" data-tipo-filter="tutti">Tutti</button>
+                    {TIPI_PRESENTI.map(t => (
+                      <button type="button" class="filtro-btn filtro-tipo" data-tipo-filter={t}>{TIPO_LABEL[t]}</button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {ANNI_SOCIALI.length > 1 && (
+                <div class="filtri-gruppo">
+                  <span class="filtri-label">Anno</span>
+                  <div class="filtri" role="group" aria-label="Filtra per anno sociale">
+                    <button type="button" class="filtro-btn filtro-anno is-active" data-anno-filter="tutti">Tutti</button>
+                    {ANNI_SOCIALI.map(a => (
+                      <button type="button" class="filtro-btn filtro-anno" data-anno-filter={a}>{a}</button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -99,7 +129,7 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
               <h2>{anno}</h2>
               <div class="eventi-grid">
                 {archivio.filter(e => e.annoSociale === anno).map(e => (
-                  <div class="evento-card" data-tipo={e.tipo}>
+                  <div class="evento-card" data-tipo={e.tipo} data-anno={e.annoSociale}>
                     {e.immagine && (
                       <div class="evento-foto">
                         <img src={e.immagine} alt={e.nome} loading="lazy" />
@@ -121,7 +151,7 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
               </div>
             </section>
           ))}
-        </>
+        </div>
       ) : (
         <div class="empty-state">
           <p>Stiamo raccogliendo l'archivio degli eventi passati: a breve qui troverai masterclass, workshop e concerti realizzati negli anni.</p>
@@ -135,14 +165,23 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
 </BaseLayout>
 
 <script>
-  const bottoni = Array.from(document.querySelectorAll<HTMLButtonElement>('.filtro-btn'));
+  const vetrinaSection = document.querySelector<HTMLElement>('.vetrina-section');
+  const archivioWrapper = document.querySelector<HTMLElement>('#archivio-eventi');
+  const vediArchivioBtn = document.querySelector<HTMLButtonElement>('#vedi-archivio');
+  const tornaVetrinaBtn = document.querySelector<HTMLButtonElement>('#torna-vetrina');
+  const tipoBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.filtro-tipo'));
+  const annoBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.filtro-anno'));
   const schede = Array.from(document.querySelectorAll<HTMLDivElement>('.anno-section .evento-card'));
   const sezioni = Array.from(document.querySelectorAll<HTMLElement>('.anno-section'));
 
-  function applica(filtro: string) {
+  let tipoAttivo = 'tutti';
+  let annoAttivo = 'tutti';
+
+  function applicaFiltri() {
     schede.forEach(s => {
-      const match = filtro === 'tutti' || s.dataset.tipo === filtro;
-      s.hidden = !match;
+      const matchTipo = tipoAttivo === 'tutti' || s.dataset.tipo === tipoAttivo;
+      const matchAnno = annoAttivo === 'tutti' || s.dataset.anno === annoAttivo;
+      s.hidden = !(matchTipo && matchAnno);
     });
     sezioni.forEach(sec => {
       const visibili = Array.from(sec.querySelectorAll<HTMLDivElement>('.evento-card')).some(s => !s.hidden);
@@ -150,11 +189,41 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
     });
   }
 
-  bottoni.forEach(b => {
+  function mostraArchivio() {
+    if (vetrinaSection) vetrinaSection.hidden = true;
+    if (archivioWrapper) archivioWrapper.hidden = false;
+  }
+
+  function mostraVetrina() {
+    tipoAttivo = 'tutti';
+    annoAttivo = 'tutti';
+    tipoBtns.forEach(b => b.classList.toggle('is-active', b.dataset.tipoFilter === 'tutti'));
+    annoBtns.forEach(b => b.classList.toggle('is-active', b.dataset.annoFilter === 'tutti'));
+    applicaFiltri();
+    if (vetrinaSection) vetrinaSection.hidden = false;
+    if (archivioWrapper) archivioWrapper.hidden = true;
+  }
+
+  vediArchivioBtn?.addEventListener('click', mostraArchivio);
+  tornaVetrinaBtn?.addEventListener('click', mostraVetrina);
+
+  tipoBtns.forEach(b => {
     b.addEventListener('click', () => {
-      bottoni.forEach(x => x.classList.remove('is-active'));
+      tipoAttivo = b.dataset.tipoFilter ?? 'tutti';
+      tipoBtns.forEach(x => x.classList.remove('is-active'));
       b.classList.add('is-active');
-      applica(b.dataset.filter ?? 'tutti');
+      applicaFiltri();
+      mostraArchivio();
+    });
+  });
+
+  annoBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      annoAttivo = b.dataset.annoFilter ?? 'tutti';
+      annoBtns.forEach(x => x.classList.remove('is-active'));
+      b.classList.add('is-active');
+      applicaFiltri();
+      mostraArchivio();
     });
   });
 </script>
@@ -192,11 +261,46 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
     margin: 0 0 32px;
   }
 
+  .vetrina-section { margin-bottom: 48px; }
+  .vetrina-section h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    margin: 0 0 18px;
+  }
+
+  .archivio-toggle { margin: 0 0 28px; }
+  .link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--green);
+    cursor: pointer;
+  }
+  .link-btn:hover { text-decoration: underline; }
+
+  .filtri-riga {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .filtri-gruppo { display: flex; flex-direction: column; gap: 10px; }
+  .filtri-label {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    opacity: .55;
+  }
   .filtri {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 40px;
   }
   .filtro-btn {
     font-family: "Inter", sans-serif;
@@ -210,14 +314,6 @@ const inVetrina = archivio.filter(e => e.vetrina).slice(0, 4);
     cursor: pointer;
   }
   .filtro-btn.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
-
-  .vetrina-section { margin-bottom: 48px; }
-  .vetrina-section h2 {
-    font-family: "Inter", sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    margin: 0 0 18px;
-  }
 
   .anno-section { margin-top: 48px; }
   .anno-section:first-of-type { margin-top: 0; }
