@@ -29,6 +29,7 @@ const corsi = defineCollection({
         nome: z.string(),
         ruolo: z.string(),
         tratto: z.string().optional(),
+        foto: z.string().optional(),
       })
     ).optional(),
     nota_team: z.string().optional(),
