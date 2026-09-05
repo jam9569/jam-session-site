@@ -14,35 +14,33 @@ const DIRETTIVO = [
   {
     ruolo: "Presidente e Tesoriere",
     nome: "Marco Badini",
-    email: "marcobadini@assjamsession.it",
+    email: "marcobadini@jamsessionaps.it",
     descrizione: "Rappresentanza legale, bandi, co-progettazione e progettazione europea, comunicazione, relazioni istituzionali e percorsi scuola-lavoro.",
     foto: "/assets/organigramma/marco-badini.jpg",
   },
   {
     ruolo: "Vicepresidente",
     nome: "Mariagrazia Vincitorio",
-    email: "mariagraziavincitorio@assjamsession.it",
+    email: "mariagraziavincitorio@jamsessionaps.it",
     descrizione: "Direzione didattica, tirocini e rapporti con i Conservatori. Dirige anche il Coro di Periferia.",
     foto: "/assets/organigramma/mariagrazia-vincitorio.jpg",
   },
   {
     ruolo: "Consigliere",
     nome: "Andrea Belvederi Mosti",
-    email: "andreabelvederimosti@assjamsession.it",
+    email: "andreabelvederimosti@jamsessionaps.it",
     descrizione: "Responsabile musica d'insieme, masterclass, workshop ed eventi live, rapporti con le fondazioni.",
     foto: "/assets/organigramma/andrea-belvederi-mosti.jpg",
   },
   {
     ruolo: "Consigliere",
     nome: "Giancarlo Biasini",
-    email: "giancarlobiasini@assjamsession.it",
     descrizione: "Responsabile lavori di manutenzione ordinaria e straordinaria, e sicurezza.",
     foto: "/assets/organigramma/giancarlo-biasini.jpg",
   },
   {
     ruolo: "Consigliere",
     nome: "Roberto Rondelli",
-    email: "robertorondelli@assjamsession.it",
     descrizione: "Responsabile associativo e logistica, referente dei volontari.",
     foto: "/assets/organigramma/roberto-rondelli.jpg",
   },
@@ -52,7 +50,7 @@ const SEGRETERIA = [
   {
     ruolo: "Segreteria",
     nome: "Ylenia Fracasso",
-    email: "segreteria@assjamsession.it",
+    email: "segreteria@jamsessionaps.it",
     descrizione: "Gestione iscrizioni, orari e comunicazioni con allievi, famiglie e docenti.",
     foto: "/assets/organigramma/ylenia-fracasso.jpg",
   },
@@ -90,7 +88,7 @@ const SEGRETERIA = [
               <span class="persona-ruolo">{p.ruolo}</span>
               <h3 class="persona-nome">{p.nome}</h3>
               <p class="persona-desc">{p.descrizione}</p>
-              <a class="persona-email" href={`mailto:${p.email}`}>{p.email}</a>
+              {p.email && <a class="persona-email" href={`mailto:${p.email}`}>{p.email}</a>}
             </div>
           ))}
         </div>
