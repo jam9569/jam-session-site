@@ -276,6 +276,7 @@ const MENU = [
     gap: 10px;
   }
   .top-cta {
+    display: none;
     padding: 9px 16px;
     border-radius: 999px;
     background: #f2a844;
@@ -356,12 +357,17 @@ const MENU = [
     border-radius: 999px;
     padding: 14px !important;
     border-bottom: none !important;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    text-decoration: none;
+    color: #1b1b1b !important;
   }
   .nav-mobile.open { display: flex; }
  
   @media (min-width: 768px) {
     .nav-desktop { display: flex; }
     .hamburger { display: none; }
+    .top-cta { display: inline-block; }
   }
 </style>
 
