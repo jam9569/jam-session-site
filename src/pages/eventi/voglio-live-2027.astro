@@ -123,7 +123,7 @@ const ANTEPRIMA = tutteLeFoto
   .hero-media {
     margin-top: 6px;
     width: 100%;
-    min-height: 520px;
+    aspect-ratio: 16 / 10;
     border-radius: 28px;
     overflow: hidden;
     position: relative;
@@ -262,4 +262,10 @@ const ANTEPRIMA = tutteLeFoto
   }
   .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; opacity: .74; font-size: 16px; line-height: 1.5; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>
+
+<style>
+  @media (min-width: 768px) {
+    .hero-media { aspect-ratio: auto; min-height: 520px; }
+  }
 </style>

@@ -106,7 +106,7 @@ const FASI = [
   .hero-media {
     margin-top: 6px;
     width: 100%;
-    min-height: 520px;
+    aspect-ratio: 16 / 10;
     border-radius: 28px;
     overflow: hidden;
     position: relative;
@@ -161,6 +161,7 @@ const FASI = [
     grid-template-columns: 1fr;
   }
   @media (min-width: 768px) {
+    .hero-media { aspect-ratio: auto; min-height: 520px; }
     .fasi-grid { grid-template-columns: repeat(3, 1fr); }
   }
   .fase-card {

@@ -101,7 +101,7 @@ const TAPPE = [
   .hero-media {
     margin-top: 6px;
     width: 100%;
-    min-height: 520px;
+    aspect-ratio: 16 / 10;
     border-radius: 28px;
     overflow: hidden;
     position: relative;
@@ -153,6 +153,7 @@ const TAPPE = [
     grid-template-columns: 1fr;
   }
   @media (min-width: 768px) {
+    .hero-media { aspect-ratio: auto; min-height: 520px; }
     .tappe-grid { grid-template-columns: repeat(3, 1fr); }
   }
   .tappa-card {

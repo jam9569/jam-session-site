@@ -3,7 +3,7 @@ title: "Canto"
 strumento: "Canto"
 ordine: 3
 immagine: "/assets/corsi/canto-hero.jpg"
-intro: "La voce è lo strumento che portiamo già dentro di noi, il più intimo e il più esposto: cantare significa mettersi in gioco con tutto il proprio respiro. Il Dipartimento di Canto di Jam Session accoglie ogni voce, a qualunque età e in qualunque genere — pop, rock, soul, jazz — e la accompagna a scoprire il proprio colore, la propria intonazione, il proprio modo di raccontare una storia. Non serve esperienza per iniziare: serve solo la voglia di ascoltarsi e di allenare, lezione dopo lezione, uno strumento che è già tutto tuo."
+intro: "La voce è lo strumento che ciascuno porta già dentro di sé, il più intimo e il più esposto: cantare significa mettersi in gioco con tutto il proprio respiro. Il Dipartimento di Canto di Jam Session accoglie ogni voce, a qualunque età e in qualunque genere — pop, rock, soul, jazz — e la accompagna a scoprire il proprio colore, la propria intonazione, il proprio modo di raccontare una storia. Non serve esperienza per iniziare: serve solo la voglia di ascoltarsi e di allenare, lezione dopo lezione, uno strumento che è già tutto tuo."
 fasce_eta:
   - nome: "Junior"
     range: "7-13 anni"
