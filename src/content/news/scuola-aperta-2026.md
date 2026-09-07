@@ -1,9 +1,9 @@
 ---
 title: "Open Day: una giornata intera dentro Jam Session"
-date: "2026-09-19"
+date: "2026-10-03"
 ---
 
-Sabato 19 settembre 2026, dalle 9:00 alle 18:00, Jam Session APS apre le porte per un Open Day: un'intera giornata per visitare la sede, conoscere i docenti e scoprire le aule, i corsi e tutte le opportunità per fare musica.
+Sabato 3 ottobre 2026, dalle 9:00 alle 18:00, Jam Session APS apre le porte per un Open Day: un'intera giornata per visitare la sede, conoscere i docenti e scoprire le aule, i corsi e tutte le opportunità per fare musica.
 
 Per chi vuole imparare a suonare o migliorarsi, sarà possibile incontrare gli altri musicisti presenti e suonare insieme a loro, parlare con noi del percorso più adatto e prenotare una lezione di prova gratuita.
 
