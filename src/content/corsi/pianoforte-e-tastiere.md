@@ -26,6 +26,7 @@ team:
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop"
   - nome: "Karolina Kisiak"
     ruolo: "Pianoforte classico"
+    foto: "/assets/docenti/docente-pianoforte-karolina-kisiak.jpg"
   - nome: "Mariagrazia Vincitorio"
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop, rock, blues"
 ---
