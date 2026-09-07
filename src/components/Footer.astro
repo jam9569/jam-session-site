@@ -39,7 +39,7 @@ const YEAR = new Date().getFullYear();
       <p class="f-text">Seguici: eventi, saggi, novità e vita della scuola.</p>
       <div class="socials">
         {SOCIAL.map(s => (
-          <a class="social" href={s.href} aria-label={s.label}>
+          <a class="social" href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
             {s.key === "linkedin" && <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C22.4 7.6 24 10.4 24 14.2V24h-5v-8.6c0-2.05-.04-4.7-2.87-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg>}
             {s.key === "facebook" && <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.4V12h2.4V9.8c0-2.4 1.4-3.8 3.6-3.8 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/></svg>}
             {s.key === "instagram" && <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.8 6.2a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>}
