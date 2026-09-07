@@ -387,10 +387,11 @@ const RICONOSCIMENTI = [
     .split-section.reverse .split-media { order: -1; }
   }
  
-  .split-media { height: 100%; display: flex; flex-direction: column; }
-  .split-figure { height: 100%; display: flex; flex-direction: column; margin: 0; }
+  .split-media { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .split-figure { height: 100%; display: flex; flex-direction: column; justify-content: center; margin: 0; }
   .split-img {
     width: 100%;
+    height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: var(--radius);
@@ -398,7 +399,7 @@ const RICONOSCIMENTI = [
     box-shadow: var(--shadow);
   }
   @media (min-width: 769px) {
-    .split-img { flex: 1; min-height: 0; aspect-ratio: unset; }
+    .split-img { aspect-ratio: 4 / 3; }
   }
   .split-figure figcaption,
   .wide-figure figcaption {
