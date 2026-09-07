@@ -202,7 +202,7 @@ const PARTNER = [
     padding: 14px 0 90px;
   }
  
-  main > section:not(.hero) { margin-top: 96px; }
+  main > section:not(.hero) { margin-top: 40px; }
  
   .section-head { margin-bottom: 26px; }
   h2 {
@@ -238,7 +238,7 @@ const PARTNER = [
     box-shadow: var(--shadow);
     overflow: hidden;
     position: relative;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 4 / 3;
     display: grid;
     place-items: center;
     text-align: center;
@@ -262,14 +262,15 @@ const PARTNER = [
     z-index: 1;
     color: #fff;
     width: min(980px, calc(100% - 36px));
-    padding: 42px 0;
+    padding: 22px 0;
   }
-  .hero-title { margin: 0 0 18px; font-family: "Inter", sans-serif; font-weight: 900; line-height: 1.03; letter-spacing: -.6px; }
+  .hero-title { margin: 0 0 10px; font-family: "Inter", sans-serif; font-weight: 900; line-height: 1.03; letter-spacing: -.6px; }
   .hero-title span { display: block; }
   .hero-title .line1 { font-size: clamp(36px, 7.2vw, 66px); }
   .hero-title .line2 { font-size: clamp(18px, 3vw, 32px); font-weight: 700; opacity: .88; margin-top: 10px; }
-  .hero-lead { margin: 0 0 24px; opacity: .92; font-size: 13px; line-height: 1.5; }
+  .hero-lead { margin: 0 0 20px; opacity: .92; font-size: 11px; line-height: 1.5; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .hero-actions .btn { padding: 9px 16px; font-size: 14px; }
  
   .grid { display: grid; gap: 22px; }
   .card {
@@ -308,6 +309,10 @@ const PARTNER = [
  
   @media (min-width: 768px) {
     .hero { aspect-ratio: auto; min-height: 520px; }
+    main > section:not(.hero) { margin-top: 96px; }
+    .hero-inner { padding: 42px 0; }
+    .hero-title { margin: 0 0 18px; }
+    .hero-lead { margin: 0 0 24px; }
     .grid { grid-template-columns: 1fr 1fr; }
     .reviews { grid-template-columns: repeat(2, 1fr); }
     .news { grid-template-columns: repeat(2, 1fr); }
