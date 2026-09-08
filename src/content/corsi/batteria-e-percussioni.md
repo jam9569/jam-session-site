@@ -22,8 +22,8 @@ metodo: "Ogni allievo ha un docente di riferimento per tutto il percorso, con ma
 team:
   - nome: "Riccardo D'Errico"
     ruolo: "Pop, rock, funk, blues, jazz, latin — registrazione in studio"
-    foto: "/assets/docenti/docente-batteria-riccardo-derrico.jpg"
+    foto: "/assets/docenti/docente-batteria-riccardo-derrico.webp"
   - nome: "Andrea Giorgi"
     ruolo: "Batteria moderna e percussioni"
-    foto: "/assets/docenti/docente-batteria-andrea-giorgi.jpg"
+    foto: "/assets/docenti/docente-batteria-andrea-giorgi.webp"
 ---

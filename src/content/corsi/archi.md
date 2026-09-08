@@ -24,5 +24,5 @@ team:
     ruolo: "Violoncello"
   - nome: "Annamaria Silvino"
     ruolo: "Violino"
-    foto: "/assets/docenti/docente-archi-annamaria-silvino.jpg"
+    foto: "/assets/docenti/docente-archi-annamaria-silvino.webp"
 ---
