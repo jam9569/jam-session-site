@@ -29,4 +29,5 @@ team:
     foto: "/assets/docenti/docente-pianoforte-karolina-kisiak.jpg"
   - nome: "Mariagrazia Vincitorio"
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop, rock, blues"
+    foto: "/assets/docenti/docente-pianoforte-mariagrazia-vincitorio.jpg"
 ---
