@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.jamsessionaps.it',
+  site: 'https://jamsessionaps.it',
   redirects: {
     '/progetti/incubatore-orchestrale': '/progetti/maia',
   },
