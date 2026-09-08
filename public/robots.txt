@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /index-backup
+Disallow: /european-partners-backup
+
+Sitemap: https://www.jamsessionaps.it/sitemap.xml
