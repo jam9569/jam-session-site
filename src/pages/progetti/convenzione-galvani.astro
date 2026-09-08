@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const PILASTRI = [
+  {
+    titolo: "Lezioni di strumento a scuola",
+    testo: "I nostri insegnanti tengono corsi di strumento pomeridiani negli spazi del liceo, con iscrizioni e quote gestite direttamente da Jam Session. Gli studenti possono inoltre sostenere gli esami Trinity College London, di cui siamo centro accreditato.",
+  },
+  {
+    titolo: "Coro e orchestra del liceo",
+    testo: "Supportiamo la direzione artistica del coro e dell'orchestra del Galvani, curando la partecipazione a concerti ed eventi pubblici insieme al Coro di Periferia e agli altri gruppi della rete Musica e Società.",
+  },
+  {
+    titolo: "Erasmus+ e bandi europei",
+    testo: "Collaboriamo alla progettazione e alla gestione di bandi pubblici — PNRR, ministeriali, regionali ed europei, inclusi i progetti Erasmus+ — mettendo a disposizione la nostra esperienza in progettazione, rendicontazione e monitoraggio.",
+  },
+  {
+    titolo: "Percorsi FSL",
+    testo: "Offriamo agli studenti percorsi di alternanza scuola-lavoro nell'organizzazione di eventi, nella comunicazione istituzionale e nella progettazione culturale, con un tutor aziendale dedicato per ogni area.",
+  },
+  {
+    titolo: "Rete BMEH",
+    testo: "Il Galvani aderisce con noi a BMEH – Bologna Music Education Hub, la rete che collega scuole e realtà musicali del territorio per progetti interscolastici, concerti e collaborazioni internazionali.",
+  },
+];
+---
+
+<BaseLayout title="Convenzione Galvani — Jam Session APS" description="La convenzione quadro tra Jam Session APS e il Liceo Ginnasio Statale Luigi Galvani di Bologna: lezioni di strumento, coro, orchestra, Erasmus+ e FSL.">
+  <Header />
+  <div class="container">
+    <div class="hero-media">
+      <img src="/assets/progetti/convenzione-galvani-hero.jpg" alt="Il Liceo Ginnasio Statale Luigi Galvani di Bologna" />
+    </div>
+    <main class="page-content">
+      <p class="kicker">Collaborazione con il Liceo Galvani</p>
+      <h1>Convenzione Galvani</h1>
+      <p class="lead">Un accordo quadro con il Liceo Ginnasio Statale Luigi Galvani di Bologna per portare la musica dentro la scuola, tra lezioni di strumento, coro, orchestra e progetti europei.</p>
+
+      <div class="testo-intro">
+        <p>
+          Nel maggio 2026 Jam Session APS e il Liceo Ginnasio Statale Luigi Galvani di Bologna hanno
+          firmato una convenzione quadro che mette nero su bianco una collaborazione nata negli anni
+          attorno alla musica. È un accordo triennale, rinnovabile, pensato per dare continuità e
+          struttura a tutto quello che già facevamo insieme — dal coro della scuola, che attraverso il
+          progetto Musica e Società porta la sua voce fuori dalle mura del liceo, fino alle lezioni di
+          strumento tenute dai nostri insegnanti negli spazi dell'istituto.
+        </p>
+        <p>
+          La convenzione allarga lo sguardo anche oltre l'attività quotidiana: prevede una collaborazione
+          stabile su bandi e programmi di finanziamento pubblico, inclusi i progetti Erasmus+ e le
+          opportunità europee per la mobilità e la cooperazione internazionale, e apre percorsi di FSL (Formazione Scuola Lavoro)
+          per gli studenti del liceo nell'organizzazione di eventi, nella comunicazione e nella
+          progettazione culturale, con la supervisione e i tutor di Jam Session.
+        </p>
+        <p>
+          Il Galvani è inoltre tra le scuole che aderiscono a BMEH – Bologna Music Education Hub, la rete
+          che mette in connessione scuole e realtà musicali del territorio per progetti interscolastici,
+          concerti e collaborazioni con le istituzioni culturali della città.
+        </p>
+      </div>
+
+      <section aria-label="Cosa prevede la convenzione">
+        <div class="section-head">
+          <h2>Cosa prevede la convenzione</h2>
+          <p class="subtitle">Un accordo su più livelli, dalle lezioni quotidiane ai grandi progetti europei.</p>
+        </div>
+        <div class="pilastri-grid">
+          {PILASTRI.map(p => (
+            <div class="pilastro-card">
+              <h3>{p.titolo}</h3>
+              <p>{p.testo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="collegamento" aria-label="Progetto collegato">
+        <p>
+          Il coro del Galvani fa parte della rete regionale <strong>Musica e Società</strong>, di cui Jam
+          Session è capofila in Emilia-Romagna. <a href="/progetti/musica-e-societa">Scopri il progetto →</a>
+        </p>
+      </section>
+
+      <section class="cta-section" aria-label="Contatti">
+        <h2>Vuoi saperne di più?</h2>
+        <p class="subtitle">Per informazioni sulla convenzione, sulle lezioni di strumento al Galvani o su come collaboriamo con la scuola, scrivici.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="mailto:info@jamsessionaps.it">Contattaci</a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .page-content { margin: 46px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4.4vw, 44px);
+    margin: 0 0 14px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: .82;
+    margin: 0 0 32px;
+  }
+
+  .testo-intro { margin-bottom: 64px; }
+  .testo-intro p {
+    font-family: "Lexend", sans-serif;
+    opacity: .82;
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .testo-intro p:last-child { margin-bottom: 0; }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .pilastri-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .hero-media { aspect-ratio: auto; min-height: 520px; }
+    .pilastri-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .pilastri-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .pilastro-card {
+    background: var(--surface);
+    border: 1px solid rgba(11,11,11,.1);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .pilastro-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--green);
+  }
+  .pilastro-card p {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: .78;
+    margin: 0;
+  }
+
+  .collegamento {
+    background: #fff;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+  }
+  .collegamento p {
+    margin: 0;
+    font-family: "Lexend", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: .85;
+  }
+  .collegamento a {
+    color: var(--green);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section {
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radiusLg);
+    padding: 56px 32px;
+  }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 60ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+</style>
