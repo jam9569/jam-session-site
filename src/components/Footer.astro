@@ -52,12 +52,43 @@ const YEAR = new Date().getFullYear();
     <div class="fcard">
       <div class="f-title">Newsletter della scuola</div>
       <p class="f-text">Una mail ogni tanto: eventi, saggi, novità.</p>
-      <form class="form" action="https://d57cc9af.sibforms.com/serve/MUIFAH2F_Nruuu8v5aeui3v_E9vJG90ZJ-cJ3StOXH5MvGzJuv2SeorVH_DdKulbx7x7AEQq9nd8PjxX8Ui4bsJoOKxY9csudcPzsds52gvWAKhM7YcsEogwTKWMvSIhuRqYfbsa1JgdMOHgPQWF0QJn8-0w6Fx5HRyWNjZU1ro1DzBCr_ErHh8HElofs5mfrxcUENyn1eFzbLpl" method="post">
-        <input type="text" name="NOME" placeholder="Il tuo nome" required />
-        <input type="email" name="EMAIL" placeholder="La tua email" required />
+      <form class="form" id="sib-form" data-type="subscription" action="https://d57cc9af.sibforms.com/serve/MUIFAH2F_Nruuu8v5aeui3v_E9vJG90ZJ-cJ3StOXH5MvGzJuv2SeorVH_DdKulbx7x7AEQq9nd8PjxX8Ui4bsJoOKxY9csudcPzsds52gvWAKhM7YcsEogwTKWMvSIhuRqYfbsa1JgdMOHgPQWF0QJn8-0w6Fx5HRyWNjZU1ro1DzBCr_ErHh8HElofs5mfrxcUENyn1eFzbLpl" method="post">
+        <div class="sib-input sib-form-block">
+          <div class="form__entry entry_block">
+            <div class="form__label-row">
+              <div class="entry__field">
+                <input class="input" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="Il tuo nome" data-required="true" required />
+              </div>
+            </div>
+            <label class="entry__error entry__error--primary"></label>
+          </div>
+        </div>
+        <div class="sib-input sib-form-block">
+          <div class="form__entry entry_block">
+            <div class="form__label-row">
+              <div class="entry__field">
+                <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="La tua email" data-required="true" required />
+              </div>
+            </div>
+            <label class="entry__error entry__error--primary"></label>
+          </div>
+        </div>
         <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="hidden" name="locale" value="it" />
-        <button type="submit">Iscrivimi</button>
+        <div class="sib-form-block">
+          <button class="sib-form-block__button" type="submit">
+            <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+              <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+            </svg>
+            Iscrivimi
+          </button>
+        </div>
+        <div id="error-message" class="newsletter-message newsletter-message-error">
+          La tua iscrizione non può essere convalidata.
+        </div>
+        <div id="success-message" class="newsletter-message newsletter-message-success">
+          La tua iscrizione è avvenuta correttamente.
+        </div>
       </form>
       <div class="newsletter-note">
         Niente spam. <a href="https://www.iubenda.com/privacy-policy/74857805" target="_blank" rel="noopener">Privacy</a>.
@@ -101,6 +132,27 @@ const YEAR = new Date().getFullYear();
  
   <div class="copyright">© {YEAR} Jam Session APS · Sito realizzato da Marco Badini</div>
 </footer>
+
+<script is:inline>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Scegli un prefisso paese';
+  window.LOCALE = 'it';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Le informazioni fornite non sono valide. Controlla il formato del campo e riprova.";
+  window.REQUIRED_ERROR_MESSAGE = "Questo campo non pu\u00f2 essere lasciato vuoto. ";
+  window.GENERIC_INVALID_MESSAGE = "Le informazioni fornite non sono valide. Controlla il formato del campo e riprova.";
+  window.INVALID_NUMBER = "Le informazioni fornite non sono valide. Controlla il formato del campo e riprova.";
+  window.INVALID_DATE = "Inserisci una data valida";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Seleziona almeno 1 opzione';
+  window.translation = {
+    common: {
+      selectedList: '{quantity} lista selezionata',
+      selectedLists: '{quantity} liste selezionate',
+      selectedOption: '{quantity} selezionato',
+      selectedOptions: '{quantity} selezionati',
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script is:inline defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
  
 <style>
   footer {
@@ -169,7 +221,32 @@ const YEAR = new Date().getFullYear();
     font-family: "Inter", sans-serif;
     font-weight: 900;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
+  .form button svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+  .form button svg.sib-hide-loader-icon { display: none; }
+  .form .entry__error {
+    display: block;
+    font-family: "Lexend", sans-serif;
+    font-size: 12px;
+    color: #b3261e;
+    margin: 2px 0 0;
+  }
+  .form .entry__error:empty { display: none; margin: 0; }
+  .newsletter-message {
+    display: none;
+    font-family: "Lexend", sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+  .newsletter-message.sib-form-message-panel--active { display: block; }
+  .newsletter-message-success { background: #e7faf0; color: #085229; }
+  .newsletter-message-error { background: #ffeded; color: #661d1d; }
   .newsletter-note { margin-top: 10px; font-size: 12px; opacity: .72; }
   .newsletter-note a { color: inherit; }
   .footer-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
