@@ -56,21 +56,25 @@ const YEAR = new Date().getFullYear();
         <div class="sib-input sib-form-block">
           <div class="form__entry entry_block">
             <div class="form__label-row">
+              <label class="entry__label" for="NOME" data-required="*">Il tuo nome</label>
               <div class="entry__field">
                 <input class="input" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="Il tuo nome" data-required="true" required />
               </div>
             </div>
             <label class="entry__error entry__error--primary"></label>
+            <label class="entry__specification"></label>
           </div>
         </div>
         <div class="sib-input sib-form-block">
           <div class="form__entry entry_block">
             <div class="form__label-row">
+              <label class="entry__label" for="EMAIL" data-required="*">La tua email</label>
               <div class="entry__field">
                 <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="La tua email" data-required="true" required />
               </div>
             </div>
             <label class="entry__error entry__error--primary"></label>
+            <label class="entry__specification"></label>
           </div>
         </div>
         <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" />
@@ -236,6 +240,19 @@ const YEAR = new Date().getFullYear();
     margin: 2px 0 0;
   }
   .form .entry__error:empty { display: none; margin: 0; }
+  .form .entry__label,
+  .form .entry__specification:empty {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .form .form__entry { position: relative; }
   .newsletter-message {
     display: none;
     font-family: "Lexend", sans-serif;
