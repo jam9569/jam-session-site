@@ -23,7 +23,6 @@ const DIRETTIVO = [
     nome: "Mariagrazia Vincitorio",
     email: "mariagraziavincitorio@jamsessionaps.it",
     descrizione: "Direzione didattica, tirocini e rapporti con i Conservatori. Dirige anche il Coro di Periferia.",
-    foto: "/assets/organigramma/mariagrazia-vincitorio.webp",
   },
   {
     ruolo: "Consigliere",
@@ -77,13 +76,15 @@ const SEGRETERIA = [
             <div class="persona-card">
               <div class="persona-photo-wrap">
                 <span class="persona-iniziali">{iniziali(p.nome)}</span>
-                <img
-                  class="persona-photo"
-                  src={p.foto}
-                  alt={`Foto di ${p.nome}`}
-                  loading="lazy"
-                  onerror="this.style.display='none'"
-                />
+                {p.foto && (
+                  <img
+                    class="persona-photo"
+                    src={p.foto}
+                    alt={`Foto di ${p.nome}`}
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                  />
+                )}
               </div>
               <span class="persona-ruolo">{p.ruolo}</span>
               <h3 class="persona-nome">{p.nome}</h3>
@@ -105,13 +106,15 @@ const SEGRETERIA = [
               <div class="persona-card persona-card-segreteria">
                 <div class="persona-photo-wrap">
                   <span class="persona-iniziali">{iniziali(p.nome)}</span>
-                  <img
-                    class="persona-photo"
-                    src={p.foto}
-                    alt={`Foto di ${p.nome}`}
-                    loading="lazy"
-                    onerror="this.style.display='none'"
-                  />
+                  {p.foto && (
+                    <img
+                      class="persona-photo"
+                      src={p.foto}
+                      alt={`Foto di ${p.nome}`}
+                      loading="lazy"
+                      onerror="this.style.display='none'"
+                    />
+                  )}
                 </div>
                 <span class="persona-ruolo">{p.ruolo}</span>
                 <h3 class="persona-nome">{p.nome}</h3>

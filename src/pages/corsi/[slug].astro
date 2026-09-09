@@ -4,6 +4,13 @@ import BaseLayout from '../../layouts/layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
+function iniziali(nome) {
+  const parole = nome.trim().split(/\s+/);
+  const prima = parole[0]?.[0] ?? '';
+  const ultima = parole[parole.length - 1]?.[0] ?? '';
+  return (prima + ultima).toUpperCase();
+}
+
 export async function getStaticPaths() {
   const corsi = await getCollection('corsi');
   return corsi.map(corso => ({
@@ -73,7 +80,11 @@ const { title, intro, immagine, video, fasce_eta, livelli, metodo, team, nota_te
               {team.map(t => (
                 <div class="team-item">
                   <div class="team-photo">
-                    {t.foto && <img src={t.foto} alt={t.nome} />}
+                    {t.foto ? (
+                      <img src={t.foto} alt={t.nome} />
+                    ) : (
+                      <span class="team-iniziali">{iniziali(t.nome)}</span>
+                    )}
                   </div>
                   <div class="team-info">
                     <div class="team-name">{t.nome}</div>
@@ -228,6 +239,18 @@ const { title, intro, immagine, video, fasce_eta, livelli, metodo, team, nota_te
     height: 100%;
     object-fit: cover;
     object-position: top center;
+  }
+  .team-iniziali {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color: #0f5f53;
+    letter-spacing: .5px;
   }
   .team-info { flex: 1 1 auto; min-width: 0; }
   .team-name {
