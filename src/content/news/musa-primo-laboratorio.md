@@ -1,5 +1,5 @@
 ---
-title: "MUSA: il primo laboratorio del percorso, con Alice Sacchi"
+title: "Leadership e conduzione di ensemble"
 date: "2026-09-25"
 ---
 
