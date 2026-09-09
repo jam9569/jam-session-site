@@ -1,5 +1,5 @@
 ---
-title: "Bologna incontra Buenos Aires: il Coro di Periferia canta con il Coro Municipal de Brandsen"
+title: "Bologna incontra Buenos Aires: il Coro di Periferia\ncanta con il Coro Municipal de Brandsen"
 date: "2026-10-11"
 immagine: "/assets/eventi/bologna-incontra-buenos-aires.webp"
 ---

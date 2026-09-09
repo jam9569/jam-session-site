@@ -21,17 +21,21 @@ const { Content } = await render(entry);
 <BaseLayout title={`${title} — Jam Session APS`} description={title}>
   <Header />
   <div class="container">
-    <main class="page-content">
+    <main class="page-content" class:list={{ "has-image": !!immagine }}>
       <p class="kicker"><a href="/news">← Tutte le news</a></p>
-      <span class="news-date">{dateDisplay}</span>
-      <h1>{title}</h1>
-      {immagine && (
-        <div class="news-badge">
-          <img src={immagine} alt={title} loading="lazy" />
+      <div class="news-layout">
+        <div class="news-text">
+          <span class="news-date">{dateDisplay}</span>
+          <h1>{title}</h1>
+          <div class="news-body">
+            <Content />
+          </div>
         </div>
-      )}
-      <div class="news-body">
-        <Content />
+        {immagine && (
+          <div class="news-image">
+            <img src={immagine} alt={title.replace(/\n/g, " ")} loading="lazy" />
+          </div>
+        )}
       </div>
     </main>
     <Footer />
@@ -50,9 +54,11 @@ const { Content } = await render(entry);
 
   .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
   .page-content { margin: 16px 0 60px; max-width: 900px; }
+  .page-content.has-image { max-width: 1060px; }
   .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; margin: 0 0 18px; }
   .kicker a { color: var(--green); text-decoration: none; }
   .kicker a:hover { text-decoration: underline; }
+  .news-layout { display: grid; gap: 34px; }
   .news-date {
     display: block;
     font-family: "Inter", sans-serif;
@@ -66,13 +72,15 @@ const { Content } = await render(entry);
     font-weight: 900;
     font-size: clamp(28px, 4vw, 38px);
     margin: 0 0 30px;
+    white-space: pre-line;
   }
-  .news-badge {
-    width: 130px;
-    height: 130px;
-    margin: 0 0 28px;
+  .news-image {
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(11,11,11,.18);
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
   }
-  .news-badge img { width: 100%; height: 100%; display: block; }
+  .news-image img { width: 100%; height: auto; display: block; }
   .news-body {
     font-family: "Lexend", sans-serif;
     font-size: 17px;
@@ -81,4 +89,12 @@ const { Content } = await render(entry);
   }
   .news-body p { margin: 0 0 18px; }
   .news-body p:last-child { margin-bottom: 0; }
+
+  @media (min-width: 860px) {
+    .page-content.has-image .news-layout {
+      grid-template-columns: 1.15fr 1fr;
+      align-items: start;
+    }
+    .page-content.has-image .news-image { position: sticky; top: 24px; }
+  }
 </style>
