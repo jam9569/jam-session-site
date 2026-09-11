@@ -22,6 +22,7 @@ metodo: "Le lezioni sono individuali, con un programma costruito sulle esigenze 
 team:
   - nome: "Alessio Ercole"
     ruolo: "Pianoforte classico"
+    foto: "/assets/docenti/docente-pianoforte-alessio-ercole.webp"
   - nome: "Sebastian Hallmark"
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop"
   - nome: "Karolina Kisiak"
