@@ -22,10 +22,12 @@ metodo: "Ogni allievo ha un docente di riferimento per tutto il percorso, con ma
 team:
   - nome: "Andrea Belvederi Mosti"
     ruolo: "Chitarra acustica ed elettrica: folk, blues, rock, country rock, pop — basso per principianti"
+    foto: "/assets/organigramma/andrea-belvederi-mosti.webp"
   - nome: "Antonio Del Gaudio"
     ruolo: "Basso elettrico: pop, funk, rock, metal — chitarra elettrica: pop, rock, metal"
   - nome: "Giacomo Deschi"
     ruolo: "Chitarra elettrica e acustica: pop, rock, funk, fusion — basso per principianti"
+    foto: "/assets/docenti/docente-chitarra-giacomo-deschi.webp"
   - nome: "Marco Giudice"
     ruolo: "Chitarra classica, acustica, elettrica: rock, pop — basso per principianti"
   - nome: "Erik Storari"
