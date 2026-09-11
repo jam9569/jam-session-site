@@ -23,7 +23,7 @@ team:
   - nome: "Andrea Giorgelli"
     ruolo: "Docente di Canto Jazz, Pop, Rock e R&B"
   - nome: "Andrea Margherita Martinelli"
-    ruolo: "Docente di Canto Jazz, Pop, Rock e Soul"
+    ruolo: "Docente di Canto Jazz, Pop, Soul e Modern"
   - nome: "Giulia Tedesco"
     ruolo: "Docente di Canto Jazz, Pop, R&B, Soul e Modern"
   - nome: "Alex Zanardo"
