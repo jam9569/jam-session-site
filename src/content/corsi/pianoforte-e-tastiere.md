@@ -25,6 +25,7 @@ team:
     foto: "/assets/docenti/docente-pianoforte-alessio-ercole.webp"
   - nome: "Sebastian Hallmark"
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop"
+    foto: "/assets/docenti/docente-pianoforte-sebastian-hallmark.webp"
   - nome: "Karolina Kisiak"
     ruolo: "Pianoforte classico"
     foto: "/assets/docenti/docente-pianoforte-karolina-kisiak.webp"
