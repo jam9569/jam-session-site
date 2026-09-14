@@ -26,6 +26,7 @@ team:
     ruolo: "Docente di Canto Jazz, Pop, Soul e Modern"
   - nome: "Giulia Tedesco"
     ruolo: "Docente di Canto Jazz, Pop, R&B, Soul e Modern"
+    foto: "/assets/docenti/docente-canto-giulia-tedesco.webp"
   - nome: "Alex Zanardo"
     ruolo: "Docente di Canto Rock, Metal e Pop"
 ---
