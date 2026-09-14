@@ -30,6 +30,7 @@ team:
     foto: "/assets/docenti/docente-chitarra-giacomo-deschi.webp"
   - nome: "Marco Giudice"
     ruolo: "Chitarra classica, acustica, elettrica: rock, pop — basso per principianti"
+    foto: "/assets/docenti/docente-chitarra-marco-giudice.webp"
   - nome: "Erik Storari"
     ruolo: "Chitarra acustica ed elettrica: pop, rock, folk, metal — basso per principianti"
   - nome: "Lorenzo Valdesalici"
