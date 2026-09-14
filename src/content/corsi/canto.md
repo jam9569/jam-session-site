@@ -29,4 +29,5 @@ team:
     foto: "/assets/docenti/docente-canto-giulia-tedesco.webp"
   - nome: "Alex Zanardo"
     ruolo: "Docente di Canto Rock, Metal e Pop"
+    foto: "/assets/docenti/docente-canto-alex-zanardo.webp"
 ---
