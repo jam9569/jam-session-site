@@ -22,6 +22,7 @@ metodo: "Ogni docente costruisce un programma su misura per ciascun allievo, alt
 team:
   - nome: "Giacomo Borghi"
     ruolo: "Violoncello"
+    foto: "/assets/docenti/docente-archi-giacomo-borghi.webp"
   - nome: "Annamaria Silvino"
     ruolo: "Violino"
     foto: "/assets/docenti/docente-archi-annamaria-silvino.webp"
