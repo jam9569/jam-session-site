@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 const SITE = {
   addressLine1: "Via del Perugino 6B e 6C",
   addressLine2: "40139 Bologna",
+  mapsApiKey: "AIzaSyCQkvVyerlzxRnGTs_UANQIzi2TMcZzl6M",
   email: "segreteria@jamsessionaps.it",
   pec: "ass.jamsession@pec.it",
   phone: "tel:+393202244932",
@@ -50,7 +51,7 @@ const SITE = {
         <div class="map-card">
           <iframe
             title="Mappa: Via del Perugino 6B e 6C, Bologna"
-            src="https://www.google.com/maps?q=Via+del+Perugino+6B,+40139+Bologna&output=embed"
+            src={`https://www.google.com/maps/embed/v1/place?key=${SITE.mapsApiKey}&q=Via+del+Perugino+6B,+40139+Bologna`}
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
