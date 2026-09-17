@@ -24,6 +24,7 @@ team:
     ruolo: "Docente di Canto Jazz, Pop, Rock e R&B"
   - nome: "Andrea Margherita Martinelli"
     ruolo: "Docente di Canto Jazz, Pop, Soul e Modern"
+    foto: "/assets/docenti/docente-canto-andrea-margherita-martinelli.webp"
   - nome: "Giulia Tedesco"
     ruolo: "Docente di Canto Jazz, Pop, R&B, Soul e Modern"
     foto: "/assets/docenti/docente-canto-giulia-tedesco.webp"
