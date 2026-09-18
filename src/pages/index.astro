@@ -50,7 +50,7 @@ const NEWS_HOME = newsEntries
  
 const PARTNER = [
   { name: "Trinity College London", logo: "/assets/partner/partner-trinity-college-london.svg", href: "/partner/trinity" },
-  { name: "Liceo Ginnasio Galvani", logo: "/assets/partner/partner-liceo-galvani.png", href: "/partner/galvani" },
+  { name: "Liceo Ginnasio Galvani", logo: "/assets/partner/partner-liceo-galvani.webp", href: "/partner/galvani" },
   { name: "Regione Emilia-Romagna", logo: "/assets/partner/partner-regione-emilia-romagna.svg", href: "/partner/regione-emilia-romagna" },
   { name: "Fondo Sociale Europeo Plus", logo: "/assets/partner/partner-fse-plus.svg", href: "/partner/fse-plus" },
   { name: "Tomassone", logo: "/assets/partner/partner-tomassone.svg", href: "/partner/tomassone" },
@@ -123,7 +123,16 @@ const PARTNER = [
       </section>
  
       <div class="micro-photo">
-        <img src="/assets/home/chitarre-scuola-musica-jam-session.webp" alt="Chitarre alla Jam Session APS" width="2400" height="1350" loading="lazy" decoding="async" />
+        <img
+          src="/assets/home/chitarre-scuola-musica-jam-session-1200w.webp"
+          srcset="/assets/home/chitarre-scuola-musica-jam-session-480w.webp 480w, /assets/home/chitarre-scuola-musica-jam-session-900w.webp 900w, /assets/home/chitarre-scuola-musica-jam-session-1200w.webp 1200w, /assets/home/chitarre-scuola-musica-jam-session.webp 2400w"
+          sizes="(max-width: 1120px) 100vw, 1120px"
+          alt="Chitarre alla Jam Session APS"
+          width="2400"
+          height="1350"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
  
       {NEWS_HOME.length > 0 && (
