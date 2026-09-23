@@ -49,14 +49,14 @@ const NEWS_HOME = newsEntries
   }));
  
 const PARTNER = [
-  { name: "Trinity College London", logo: "/assets/partner/partner-trinity-college-london.svg", href: "/partner/trinity" },
-  { name: "Liceo Ginnasio Galvani", logo: "/assets/partner/partner-liceo-galvani.webp", href: "/partner/galvani" },
-  { name: "Regione Emilia-Romagna", logo: "/assets/partner/partner-regione-emilia-romagna.svg", href: "/partner/regione-emilia-romagna" },
-  { name: "Fondo Sociale Europeo Plus", logo: "/assets/partner/partner-fse-plus.svg", href: "/partner/fse-plus" },
-  { name: "Tomassone", logo: "/assets/partner/partner-tomassone.svg", href: "/partner/tomassone" },
-  { name: "All For Music", logo: "/assets/partner/partner-all-for-music.svg", href: "/partner/all-for-music" },
-  { name: "Comune di Bologna", logo: "/assets/partner/partner-comune-bologna.svg", href: "/partner/comune-bologna" },
-  { name: "Intesa Sanpaolo", logo: "/assets/partner/partner-intesa-sanpaolo.png", href: "/partner/intesa-sanpaolo" },
+  { name: "Trinity College London", logo: "/assets/partner/partner-trinity-college-london.svg" },
+  { name: "Liceo Ginnasio Galvani", logo: "/assets/partner/partner-liceo-galvani.webp", href: "/progetti/convenzione-galvani" },
+  { name: "Regione Emilia-Romagna", logo: "/assets/partner/partner-regione-emilia-romagna.svg" },
+  { name: "Fondo Sociale Europeo Plus", logo: "/assets/partner/partner-fse-plus.svg" },
+  { name: "Tomassone", logo: "/assets/partner/partner-tomassone.svg" },
+  { name: "All For Music", logo: "/assets/partner/partner-all-for-music.svg" },
+  { name: "Comune di Bologna", logo: "/assets/partner/partner-comune-bologna.svg" },
+  { name: "Intesa Sanpaolo", logo: "/assets/partner/partner-intesa-sanpaolo.png" },
 ];
 ---
  
@@ -171,14 +171,17 @@ const PARTNER = [
           <p class="subtitle">Partner tecnici, enti e associazioni con cui collaboriamo.</p>
         </div>
         <div class="partners">
-          {PARTNER.map(p => (
-            <a class="partner" href={p.href} title={p.name}>
-              <div class="partner-logo">
-                <img src={p.logo} alt={p.name} width="86" height="38" loading="lazy" decoding="async" />
-              </div>
-              <div class="partner-name">{p.name}</div>
-            </a>
-          ))}
+          {PARTNER.map(p => {
+            const Tag = p.href ? 'a' : 'div';
+            return (
+              <Tag class="partner" href={p.href} title={p.name}>
+                <div class="partner-logo">
+                  <img src={p.logo} alt={p.name} width="86" height="38" loading="lazy" decoding="async" />
+                </div>
+                <div class="partner-name">{p.name}</div>
+              </Tag>
+            );
+          })}
         </div>
       </section>
  
