@@ -22,7 +22,7 @@ const RICONOSCIMENTI = [
     testo: "Capofila del progetto \"Musica e Società\", una rete di 10 scuole di musica dell'Emilia-Romagna sostenuta dal Fondo Sociale Europeo Plus (FSE+).",
   },
   {
-    testo: "Tra le scuole di musica fondatrici di MusicaSocietà APS, associazione di secondo livello che riunisce scuole di musica ed enti attivi nell'educazione musicale, iscritta al RUNTS nel 2026.",
+    testo: 'Tra le scuole di musica fondatrici di <a href="https://musicasocieta.it/" target="_blank" rel="noopener">MusicaSocietà APS</a>, associazione di secondo livello che riunisce scuole di musica ed enti attivi nell\'educazione musicale, iscritta al RUNTS nel 2026.',
   },
   {
     testo: "Iscritta all'elenco delle Libere Forme Associative (LFA) del Comune di Bologna.",
@@ -178,7 +178,7 @@ const RICONOSCIMENTI = [
             <li>
               <span class="r-dot" aria-hidden="true"></span>
               <div class="r-body">
-                <span class="r-text">{r.testo}</span>
+                <span class="r-text" set:html={r.testo} />
                 {r.nota && <span class="r-nota">{r.nota}</span>}
               </div>
             </li>
