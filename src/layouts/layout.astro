@@ -106,6 +106,18 @@ const imageURL = new URL(image, Astro.site);
       }
     });
   </script>
+  <!-- Traccia come conversione Google Ads il tap sul numero di cellulare -->
+  <!-- (misura il click sul link tel:, come proxy della chiamata: nessuno script di deviazione numero) -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="tel:+393202244932"]');
+      if (link && typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-10977779327/WlsyCJzzrIMdEP-8zvIo'
+        });
+      }
+    });
+  </script>
 </head>
 <body>
   <slot />
