@@ -4,6 +4,7 @@ interface Props {
   description?: string;
   lang?: string;
   image?: string;
+  preloadImage?: string;
 }
  
 const {
@@ -11,6 +12,7 @@ const {
   description = "Scuola di canto e musica a Bologna. Corsi di canto, pianoforte, chitarra, DJ e molto altro. Sede d'esame Trinity College London.",
   lang = "it",
   image = "/assets/social/og-image.jpg",
+  preloadImage,
 } = Astro.props;
  
 const SITE_NAME = "Jam Session APS";
@@ -56,6 +58,9 @@ const imageURL = new URL(image, Astro.site);
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  {preloadImage && (
+    <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+  )}
  
   <style is:global>
     @font-face {
