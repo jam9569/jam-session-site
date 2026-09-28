@@ -30,4 +30,5 @@ team:
     ruolo: "Sax tenore e contralto: jazz, blues, funk, pop"
   - nome: "Federico Privitera"
     ruolo: "Tromba: classica, blues, jazz, funk, pop"
+    foto: "/assets/docenti/docente-fiati-federico-privitera.webp"
 ---

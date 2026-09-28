@@ -22,6 +22,7 @@ metodo: "Ogni lezione è un laboratorio pratico: si parte dalla respirazione e d
 team:
   - nome: "Andrea Giorgelli"
     ruolo: "Docente di Canto Jazz, Pop, Rock e R&B"
+    foto: "/assets/docenti/docente-canto-andrea-giorgelli.webp"
   - nome: "Andrea Margherita Martinelli"
     ruolo: "Docente di Canto Jazz, Pop, Soul e Modern"
     foto: "/assets/docenti/docente-canto-andrea-margherita-martinelli.webp"
