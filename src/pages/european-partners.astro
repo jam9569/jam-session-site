@@ -8,7 +8,7 @@ const SITE_EN = {
   vat: "IT04024071203",
   email: "info@jamsessionaps.it",
   pec: "ass.jamsession@pec.it",
-  secretary: "segreteria@jamsessionaps.it",
+  secretary: "info@jamsessionaps.it",
   partnershipContact: "Marco Badini",
   partnershipEmail: "marcobadini@jamsessionaps.it",
   oid: "E10402104",
@@ -580,7 +580,18 @@ const YEAR = new Date().getFullYear();
       .grid{ grid-template-columns: 1fr 1fr; }
       .footer-top{ grid-template-columns: 1fr 1fr 1.1fr; }
     }
+    @media (max-width: 340px){
+      .brand-name{ font-size:14px !important; }
+      .logo{ width:38px !important; height:38px !important; }
+    }
     @media (max-width: 520px){
+      /* Header compatto: il pulsante PIF non deve coprire il nome dell'associazione */
+      .header-inner{ gap:10px; }
+      .logo{ width:44px; height:44px; }
+      .brand{ gap:10px; }
+      .brand-name{ font-size:16px; }
+      .pif-cta{ padding:8px 12px; font-size:14px; gap:6px; }
+      .pif-cta .pif-pdf{ display:none; }
       .banner{ height: 290px; }
       .hero{ padding: 26px; }
       .hero-media img{ height: 240px; }
@@ -612,7 +623,7 @@ const YEAR = new Date().getFullYear();
 
       <div class="header-actions">
         <a class="pif-cta" href={PIF_HREF} aria-label="Download Partner Identification Form (PDF)">
-          Download PIF (PDF) <span aria-hidden="true">↘</span>
+          Download PIF<span class="pif-pdf"> (PDF)</span> <span aria-hidden="true">↘</span>
         </a>
       </div>
     </div>
