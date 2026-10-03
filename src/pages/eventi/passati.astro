@@ -47,7 +47,7 @@ const archivio = tuttiEventi
   });
 
 const ANNI_SOCIALI = [...new Set(archivio.map(e => e.annoSociale))].sort((a, b) => b.localeCompare(a));
-const inVetrina = archivio.filter(e => e.vetrina).slice(0, 5);
+const inVetrina = archivio.filter(e => e.vetrina).slice(0, 6);
 const mostraFiltri = archivio.length > 0;
 ---
 
@@ -336,13 +336,8 @@ const mostraFiltri = archivio.length > 0;
   @media (min-width: 560px) { .eventi-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 860px) { .eventi-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (min-width: 1100px) { .eventi-grid { grid-template-columns: repeat(4, 1fr); } }
-  /* Vetrina con 5 schede: prima riga da 3, seconda riga da 2 schede larghe con foto a lato */
-  @media (min-width: 860px) {
-    .vetrina-grid:has(> :nth-child(5):last-child) { grid-template-columns: repeat(6, 1fr); }
-    .vetrina-grid:has(> :nth-child(5):last-child) > .evento-card { grid-column: span 2; }
-    .vetrina-grid:has(> :nth-child(5):last-child) > .evento-card:nth-child(n+4) { grid-column: span 3; flex-direction: row; }
-    .vetrina-grid:has(> :nth-child(5):last-child) > .evento-card:nth-child(n+4) .evento-foto { width: 42%; flex: 0 0 42%; aspect-ratio: auto; }
-  }
+  /* Vetrina: fino a 6 schede, sempre su 3 colonne (3 + 3) per tenere la griglia pari */
+  @media (min-width: 1100px) { .vetrina-grid { grid-template-columns: repeat(3, 1fr); } }
   .evento-card {
     background: #fff;
     border-radius: var(--radius);
