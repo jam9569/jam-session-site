@@ -6,4 +6,5 @@ teaser: "\"Millefinestre di ritmo\": una masterclass di batteria e percussioni c
 ospiti: ["Christian Meyer"]
 immagine: "/assets/eventi/masterclass/christian-meyer-2023.webp"
 video: "https://www.youtube.com/watch?v=-5utk34fyEM"
+vetrina: true
 ---
