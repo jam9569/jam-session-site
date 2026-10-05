@@ -1,6 +1,6 @@
 ---
 title: "Online il video del concerto della Big Band del Gymnasium Bethel di Bielefeld con il Coro del Liceo Galvani"
-date: "2026-10-04"
+date: "2026-10-09"
 ---
 
 È online su YouTube il [video del concerto](https://www.youtube.com/watch?v=jzh6KY4an84) che il 5 maggio 2026 ha portato in Piazza Lucio Dalla la Big Band del Gymnasium Bethel di Bielefeld e il Coro del Liceo Galvani di Bologna.
