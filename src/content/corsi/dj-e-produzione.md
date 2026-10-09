@@ -21,4 +21,5 @@ team:
     ruolo: "DJ e musicista, scena underground, pubblicazioni per diverse etichette"
   - nome: "Lorenzo Valdesalici"
     ruolo: "Produzione e composizione per film"
+    foto: "/assets/docenti/docente-chitarra-lorenzo-valdesalici.webp"
 ---
