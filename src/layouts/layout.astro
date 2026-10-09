@@ -5,6 +5,10 @@ interface Props {
   lang?: string;
   image?: string;
   preloadImage?: string;
+  /** Carica banner cookie (Iubenda) e Google Analytics solo dopo che la pagina
+   *  e' stata disegnata. Da usare SOLO su pagine senza iframe/video incorporati
+   *  (YouTube, Vimeo, mappe), che altrimenti partirebbero prima del consenso. */
+  deferConsent?: boolean;
 }
  
 const {
@@ -13,9 +17,27 @@ const {
   lang = "it",
   image = "/assets/social/og-image.jpg",
   preloadImage,
+  deferConsent = false,
 } = Astro.props;
  
 const SITE_NAME = "Jam Session APS";
+
+const DEFERRED_CONSENT_JS = `(function () {
+  function add(src, onload) {
+    var s = document.createElement('script');
+    s.src = src; s.async = false;
+    if (onload) s.onload = onload;
+    document.head.appendChild(s);
+  }
+  function start() {
+    add('https://cs.iubenda.com/autoblocking/1599914.js', function () {
+      add('https://cdn.iubenda.com/cs/iubenda_cs.js');
+      add('https://www.googletagmanager.com/gtag/js?id=G-TLPSFHLYV2');
+    });
+  }
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
+})();`;
 const pageTitle = title.includes(SITE_NAME) ? title : `${title} • ${SITE_NAME}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
@@ -31,8 +53,12 @@ const imageURL = new URL(image, Astro.site);
     var _iub = _iub || [];
     _iub.csConfiguration = {"siteId":1599914,"cookiePolicyId":74857805,"lang":"it"};
   `} />
-  <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/1599914.js"></script>
-  <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+  {/* Pagina leggera (deferConsent): Iubenda e Google Analytics partono appena la pagina
+       e' disegnata. Ordine garantito: prima il blocco preventivo di Iubenda, poi banner e
+       Google. Se il blocco preventivo non si carica, Google non viene caricato affatto. */}
+  {deferConsent && <script is:inline set:html={DEFERRED_CONSENT_JS} />}
+  {!deferConsent && <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/1599914.js"></script>}
+  {!deferConsent && <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>}
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
@@ -91,7 +117,7 @@ const imageURL = new URL(image, Astro.site);
     }
   </style>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLPSFHLYV2"></script>
+  {!deferConsent && <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLPSFHLYV2"></script>}
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
