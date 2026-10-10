@@ -10,4 +10,5 @@ team:
     ruolo: "Docente del Laboratorio di Improvvisazione"
   - nome: "Nicola Parolari"
     ruolo: "Docente del Laboratorio di Improvvisazione"
+    foto: "/assets/docenti/docente-fiati-nicola-parolari.webp"
 ---
