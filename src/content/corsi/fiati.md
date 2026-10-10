@@ -22,8 +22,6 @@ metodo: "Il percorso è in continua evoluzione, costruito sulla personalità di 
 team:
   - nome: "Enrico Bonora"
     ruolo: "Sassofono: jazz, funk, blues, pop"
-  - nome: "Mario Brucato"
-    ruolo: "Clarinetto, flauto, sassofono: classica, moderna, musiche del mondo"
   - nome: "Adolfo Luis Orta"
     ruolo: "Trombone: classica, jazz, musica latina"
   - nome: "Nicola Parolari"
