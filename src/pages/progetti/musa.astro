@@ -25,8 +25,8 @@ const CALENDARIO = [
   { quando: "Luglio 2026", fine: "2026-07-31", titolo: "Raccolta delle candidature e selezione delle partecipanti" },
   { quando: "Sabato 26 settembre 2026", fine: "2026-09-26", orario: "15:00–18:00", titolo: "Laboratorio 1 — Leadership e direzione di ensemble", chi: "Alice Sacchi, cantante" },
   { quando: "Sabato 24 ottobre 2026", fine: "2026-10-24", orario: "ore 15:30", titolo: "Laboratorio 2 — Libera professione musicale", chi: "Dott.ssa Paola Giorgioni, commercialista", href: "/news/musa-secondo-laboratorio" },
-  { quando: "Domenica 29 novembre 2026", fine: "2026-11-29", orario: "15:00–18:00", titolo: "Laboratorio 3 — Accesso al lavoro pubblico", chi: "Dott.ssa Silvia Carrozzino, docente del Conservatorio G.B. Martini di Bologna", href: "/news/musa-terzo-laboratorio" },
-  { quando: "Sabato 12 dicembre 2026", fine: "2026-12-12", orario: "15:00–18:00", titolo: "Laboratorio 4 — Progettazione culturale", chi: "Dott.ssa Alexandra Storari, progettista", href: "/news/musa-quarto-laboratorio" },
+  { quando: "Domenica 29 novembre 2026", fine: "2026-11-29", orario: "15:00–18:00", titolo: "Laboratorio 3 — Accesso al lavoro pubblico", chi: "Dott.ssa Silvia Carrozzino", ruolo: "docente del Conservatorio G.B. Martini di Bologna", link: "https://consbo.it/insegnamenti/silvia-maria-rosaria-carrozzino/", href: "/news/musa-terzo-laboratorio" },
+  { quando: "Sabato 12 dicembre 2026", fine: "2026-12-12", orario: "15:00–18:00", titolo: "Laboratorio 4 — Progettazione culturale", chi: "Dott.ssa Alexandra Storari", ruolo: "progettista", link: "https://www.alexandrastorari.eu/", href: "/news/musa-quarto-laboratorio" },
   { quando: "Sabato 16 gennaio 2027", fine: "2027-01-16", orario: "15:00–18:00", titolo: "Laboratorio 5 — Musicista performer", chi: "Roberta Giallo, musicista performer" },
   { quando: "Sabato 20 febbraio 2027", fine: "2027-02-20", orario: "15:00–18:00", titolo: "Laboratorio 6 — Ruoli tecnici e gender gap", chi: "Chiara Amici, fonica" },
   { quando: "Marzo–aprile 2027", fine: "2027-04-30", titolo: "Incubatore con mentoring e sviluppo dei micro-progetti" },
@@ -91,7 +91,7 @@ const calendario = CALENDARIO.map(e => ({ ...e, svolto: e.fine < oggi }));
                 {e.svolto && <span class="tappa-badge">Svolto</span>}
               </p>
               <p class="tappa-titolo">{e.href && !e.svolto ? <a href={e.href}>{e.titolo}</a> : e.titolo}</p>
-              {e.chi && <p class="tappa-chi">con {e.chi}</p>}
+              {e.chi && <p class="tappa-chi">con {e.link ? <a href={e.link} target="_blank" rel="noopener">{e.chi}</a> : e.chi}{e.ruolo && `, ${e.ruolo}`}</p>}
             </li>
           ))}
         </ol>
@@ -287,6 +287,7 @@ const calendario = CALENDARIO.map(e => ({ ...e, svolto: e.fine < oggi }));
   }
   .tappa-titolo { margin: 0; font-family: "Lexend", sans-serif; font-size: 17px; line-height: 1.45; }
   .tappa-titolo a { color: inherit; text-decoration-color: rgba(15,95,83,.45); text-underline-offset: 3px; }
+  .tappa-chi a { color: var(--green); font-weight: 600; text-underline-offset: 3px; }
   .tappa-chi { margin: 4px 0 0; font-family: "Lexend", sans-serif; font-size: 14px; opacity: .7; }
   .nota-fondo { margin: 26px 0 0; font-family: "Lexend", sans-serif; font-size: 15px; font-weight: 600; }
   .download-row { margin-top: 22px; }
