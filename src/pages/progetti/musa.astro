@@ -17,6 +17,23 @@ const FASI = [
     testo: "Un concerto e una tavola rotonda con professioniste del settore aprono il percorso; un secondo evento, con la presentazione dei micro-progetti nati durante l'incubatore, lo chiude.",
   },
 ];
+
+// Calendario del percorso (dal volantino MUSA). "fine" = ultimo giorno
+// dell'appuntamento: serve per segnare in automatico quelli gia' svolti.
+const CALENDARIO = [
+  { quando: "18 giugno 2026", fine: "2026-06-18", titolo: "Evento pubblico di apertura e lancio della call" },
+  { quando: "Luglio 2026", fine: "2026-07-31", titolo: "Raccolta delle candidature e selezione delle partecipanti" },
+  { quando: "Sabato 26 settembre 2026", fine: "2026-09-26", orario: "15:00–18:00", titolo: "Laboratorio 1 — Leadership e direzione di ensemble", chi: "Alice Sacchi, cantante" },
+  { quando: "Sabato 24 ottobre 2026", fine: "2026-10-24", orario: "15:00–18:00", titolo: "Laboratorio 2 — Libera professione musicale", chi: "Paola Giorgioni, commercialista", href: "/news/musa-secondo-laboratorio" },
+  { quando: "Domenica 29 novembre 2026", fine: "2026-11-29", orario: "15:00–18:00", titolo: "Laboratorio 3 — Accesso al lavoro pubblico", chi: "Silvia Carrozzino, docente del Conservatorio G.B. Martini di Bologna", href: "/news/musa-terzo-laboratorio" },
+  { quando: "Sabato 12 dicembre 2026", fine: "2026-12-12", orario: "15:00–18:00", titolo: "Laboratorio 4 — Progettazione culturale", chi: "Alexandra Storari, progettista", href: "/news/musa-quarto-laboratorio" },
+  { quando: "Sabato 16 gennaio 2027", fine: "2027-01-16", orario: "15:00–18:00", titolo: "Laboratorio 5 — Musicista performer", chi: "Roberta Giallo, musicista performer" },
+  { quando: "Sabato 20 febbraio 2027", fine: "2027-02-20", orario: "15:00–18:00", titolo: "Laboratorio 6 — Ruoli tecnici e gender gap", chi: "Chiara Amici, fonica" },
+  { quando: "Marzo–aprile 2027", fine: "2027-04-30", titolo: "Incubatore con mentoring e sviluppo dei micro-progetti" },
+  { quando: "Maggio 2027", fine: "2027-05-31", titolo: "Evento finale pubblico e presentazione dei 3 micro-progetti selezionati" },
+];
+const oggi = new Date().toISOString().slice(0, 10);
+const calendario = CALENDARIO.map(e => ({ ...e, svolto: e.fine < oggi }));
 ---
 
 <BaseLayout title="Musa — Jam Session APS" description="Musa: il percorso di Jam Session APS per l'autonomia professionale di giovani musiciste, tra laboratori, incubatore e mentoring dedicato.">
@@ -58,6 +75,29 @@ const FASI = [
               <p>{f.testo}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section aria-label="Calendario">
+        <div class="section-head">
+          <h2>Calendario</h2>
+          <p class="subtitle">I sei laboratori durano 3 ore ciascuno. Per informazioni e iscrizioni: <a href="tel:+393202244932">320 2244932</a> · <a href="mailto:segreteria@jamsessionaps.it">segreteria@jamsessionaps.it</a></p>
+        </div>
+        <ol class="calendario">
+          {calendario.map(e => (
+            <li class={e.svolto ? "tappa svolta" : "tappa"}>
+              <p class="tappa-quando">
+                {e.quando}{e.orario && <span> · {e.orario}</span>}
+                {e.svolto && <span class="tappa-badge">Svolto</span>}
+              </p>
+              <p class="tappa-titolo">{e.href && !e.svolto ? <a href={e.href}>{e.titolo}</a> : e.titolo}</p>
+              {e.chi && <p class="tappa-chi">con {e.chi}</p>}
+            </li>
+          ))}
+        </ol>
+        <p class="nota-fondo">Micro-fondo dell'incubatore: 3 progetti da 300 euro.</p>
+        <div class="download-row">
+          <a class="btn btn-outline-dark" href="/downloads/musa-opuscolo.pdf" target="_blank" rel="noopener">Scarica l'opuscolo MUSA (PDF)</a>
         </div>
       </section>
 
@@ -226,6 +266,30 @@ const FASI = [
     text-decoration: none;
   }
   .btn-accent { background: var(--accent); color: #1b1b1b; }
+  .btn-outline-dark { background: #fff; color: var(--ink); }
+
+  .subtitle a { color: var(--green); font-weight: 600; }
+  .calendario { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 3px solid rgba(15,95,83,.25); }
+  .tappa { position: relative; padding: 0 0 22px 6px; }
+  .tappa:last-child { padding-bottom: 0; }
+  .tappa::before {
+    content: ""; position: absolute; left: -32px; top: 3px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--green); border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(15,95,83,.35);
+  }
+  .tappa.svolta::before { background: #c9d3d0; }
+  .tappa.svolta .tappa-titolo, .tappa.svolta .tappa-quando { opacity: .55; }
+  .tappa-quando { margin: 0 0 4px; font-family: "Inter", sans-serif; font-weight: 800; font-size: 14px; color: var(--green); }
+  .tappa-badge {
+    display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px;
+    background: var(--surface); border: 1px solid rgba(11,11,11,.15);
+    font-size: 11px; font-weight: 700; color: var(--ink); vertical-align: 1px;
+  }
+  .tappa-titolo { margin: 0; font-family: "Lexend", sans-serif; font-size: 17px; line-height: 1.45; }
+  .tappa-titolo a { color: inherit; text-decoration-color: rgba(15,95,83,.45); text-underline-offset: 3px; }
+  .tappa-chi { margin: 4px 0 0; font-family: "Lexend", sans-serif; font-size: 14px; opacity: .7; }
+  .nota-fondo { margin: 26px 0 0; font-family: "Lexend", sans-serif; font-size: 15px; font-weight: 600; }
+  .download-row { margin-top: 22px; }
 
   .cta-section {
     text-align: center;
