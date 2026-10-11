@@ -3,7 +3,7 @@ title: "MUSA: secondo laboratorio, \"Libera professione musicale\", con la Dott.
 date: "2026-10-24"
 ---
 
-Sabato 24 ottobre 2026, alle ore 15:30, al Piccolo Auditorium Tamburini (Via del Perugino 6/D, scala B, Bologna) si tiene il secondo laboratorio di [MUSA](/progetti/musa), il percorso di autonomia professionale per giovani donne nella musica: "Libera professione musicale. Muoversi con consapevolezza nel mondo del lavoro musicale". Relatrice: Dott.ssa Paola Giorgioni.
+Sabato 24 ottobre 2026, alle ore 15:30, al Piccolo Auditorium Tamburini (Via del Perugino 6/D, scala B, Bologna) si tiene il secondo laboratorio di [MUSA](/progetti/musa), il percorso di autonomia professionale per giovani donne nella musica: "Libera professione musicale. Muoversi con consapevolezza nel mondo del lavoro musicale". Relatrice: Dott.ssa <a href="https://studiogiorgioni.passweb.it/lo-studio" target="_blank" rel="noopener">Paola Giorgioni</a>.
 
 Un laboratorio pensato per fornire strumenti a giovani musiciste che vogliano intraprendere la strada della libera professione nel mondo della musica: contratti, adempimenti, scambi di esperienze reali.
 
