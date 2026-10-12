@@ -24,7 +24,7 @@ team:
     ruolo: "Pop, rock, funk, blues, jazz, latin — registrazione in studio"
     foto: "/assets/docenti/docente-batteria-riccardo-derrico.webp"
   - nome: "Elio De Donno"
-    ruolo: "Tutti i generi"
+    ruolo: "Pop, rock, funk, blues, jazz"
   - nome: "Andrea Giorgi"
     ruolo: "Batteria moderna e percussioni"
     foto: "/assets/docenti/docente-batteria-andrea-giorgi.webp"
