@@ -22,6 +22,7 @@ metodo: "Il percorso è in continua evoluzione, costruito sulla personalità di 
 team:
   - nome: "Enrico Bonora"
     ruolo: "Sassofono: jazz, funk, blues, pop"
+    foto: "/assets/docenti/docente-fiati-enrico-bonora.webp"
   - nome: "Christian Bouathongsavang"
     ruolo: "Tromba: jazz, funk, latin"
   - nome: "Adolfo Luis Orta"
