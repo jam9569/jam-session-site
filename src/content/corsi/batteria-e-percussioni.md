@@ -25,6 +25,7 @@ team:
     foto: "/assets/docenti/docente-batteria-riccardo-derrico.webp"
   - nome: "Elio De Donno"
     ruolo: "Pop, rock, funk, blues, jazz"
+    foto: "/assets/docenti/docente-batteria-elio-de-donno.webp"
   - nome: "Andrea Giorgi"
     ruolo: "Batteria moderna e percussioni"
     foto: "/assets/docenti/docente-batteria-andrea-giorgi.webp"
