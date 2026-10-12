@@ -24,6 +24,7 @@ team:
     ruolo: "Sassofono: jazz, funk, blues, pop"
   - nome: "Adolfo Luis Orta"
     ruolo: "Trombone: classica, jazz, musica latina"
+    foto: "/assets/docenti/docente-fiati-adolfo-orta.webp"
   - nome: "Nicola Parolari"
     ruolo: "Sax tenore e contralto: jazz, blues, funk, pop"
     foto: "/assets/docenti/docente-fiati-nicola-parolari.webp"
