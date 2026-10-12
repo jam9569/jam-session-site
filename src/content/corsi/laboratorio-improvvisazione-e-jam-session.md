@@ -8,6 +8,7 @@ metodo: "Il laboratorio unisce l'allenamento all'improvvisazione a vere e propri
 team:
   - nome: "Enrico Bonora"
     ruolo: "Docente del Laboratorio di Improvvisazione"
+    foto: "/assets/docenti/docente-fiati-enrico-bonora.webp"
   - nome: "Nicola Parolari"
     ruolo: "Docente del Laboratorio di Improvvisazione"
     foto: "/assets/docenti/docente-fiati-nicola-parolari.webp"
