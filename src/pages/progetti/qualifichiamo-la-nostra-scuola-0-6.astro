@@ -144,7 +144,7 @@ const TOTALE = REALIZZATI.reduce((n, r) => n + r.dove.length, 0);
         </div>
         <div class="team-item">
           <div class="team-photo">
-            <img src="/assets/docenti/docente-propedeutica-stefania-alterio-lasalvia.webp" alt="Stefania Alterio Lasalvia" loading="lazy" />
+            <span class="team-iniziali">SA</span>
           </div>
           <div class="team-info">
             <div class="team-name">Stefania Alterio Lasalvia</div>
@@ -252,6 +252,7 @@ const TOTALE = REALIZZATI.reduce((n, r) => n + r.dove.length, 0);
   .team-item { display: flex; align-items: center; gap: 22px; padding: 22px; border-radius: 14px; background: #fff; border: 1px solid rgba(11,11,11,.1); }
   .team-photo { flex: 0 0 auto; width: 168px; height: 168px; border-radius: 16px; background: #f2f4f3; border: 1px solid rgba(11,11,11,.1); overflow: hidden; }
   .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .team-iniziali { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 900; font-size: 40px; color: #0f5f53; letter-spacing: .5px; }
   .team-info { flex: 1 1 auto; min-width: 0; }
   .team-name { font-family: "Inter", sans-serif; font-weight: 900; font-size: 21px; }
   .team-role { font-family: "Lexend", sans-serif; font-size: 17px; opacity: .65; margin-top: 4px; }
