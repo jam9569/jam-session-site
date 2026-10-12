@@ -13,8 +13,6 @@ livelli:
     descrizione: "Per chi cerca tecniche di alto livello e un proprio linguaggio artistico. Si lavora su consolle professionale, registrazione, Rekordbox, beatmaking originale e gestione della performance dal vivo."
 metodo: "Ogni allievo ha un docente di riferimento che costruisce il percorso su misura, con la possibilità di confrontarsi anche con gli altri docenti del dipartimento durante l'anno. Orari flessibili anche per chi lavora o studia all'università."
 team:
-  - nome: "Thomas Blasi"
-    ruolo: "DJ — ha suonato in locali come Cocoricò, Controsenso Club, Onyx Club"
   - nome: "Antonio Del Gaudio"
     ruolo: "Produzione e beatmaking"
   - nome: "Enrico Giannetti (Salix)"
