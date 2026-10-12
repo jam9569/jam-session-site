@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Come si svolge un percorso (dai progetti presentati al Comune di Bologna).
+const FORMATO = [
+  {
+    titolo: "Sei incontri",
+    testo: "Il percorso dura sei incontri, a cadenza settimanale o quindicinale. Lavoriamo in piccoli gruppi, di circa 10–11 bambini, per dare a ciascuno attenzione e spazio.",
+  },
+  {
+    titolo: "Dentro il servizio",
+    testo: "Gli incontri si svolgono negli spazi del nido o della scuola, nel salone o nell'aula di psicomotricità. Gli strumenti li portiamo noi: ukulele, tamburi, strumentario Orff, teli e oggetti sonori.",
+  },
+  {
+    titolo: "Insieme alle educatrici",
+    testo: "Prima di cominciare incontriamo le educatrici e la coordinatrice pedagogica, per costruire il percorso sulle esigenze del gruppo e sulla programmazione del servizio.",
+  },
+];
+
+// Esempio: il percorso "Piccoli suoni, grandi emozioni" (Nido L.G. Betti, 2025/2026).
+const INCONTRI = [
+  { titolo: "Il corpo che suona", testo: "Percussioni corporee, pulsazione, oscillazioni, camminate sonore." },
+  { titolo: "La voce che emoziona", testo: "Echi vocali, suoni lunghi e corti, giochi di imitazione, piccole narrazioni." },
+  { titolo: "Oggetti e suoni in movimento", testo: "Teli, stoffe e piccole percussioni Orff: i suoni diventano gesti e movimenti." },
+  { titolo: "Piccolo teatro delle emozioni", testo: "Una storia raccontata con l'ukulele e gli strumenti ritmici, con i bambini protagonisti." },
+  { titolo: "Storie che danzano", testo: "Racconti brevi che si trasformano in piccoli movimenti coreografici." },
+  { titolo: "La nostra storia finale", testo: "Musica, voce e movimento in una restituzione condivisa con i bambini e il gruppo educativo, senza pubblico esterno." },
+];
+
+const OBIETTIVI = [
+  "l'ascolto e l'attenzione condivisa",
+  "la regolazione delle emozioni, con attività ritmiche e musicali calibrate",
+  "la relazione con il gruppo, attraverso giochi teatrali e di imitazione",
+  "una motricità naturale, fluida e non competitiva",
+  "l'uso della voce come strumento espressivo",
+  "il riconoscimento di ritmi, pause e sfumature sonore",
+  "la partecipazione attiva, in un clima rassicurante e accogliente",
+];
+
+// Percorsi realizzati, dall'archivio dell'associazione.
+const REALIZZATI = [
+  { anno: "2021", dove: ["Scuola dell'infanzia L.G. Betti"] },
+  { anno: "2023", dove: ["Scuola dell'infanzia Giusi del Mugnaio", "Scuola dell'infanzia L.G. Betti", "Scuola dell'infanzia Manzini"] },
+  { anno: "2024", dove: ["Nido Spartaco"] },
+  { anno: "2025", dove: ["Scuola dell'infanzia L.G. Betti", "Scuola dell'infanzia Molino Tamburi"] },
+  { anno: "2026", dove: ["Nido G. Betti", "Nido Romagnoli"] },
+];
+const TOTALE = REALIZZATI.reduce((n, r) => n + r.dove.length, 0);
+---
+
+<BaseLayout title="Musica, teatro e musicoterapia preventiva — Jam Session APS" description="Musica, teatro e musicoterapia preventiva (progetto Qualifichiamo la nostra scuola 0-6): percorsi di musica, teatro e movimento per i bambini dei nidi e delle scuole dell'infanzia di Bologna, condotti da Stefania Alterio Lasalvia.">
+  <Header />
+  <div class="container">
+    <div class="hero-media">
+      <img src="/assets/progetti/musica-0-6-hero.webp" alt="Stefania Alterio Lasalvia gioca con voce e gesti insieme a un gruppo di bambini" width="1600" height="900" />
+    </div>
+    <main class="page-content">
+      <p class="kicker">Nidi e scuole dell'infanzia</p>
+      <h1>Musica, teatro e musicoterapia preventiva</h1>
+      <p class="lead">Progetto Qualifichiamo la nostra scuola 0-6 del Comune di Bologna</p>
+
+      <div class="testo-intro">
+        <p>
+          Dal 2021 Jam Session porta nei nidi e nelle scuole dell'infanzia di Bologna percorsi che
+          intrecciano musica, teatro e musicoterapia preventiva, per bambini da 1 a 6 anni. Non sono
+          lezioni di musica: l'obiettivo è offrire ai più piccoli le prime esperienze di ascolto, voce,
+          ritmo e gioco, per accompagnare la crescita delle emozioni, della relazione con gli altri e del
+          movimento.
+        </p>
+        <p>
+          I bambini esplorano il mondo attraverso il corpo, la voce e l'immaginazione: piccoli giochi
+          sonori, vocalizzi senza parole, ritmi con il corpo, brevi storie teatralizzate, movimento libero
+          e guidato. L'approccio è dolce e partecipativo, e rispetta i tempi di ciascuno.
+        </p>
+        <p>
+          I percorsi nascono insieme ai gruppi genitori dei comitati e alle équipe educative, nell'ambito
+          del progetto del Comune di Bologna{" "}
+          <a href="https://www.comune.bologna.it/informazioni/qualifichiamo-nostra-scuola-0-6" target="_blank" rel="noopener">"Qualifichiamo insieme la nostra scuola 0-6"</a>.
+        </p>
+      </div>
+
+      <div class="galleria">
+        <img src="/assets/progetti/musica-0-6-foto-1.webp" alt="Stefania suona l'ukulele per un gruppo di bambini seduti sui tappeti" width="640" height="800" loading="lazy" />
+        <img src="/assets/progetti/musica-0-6-foto-2.webp" alt="Bambini in cerchio attorno a Stefania che suona l'ukulele" width="640" height="800" loading="lazy" />
+        <img src="/assets/progetti/musica-0-6-foto-3.webp" alt="Una bambina suona il tamburo tenuto da Stefania" width="640" height="800" loading="lazy" />
+      </div>
+
+      <section aria-label="Come funziona">
+        <div class="section-head">
+          <h2>Come funziona</h2>
+        </div>
+        <div class="card-grid">
+          {FORMATO.map(f => (
+            <div class="info-card">
+              <h3>{f.titolo}</h3>
+              <p>{f.testo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-label="Un esempio di percorso">
+        <div class="section-head">
+          <h2>Un esempio di percorso</h2>
+          <p class="subtitle">"Piccoli suoni, grandi emozioni", per i bambini da 1 a 3 anni del Nido L.G. Betti (2025/2026).</p>
+        </div>
+        <ol class="incontri">
+          {INCONTRI.map((inc, i) => (
+            <li class="incontro">
+              <span class="incontro-num">{i + 1}</span>
+              <div>
+                <h3>{inc.titolo}</h3>
+                <p>{inc.testo}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-label="Obiettivi e metodo" class="due-colonne">
+        <div>
+          <h2>Cosa vogliamo far crescere</h2>
+          <ul class="lista">
+            {OBIETTIVI.map(o => <li>{o}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2>Il nostro metodo</h2>
+          <p class="body-text">
+            Un approccio ludico ed esperienziale, che parte dalle capacità spontanee dei bambini. Usiamo
+            elementi del metodo Gordon (musicalità naturale, canti senza parole, risposta musicale
+            intenzionale), principi di musicoterapia preventiva per sostenere ascolto, calma e sicurezza,
+            e tecniche teatrali per la prima infanzia: ritmo, imitazione, gioco simbolico. Sempre con
+            attenzione ai tempi di ciascuno, alle pause e alle emozioni del gruppo.
+          </p>
+        </div>
+      </section>
+
+      <section aria-label="Chi conduce">
+        <div class="section-head">
+          <h2>Chi conduce i percorsi</h2>
+        </div>
+        <div class="team-item">
+          <div class="team-photo">
+            <img src="/assets/docenti/docente-propedeutica-stefania-alterio-lasalvia.webp" alt="Stefania Alterio Lasalvia" loading="lazy" />
+          </div>
+          <div class="team-info">
+            <div class="team-name">Stefania Alterio Lasalvia</div>
+            <div class="team-role">Musica, teatro e musicoterapia per la prima infanzia</div>
+            <p class="team-tratto">
+              Attrice professionista, musicista e cantante, suona l'ukulele ed è diplomata in Musicoterapia
+              psicodinamica. Ha una lunga esperienza nei nidi e nelle scuole dell'infanzia di Bologna, con
+              percorsi che uniscono musica, teatro ed espressione corporea.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Dove li abbiamo portati">
+        <div class="section-head">
+          <h2>Dove li abbiamo portati</h2>
+          <p class="subtitle">{TOTALE} percorsi dal 2021 a oggi, tra nidi e scuole dell'infanzia di Bologna.</p>
+        </div>
+        <ul class="realizzati">
+          {REALIZZATI.map(r => (
+            <li>
+              <span class="anno">{r.anno}</span>
+              <span class="dove">{r.dove.join(" · ")}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="cta-section" aria-label="Porta il progetto nella tua scuola">
+        <h2>Vuoi portare il progetto nel tuo nido o nella tua scuola?</h2>
+        <p class="subtitle">
+          Possiamo seguire più servizi ogni anno. Scrivici: prepariamo insieme al gruppo genitori del
+          comitato e alle educatrici la proposta da presentare al Comune di Bologna. Per scadenze e regole
+          fa fede l'<a href="https://www.comune.bologna.it/informazioni/qualifichiamo-nostra-scuola-0-6" target="_blank" rel="noopener">avviso del Comune</a>.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://form.jotform.com/262432547070049" target="_blank" rel="noopener">Richiedi info</a>
+        </div>
+        <p class="contatti">Oppure: <a href="tel:+393202244932">320 2244932</a> · <a href="mailto:segreteria@jamsessionaps.it">segreteria@jamsessionaps.it</a></p>
+      </section>
+
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --surface: #f2f4f3;
+    --radius: 18px;
+    --radiusLg: 28px;
+    --shadow: 0 12px 28px rgba(0,0,0,.08);
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .hero-media {
+    margin-top: 6px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #eef1ef;
+    box-shadow: var(--shadow);
+  }
+  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+  .page-content { margin: 46px 0 60px; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 { font-family: "Inter", sans-serif; font-weight: 900; font-size: clamp(32px, 4.4vw, 44px); margin: 0 0 14px; }
+  .lead { font-family: "Lexend", sans-serif; font-size: 19px; line-height: 1.6; opacity: .82; margin: 0 0 32px; }
+
+  .testo-intro p { font-family: "Lexend", sans-serif; opacity: .82; line-height: 1.65; font-size: 17px; margin: 0 0 16px; }
+  .testo-intro a, .cta-section a:not(.btn) { color: var(--green); font-weight: 600; text-underline-offset: 3px; }
+
+  .galleria { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 40px; }
+  .galleria img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); display: block; box-shadow: var(--shadow); }
+
+  main > section { margin-top: 72px; }
+  .section-head { margin-bottom: 24px; }
+  h2 { margin: 0; font-family: "Inter", sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -.25px; }
+  .subtitle { margin: 10px 0 0; opacity: .74; font-size: 16px; line-height: 1.5; }
+
+  .card-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  .info-card { background: var(--surface); border: 1px solid rgba(11,11,11,.1); border-radius: var(--radius); padding: 24px; }
+  .info-card h3, .incontro h3 { font-family: "Inter", sans-serif; font-weight: 900; font-size: 17px; margin: 0 0 8px; color: var(--green); }
+  .info-card p, .incontro p { font-family: "Lexend", sans-serif; font-size: 15px; line-height: 1.55; opacity: .8; margin: 0; }
+
+  .incontri { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+  .incontro { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 1px solid rgba(11,11,11,.12); border-radius: var(--radius); padding: 20px; }
+  .incontro-num { flex: 0 0 auto; width: 36px; height: 36px; border-radius: 999px; background: var(--accent); display: inline-flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 900; }
+
+  .due-colonne { display: grid; gap: 40px; grid-template-columns: 1fr; }
+  .due-colonne h2 { margin-bottom: 18px; }
+  .lista { margin: 0; padding-left: 20px; font-family: "Lexend", sans-serif; font-size: 16px; line-height: 1.6; opacity: .84; }
+  .lista li { margin-bottom: 6px; }
+  .body-text { font-family: "Lexend", sans-serif; opacity: .82; line-height: 1.65; font-size: 17px; margin: 0; }
+
+  .team-item { display: flex; align-items: center; gap: 22px; padding: 22px; border-radius: 14px; background: #fff; border: 1px solid rgba(11,11,11,.1); }
+  .team-photo { flex: 0 0 auto; width: 168px; height: 168px; border-radius: 16px; background: #f2f4f3; border: 1px solid rgba(11,11,11,.1); overflow: hidden; }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .team-info { flex: 1 1 auto; min-width: 0; }
+  .team-name { font-family: "Inter", sans-serif; font-weight: 900; font-size: 21px; }
+  .team-role { font-family: "Lexend", sans-serif; font-size: 17px; opacity: .65; margin-top: 4px; }
+  .team-tratto { font-family: "Lexend", sans-serif; font-size: 15px; line-height: 1.6; opacity: .82; margin: 10px 0 0; }
+
+  .realizzati { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(11,11,11,.12); }
+  .realizzati li { display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid rgba(11,11,11,.12); font-family: "Lexend", sans-serif; }
+  .realizzati .anno { flex: 0 0 56px; font-family: "Inter", sans-serif; font-weight: 900; color: var(--green); }
+  .realizzati .dove { opacity: .84; line-height: 1.5; }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-family: "Inter", sans-serif; font-weight: 900; border: var(--border); box-shadow: var(--shadow); text-decoration: none; }
+  .btn-accent { background: var(--accent); color: #1b1b1b; }
+
+  .cta-section { text-align: center; background: var(--surface); border-radius: var(--radiusLg); padding: 56px 32px; }
+  .cta-section .subtitle { margin: 12px auto 0; max-width: 62ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+  .contatti { margin: 18px 0 0; font-family: "Lexend", sans-serif; font-size: 15px; opacity: .8; }
+
+  @media (max-width: 600px) {
+    .team-item { flex-direction: column; align-items: flex-start; }
+    .realizzati li { flex-direction: column; gap: 4px; }
+  }
+  @media (min-width: 768px) {
+    .hero-media { aspect-ratio: auto; min-height: 520px; }
+    .galleria { grid-template-columns: repeat(3, 1fr); }
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .incontri { grid-template-columns: repeat(2, 1fr); }
+    .due-colonne { grid-template-columns: 1fr 1fr; }
+  }
+</style>
