@@ -13,8 +13,12 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, date, immagine } = entry.data;
-const dateDisplay = new Date(date).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+const { title, date, fino, pulsante, immagine } = entry.data;
+const lunga = (s: string, conAnno = true) =>
+  new Date(s).toLocaleDateString('it-IT', conAnno ? { day: 'numeric', month: 'long', year: 'numeric' } : { day: 'numeric', month: 'long' });
+const dateDisplay = fino
+  ? `dal ${lunga(date, date.slice(0, 4) !== fino.slice(0, 4))} al ${lunga(fino)}`
+  : lunga(date);
 const { Content } = await render(entry);
 ---
 
@@ -30,6 +34,11 @@ const { Content } = await render(entry);
           <div class="news-body">
             <Content />
           </div>
+          {pulsante && (
+            <p class="news-cta">
+              <a class="btn btn-accent" href={pulsante.link}>{pulsante.testo}</a>
+            </p>
+          )}
         </div>
         {immagine && (
           <div class="news-image">
@@ -89,6 +98,20 @@ const { Content } = await render(entry);
   }
   .news-body p { margin: 0 0 18px; }
   .news-body p:last-child { margin-bottom: 0; }
+  .news-cta { margin: 30px 0 0; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+    text-decoration: none;
+  }
+  .btn-accent { background: #f2a844; color: #1b1b1b; }
 
   @media (min-width: 860px) {
     .page-content.has-image .news-layout {

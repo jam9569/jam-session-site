@@ -38,13 +38,17 @@ const RECENSIONI = [
 // la news esce dalla home (resta comunque consultabile nell'archivio su /news).
 const oggiStr = new Date().toISOString().slice(0, 10);
 const newsEntries = await getCollection('news');
+const dataBreve = (s: string, conAnno = true) =>
+  new Date(s).toLocaleDateString('it-IT', conAnno ? { day: 'numeric', month: 'short', year: 'numeric' } : { day: 'numeric', month: 'short' });
 const NEWS_HOME = newsEntries
-  .filter(n => n.data.date >= oggiStr)
+  .filter(n => (n.data.fino ?? n.data.date) >= oggiStr)
   .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
   .slice(0, 4)
   .map(n => ({
     title: n.data.title,
-    date: new Date(n.data.date).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' }),
+    date: n.data.fino
+      ? `dal ${dataBreve(n.data.date, n.data.date.slice(0, 4) !== n.data.fino.slice(0, 4))} al ${dataBreve(n.data.fino)}`
+      : dataBreve(n.data.date),
     href: `/news/${n.id}`,
   }));
  

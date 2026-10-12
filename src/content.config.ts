@@ -41,6 +41,11 @@ const news = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
+    // Facoltativo: la news resta tra le news in evidenza fino a questa data (es. una scadenza),
+    // e accanto alla data compare l'intervallo "dal ... al ...".
+    fino: z.string().optional(),
+    // Facoltativo: pulsante in fondo alla pagina della news.
+    pulsante: z.object({ testo: z.string(), link: z.string() }).optional(),
     excerpt: z.string().optional(),
     immagine: z.string().optional(),
   }),

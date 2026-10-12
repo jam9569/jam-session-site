@@ -19,21 +19,26 @@ const newsEntries = await getCollection('news');
 
 function mapNews(n: (typeof newsEntries)[number]) {
   const d = new Date(n.data.date);
+  const lunga = (x: Date, conAnno = true) =>
+    x.toLocaleDateString('it-IT', conAnno ? { day: 'numeric', month: 'long', year: 'numeric' } : { day: 'numeric', month: 'long' });
+  const fino = n.data.fino ? new Date(n.data.fino) : null;
   return {
     slug: n.id,
     title: n.data.title,
-    dateDisplay: d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
+    dateDisplay: fino
+      ? `dal ${lunga(d, d.getFullYear() !== fino.getFullYear())} al ${lunga(fino)}`
+      : lunga(d),
     annoSociale: annoSociale(d),
   };
 }
 
 const prossime = newsEntries
-  .filter(n => n.data.date >= oggiStr)
+  .filter(n => (n.data.fino ?? n.data.date) >= oggiStr)
   .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
   .map(mapNews);
 
 const archivio = newsEntries
-  .filter(n => n.data.date < oggiStr)
+  .filter(n => (n.data.fino ?? n.data.date) < oggiStr)
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1))
   .map(mapNews);
 

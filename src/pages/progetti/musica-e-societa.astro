@@ -146,7 +146,7 @@ const ISTITUTI = [
                 ))}
               </ul>
               {gruppo.provincia === "Bologna" && (
-                <div class="iscrizioni-box">
+                <div class="iscrizioni-box" id="iscrizioni-online">
                   <h4>Iscrizioni online – Bologna</h4>
                   <p>Se tuo figlio/a frequenta uno degli istituti contrassegnati "Iscrizione online" puoi iscriverlo direttamente da qui: servono circa 10 minuti e si firma dal telefono con un codice via SMS.</p>
                   <a class="btn btn-accent" href={LINK_ISCRIZIONE} target="_blank" rel="noopener">Iscriviti ora</a>
@@ -447,6 +447,7 @@ const ISTITUTI = [
     white-space: nowrap;
   }
   .iscrizioni-box {
+    scroll-margin-top: 110px;
     margin-top: 18px;
     padding: 20px;
     background: #fff;
