@@ -34,4 +34,5 @@ team:
     foto: "/assets/docenti/docente-fiati-adolfo-orta.webp"
   - nome: "Christian Bouathongsavang"
     ruolo: "Tromba: jazz, funk, latin"
+    foto: "/assets/docenti/docente-fiati-christian-bouathongsavang.webp"
 ---
