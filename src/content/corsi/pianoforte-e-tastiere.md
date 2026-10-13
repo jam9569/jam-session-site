@@ -27,7 +27,7 @@ team:
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop"
     foto: "/assets/docenti/docente-pianoforte-sebastian-hallmark.webp"
   - nome: "Karolina Kisiak"
-    ruolo: "Pianoforte classico"
+    ruolo: "Pianoforte classico, pop e rock"
     foto: "/assets/docenti/docente-pianoforte-karolina-kisiak.webp"
   - nome: "Pablo Panella"
     ruolo: "Pianoforte jazz, improvvisazione, musica moderna"
