@@ -15,6 +15,7 @@ metodo: "Ogni allievo ha un docente di riferimento che costruisce il percorso su
 team:
   - nome: "Antonio Del Gaudio"
     ruolo: "Produzione e beatmaking"
+    foto: "/assets/docenti/docente-chitarra-antonio-del-gaudio.webp"
   - nome: "Enrico Giannetti (Salix)"
     ruolo: "DJ e musicista, scena underground, pubblicazioni per diverse etichette"
   - nome: "Lorenzo Valdesalici"

@@ -25,6 +25,7 @@ team:
     foto: "/assets/organigramma/andrea-belvederi-mosti.webp"
   - nome: "Antonio Del Gaudio"
     ruolo: "Basso elettrico: pop, funk, rock, metal — chitarra elettrica: pop, rock, metal"
+    foto: "/assets/docenti/docente-chitarra-antonio-del-gaudio.webp"
   - nome: "Marco Giudice"
     ruolo: "Chitarra classica, acustica, elettrica: rock, pop — basso per principianti"
     foto: "/assets/docenti/docente-chitarra-marco-giudice.webp"
