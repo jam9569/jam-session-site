@@ -18,6 +18,7 @@ team:
     foto: "/assets/docenti/docente-chitarra-antonio-del-gaudio.webp"
   - nome: "Enrico Giannetti (Salix)"
     ruolo: "DJ e musicista, scena underground, pubblicazioni per diverse etichette"
+    foto: "/assets/docenti/docente-deejay-enrico-giannetti.webp"
   - nome: "Lorenzo Valdesalici"
     ruolo: "Produzione e composizione per film"
     foto: "/assets/docenti/docente-chitarra-lorenzo-valdesalici.webp"
