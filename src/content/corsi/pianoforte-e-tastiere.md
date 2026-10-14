@@ -31,6 +31,7 @@ team:
     foto: "/assets/docenti/docente-pianoforte-karolina-kisiak.webp"
   - nome: "Pablo Panella"
     ruolo: "Pianoforte jazz, improvvisazione, musica moderna"
+    foto: "/assets/docenti/docente-pianoforte-pablo-panella.webp"
   - nome: "Mariagrazia Vincitorio"
     ruolo: "Pianoforte e tastiere classico e moderno: classica, pop, rock, blues"
     foto: "/assets/docenti/docente-pianoforte-mariagrazia-vincitorio.webp"
