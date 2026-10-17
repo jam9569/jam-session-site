@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+{/* Pagina di ringraziamento: Jotform porta qui le persone dopo l'invio del modulo
+    "Richiedi info" (https://jamsessionaps.it/grazie/?modulo=richiedi-info).
+    Qui si registra la conversione vera, in Analytics e in Google Ads.
+    Non compare su Google, nella sitemap ne' nella ricerca interna. */}
+<BaseLayout title="Grazie" description="Abbiamo ricevuto la tua richiesta: la segreteria di Jam Session APS ti risponderà al più presto." noindex>
+  <Header />
+  <div class="container">
+    <main class="page-content">
+      <p class="kicker">Richiesta inviata</p>
+      <h1>Grazie, abbiamo ricevuto la tua richiesta</h1>
+      <p class="lead">La segreteria ti risponderà al più presto. Se hai fretta, scrivici su WhatsApp o chiamaci al <a href="tel:+393202244932">320 224 4932</a>.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="/">Torna alla home</a>
+        <a class="btn btn-outline" href="/corsi">Vedi i corsi</a>
+        <a class="btn btn-outline" href="https://wa.me/393202244932" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var modulo = new URLSearchParams(location.search).get('modulo');
+    if (!modulo || typeof gtag !== 'function') return;
+    // Conta una sola volta anche se la pagina viene ricaricata
+    var chiave = 'jam-conversione-' + modulo;
+    try { if (sessionStorage.getItem(chiave)) return; sessionStorage.setItem(chiave, '1'); } catch (e) {}
+    gtag('event', 'generate_lead', { modulo: modulo });
+    if (modulo === 'richiedi-info') {
+      gtag('event', 'conversion', { 'send_to': 'AW-10977779327/my-oCJro8v4cEP-8zvIo' });
+    }
+  })();
+</script>
+
+<style>
+  :root {
+    --green: #0f5f53;
+    --accent: #f2a844;
+    --ink: #0b0b0b;
+    --border: 1px solid rgba(11,11,11,.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Lexend", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; }
+
+  .container { width: min(720px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 90px; }
+  .page-content { margin: 96px 0 120px; text-align: center; }
+  .kicker { font-family: "Inter", sans-serif; font-weight: 800; font-size: 13px; color: var(--green); margin: 0 0 10px; }
+  .page-content h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 4.4vw, 40px);
+    margin: 0 0 16px;
+  }
+  .lead {
+    font-family: "Lexend", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: .78;
+    margin: 0 auto 32px;
+    max-width: 48ch;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    border: var(--border);
+    text-decoration: none;
+  }
+  .btn-accent { background: var(--accent); color: #1b1b1b; box-shadow: 0 12px 28px rgba(0,0,0,.08); }
+  .btn-outline { background: #fff; color: var(--ink); }
+</style>

@@ -86,7 +86,7 @@ function categoryFromUrl(url) {
 
 const files = walk(DIST).filter((f) => {
   const rel = relative(DIST, f);
-  return !rel.includes("-backup") && !rel.startsWith("downloads" + sep);
+  return !rel.includes("-backup") && !rel.startsWith("downloads" + sep) && !rel.startsWith("grazie" + sep);
 });
 
 const items = [];
